@@ -34,19 +34,19 @@
             "query": {
               "params": [
                 "A",
-                "5m",
+                "2m",
                 "now"
               ]
             },
             "reducer": {
               "params": [],
-              "type": "sum"
+              "type": "last"
             },
             "type": "query"
           }
         ],
         "executionErrorState": "alerting",
-        "for": "1m",
+        "for": "2m",
         "frequency": "1m",
         "handler": 1,
         "name": "Node Health Status",
@@ -200,7 +200,7 @@
             },
             "reducer": {
               "params": [],
-              "type": "sum"
+              "type": "last"
             },
             "type": "query"
           }
@@ -341,7 +341,7 @@
             },
             "reducer": {
               "params": [],
-              "type": "sum"
+              "type": "last"
             },
             "type": "query"
           }
@@ -497,7 +497,7 @@
             },
             "reducer": {
               "params": [],
-              "type": "sum"
+              "type": "last"
             },
             "type": "query"
           }
@@ -655,7 +655,7 @@
             },
             "reducer": {
               "params": [],
-              "type": "sum"
+              "type": "last"
             },
             "type": "query"
           }
@@ -796,7 +796,7 @@
             },
             "reducer": {
               "params": [],
-              "type": "sum"
+              "type": "last"
             },
             "type": "query"
           }
@@ -1253,7 +1253,7 @@
     "list": []
   },
   "time": {
-    "from": "now-30m",
+    "from": "now-3h",
     "to": "now"
   },
   "timepicker": {
