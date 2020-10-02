@@ -18,6 +18,18 @@
   "links": [],
   "panels": [
     {
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 30,
+      "title": "Kubernetes Nodes",
+      "type": "row"
+    },
+    {
       "alert": {
         "alertRuleTags": {},
         "conditions": [
@@ -87,7 +99,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 0
+        "y": 1
       },
       "hiddenSeries": false,
       "id": 12,
@@ -194,7 +206,7 @@
             "query": {
               "params": [
                 "A",
-                "5m",
+                "2m",
                 "now"
               ]
             },
@@ -206,10 +218,10 @@
           }
         ],
         "executionErrorState": "alerting",
-        "for": "5m",
+        "for": "2m",
         "frequency": "1m",
         "handler": 1,
-        "name": "Endpoints not ready alert",
+        "name": "Kubelet Node Config Error alert",
         "noDataState": "no_data",
         "notifications": []
       },
@@ -230,10 +242,10 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 0
+        "y": 1
       },
       "hiddenSeries": false,
-      "id": 14,
+      "id": 26,
       "legend": {
         "alignAsTable": true,
         "avg": false,
@@ -258,13 +270,13 @@
       "renderer": "flot",
       "seriesOverrides": [],
       "spaceLength": 10,
-      "stack": true,
+      "stack": false,
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(kube_endpoint_address_not_ready) by (endpoint)",
+          "expr": "sum(kubelet_node_config_error) by (node)",
           "interval": "",
-          "legendFormat": "{{ endpoint }}",
+          "legendFormat": "{{ node }}",
           "refId": "A"
         }
       ],
@@ -280,10 +292,10 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Endpoints not ready",
+      "title": "Kubelet Node Config Error",
       "tooltip": {
         "shared": true,
-        "sort": 2,
+        "sort": 0,
         "value_type": "individual"
       },
       "type": "graph",
@@ -317,6 +329,20 @@
         "align": false,
         "alignLevel": null
       }
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 9
+      },
+      "id": 28,
+      "panels": [],
+      "title": "Kubernetes Resources",
+      "type": "row"
     },
     {
       "alert": {
@@ -385,7 +411,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 8
+        "y": 10
       },
       "hiddenSeries": false,
       "id": 9,
@@ -542,7 +568,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 8
+        "y": 10
       },
       "hiddenSeries": false,
       "id": 10,
@@ -685,7 +711,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 16
+        "y": 18
       },
       "hiddenSeries": false,
       "id": 16,
@@ -826,7 +852,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 16
+        "y": 18
       },
       "hiddenSeries": false,
       "id": 18,
@@ -991,7 +1017,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 24
+        "y": 26
       },
       "hiddenSeries": false,
       "id": 22,
@@ -1156,7 +1182,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 24
+        "y": 26
       },
       "hiddenSeries": false,
       "id": 24,
@@ -1243,12 +1269,156 @@
         "align": false,
         "alignLevel": null
       }
+    },
+    {
+      "alert": {
+        "alertRuleTags": {},
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                0
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "last"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "name": "Endpoints not ready alert",
+        "noDataState": "no_data",
+        "notifications": []
+      },
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 34
+      },
+      "hiddenSeries": false,
+      "id": 14,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.2.0",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(kube_endpoint_address_not_ready) by (endpoint)",
+          "interval": "",
+          "legendFormat": "{{ endpoint }}",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [
+        {
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 0
+        }
+      ],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Endpoints not ready",
+      "tooltip": {
+        "shared": true,
+        "sort": 2,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "decimals": 0,
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     }
   ],
   "refresh": "30s",
   "schemaVersion": 26,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "kubernetes",
+    "alerting"
+  ],
   "templating": {
     "list": []
   },
@@ -1258,15 +1428,12 @@
   },
   "timepicker": {
     "refresh_intervals": [
-      "10s",
+      "15s",
       "30s",
       "1m",
       "5m",
       "15m",
-      "30m",
-      "1h",
-      "2h",
-      "1d"
+      "30m"
     ]
   },
   "timezone": "",
