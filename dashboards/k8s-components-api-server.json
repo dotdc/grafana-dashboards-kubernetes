@@ -167,7 +167,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum by (code) (rate(apiserver_request_total{instance=~\"$instance\"}[5m]))",
+          "expr": "sum by (code) (rate(apiserver_request_total{instance=~\"$instance\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "{{ code }}",
           "refId": "A"
@@ -262,7 +262,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum by (verb) (rate(apiserver_request_total{instance=~\"$instance\"}[5m]))",
+          "expr": "sum by (verb) (rate(apiserver_request_total{instance=~\"$instance\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "{{ verb}}",
           "refId": "A"
@@ -358,7 +358,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(rest_client_request_duration_seconds_bucket{job=\"apiserver\", instance=~\"$instance\"}[5m])) by (instance)",
+          "expr": "sum(rate(rest_client_request_duration_seconds_bucket{job=\"apiserver\", instance=~\"$instance\"}[$__rate_interval])) by (instance)",
           "interval": "",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -454,7 +454,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(rest_client_request_duration_seconds_bucket{job=\"apiserver\", instance=~\"$instance\"}[5m])) by (verb)",
+          "expr": "sum(rate(rest_client_request_duration_seconds_bucket{job=\"apiserver\", instance=~\"$instance\"}[$__rate_interval])) by (verb)",
           "interval": "",
           "legendFormat": "{{ verb }}",
           "refId": "A"
@@ -549,7 +549,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum by(instance) (rate(apiserver_request_total{code=~\"5..\", job=\"apiserver\", instance=~\"$instance\"}[5m]))\n / sum by(instance) (rate(apiserver_request_total{job=\"apiserver\", instance=~\"$instance\"}[5m]))",
+          "expr": "sum by(instance) (rate(apiserver_request_total{code=~\"5..\", job=\"apiserver\", instance=~\"$instance\"}[$__rate_interval]))\n / sum by(instance) (rate(apiserver_request_total{job=\"apiserver\", instance=~\"$instance\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -644,7 +644,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum by(verb) (rate(apiserver_request_total{code=~\"5..\",job=\"apiserver\"}[5m]))\n / sum by(verb) (rate(apiserver_request_total{job=\"apiserver\"}[5m]))",
+          "expr": "sum by(verb) (rate(apiserver_request_total{code=~\"5..\",job=\"apiserver\"}[$__rate_interval]))\n / sum by(verb) (rate(apiserver_request_total{job=\"apiserver\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "{{ verb }}",
           "refId": "A"
@@ -739,7 +739,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(apiserver_request_total{instance=~\"$instance\"}[5m])) by (instance)",
+          "expr": "sum(rate(apiserver_request_total{instance=~\"$instance\"}[$__rate_interval])) by (instance)",
           "interval": "",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -836,7 +836,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(workqueue_depth{job=\"apiserver\", instance=~\"$instance\"}[5m])) by (instance)",
+          "expr": "sum(rate(workqueue_depth{job=\"apiserver\", instance=~\"$instance\"}[$__rate_interval])) by (instance)",
           "interval": "",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -932,7 +932,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(process_cpu_seconds_total{job=\"apiserver\", instance=~\"$instance\"}[5m])",
+          "expr": "rate(process_cpu_seconds_total{job=\"apiserver\", instance=~\"$instance\"}[$__rate_interval])",
           "interval": "",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -1157,7 +1157,7 @@
     ]
   },
   "timezone": "",
-  "title": "Kubernetes - API Server",
+  "title": "Kubernetes / Components / API Server",
   "uid": null,
   "version": 1
 }
