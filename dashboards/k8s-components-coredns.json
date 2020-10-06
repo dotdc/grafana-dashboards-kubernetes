@@ -65,7 +65,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(coredns_dns_request_type_count_total{instance=~\"$instance\"}[5m])) by (type)",
+          "expr": "sum(rate(coredns_dns_request_type_count_total{instance=~\"$instance\"}[$__rate_interval])) by (type)",
           "interval": "",
           "legendFormat": "{{ type }}",
           "refId": "A"
@@ -160,7 +160,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(coredns_dns_response_rcode_count_total{instance=~\"$instance\"}[5m])) by (rcode)",
+          "expr": "sum(rate(coredns_dns_response_rcode_count_total{instance=~\"$instance\"}[$__rate_interval])) by (rcode)",
           "interval": "",
           "legendFormat": "{{ rcode }}",
           "refId": "A"
@@ -256,7 +256,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(coredns_dns_request_count_total{instance=~\"$instance\",proto=\"$protocol\"}[5m]))",
+          "expr": "sum(rate(coredns_dns_request_count_total{instance=~\"$instance\",proto=\"$protocol\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "total $protocol requests",
           "refId": "A"
@@ -352,7 +352,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "avg(rate(coredns_dns_request_size_bytes_sum{instance=~\"$instance\",proto=\"$protocol\"}[5m])) by (proto)",
+          "expr": "avg(rate(coredns_dns_request_size_bytes_sum{instance=~\"$instance\",proto=\"$protocol\"}[$__rate_interval])) by (proto)",
           "interval": "",
           "legendFormat": "average $protocol packet size",
           "refId": "A"
@@ -447,7 +447,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(coredns_forward_response_rcode_count_total{rcode=~\"SERVFAIL|REFUSED\"}[5m])) by (rcode)",
+          "expr": "sum(rate(coredns_forward_response_rcode_count_total{rcode=~\"SERVFAIL|REFUSED\"}[$__rate_interval])) by (rcode)",
           "interval": "",
           "legendFormat": "{{ rcode }}",
           "refId": "A"
@@ -542,7 +542,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(coredns_forward_request_count_total[5m]))",
+          "expr": "sum(rate(coredns_forward_request_count_total[$__rate_interval]))",
           "interval": "",
           "legendFormat": "total forward requests",
           "refId": "A"
@@ -637,13 +637,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(coredns_cache_hits_total{instance=~\"$instance\"}[5m])) by (type)",
+          "expr": "sum(rate(coredns_cache_hits_total{instance=~\"$instance\"}[$__rate_interval])) by (type)",
           "interval": "",
           "legendFormat": "{{ type }}",
           "refId": "A"
         },
         {
-          "expr": "sum(rate(coredns_cache_misses_total{instance=~\"$instance\"}[5m])) by (type)",
+          "expr": "sum(rate(coredns_cache_misses_total{instance=~\"$instance\"}[$__rate_interval])) by (type)",
           "interval": "",
           "legendFormat": "misses",
           "refId": "B"
@@ -835,7 +835,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "rate(process_cpu_seconds_total{job=\"coredns\", instance=~\"$instance\"}[5m])",
+          "expr": "rate(process_cpu_seconds_total{job=\"coredns\", instance=~\"$instance\"}[$__rate_interval])",
           "interval": "",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -1056,7 +1056,7 @@
     ]
   },
   "timezone": "",
-  "title": "Kubernetes - CoreDNS",
+  "title": "Kubernetes / Components / CoreDNS",
   "uid": null,
   "version": 1
 }
