@@ -4,13 +4,9 @@ This repository contains a set of [Grafana](https://github.com/grafana/grafana) 
 
 ## Screenshots
 
----
-
 TODO
 
 ## Description
-
----
 
 | Dashboard                      | Description |
 |--------------------------------|-------------|
@@ -23,8 +19,6 @@ TODO
 | k8s-views-pods.json            | Podfs level view for your Kubernetes cluster. |
 
 ## Contributing
-
----
 
 Feel free to contribute to this project:
 
