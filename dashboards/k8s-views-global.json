@@ -81,7 +81,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/\"}[$__rate_interval])) / sum(machine_cpu_cores)",
@@ -142,7 +142,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "expr": "sum(container_memory_working_set_bytes{id=\"/\"}) / sum (machine_memory_bytes)",
@@ -196,7 +196,7 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "expr": "count(up{job=\"node-exporter\"})",
@@ -207,7 +207,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Nb of Nodes",
+      "title": "Nodes",
       "type": "stat"
     },
     {
@@ -250,7 +250,7 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "expr": "count(kube_namespace_created)",
@@ -261,7 +261,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Nb of Namespaces",
+      "title": "Namespaces",
       "type": "stat"
     },
     {
@@ -304,7 +304,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -473,7 +473,7 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "expr": "sum(kube_service_info)",
@@ -484,7 +484,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Nb of Services",
+      "title": "Services",
       "type": "stat"
     },
     {
@@ -527,7 +527,7 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "expr": "sum(kube_pod_container_info)",
@@ -538,7 +538,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Nb of Running Pods",
+      "title": "Running Pods",
       "type": "stat"
     },
     {
@@ -582,7 +582,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/\",service!=\"prometheus-operator-kubelet\"}[$__rate_interval]))",
@@ -643,7 +643,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "expr": "sum(machine_cpu_cores{service!=\"prometheus-operator-kubelet\"})",
@@ -698,7 +698,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "expr": "sum(container_memory_working_set_bytes{id=\"/\", service!=\"prometheus-operator-kubelet\"})",
@@ -753,7 +753,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "expr": "sum(machine_memory_bytes{service!=\"prometheus-operator-kubelet\"})",
@@ -773,6 +773,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
+      "decimals": 2,
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -808,7 +809,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -844,6 +845,7 @@
       },
       "yaxes": [
         {
+          "decimals": 2,
           "format": "percentunit",
           "label": "CPU %",
           "logBase": 1,
@@ -906,7 +908,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1004,7 +1006,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1103,7 +1105,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1201,7 +1203,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1305,7 +1307,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1410,7 +1412,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1508,7 +1510,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
