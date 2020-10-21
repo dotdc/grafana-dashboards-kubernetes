@@ -57,7 +57,7 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "expr": "sum(kube_pod_container_info{namespace=\"$namespace\"})",
@@ -68,7 +68,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Nb of Running Pods",
+      "title": "Running Pods",
       "type": "stat"
     },
     {
@@ -111,7 +111,7 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "expr": "sum(kube_service_info{namespace=\"$namespace\"})",
@@ -122,7 +122,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Nb of Services",
+      "title": "Services",
       "type": "stat"
     },
     {
@@ -165,7 +165,7 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "expr": "sum(kube_endpoint_info{namespace=\"$namespace\"})",
@@ -176,7 +176,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Nb of Endpoints",
+      "title": "Endpoints",
       "type": "stat"
     },
     {
@@ -219,7 +219,7 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "expr": "sum(kube_ingress_info{namespace=\"$namespace\"})",
@@ -230,7 +230,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Nb of Ingress",
+      "title": "Ingress",
       "type": "stat"
     },
     {
@@ -273,7 +273,7 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "expr": "sum(kube_deployment_labels{namespace=\"$namespace\"})",
@@ -284,7 +284,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Nb of Deployments",
+      "title": "Deployments",
       "type": "stat"
     },
     {
@@ -327,7 +327,7 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "expr": "sum(kube_statefulset_labels{namespace=\"$namespace\"})",
@@ -338,7 +338,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Nb of Statefulsets",
+      "title": "Statefulsets",
       "type": "stat"
     },
     {
@@ -381,7 +381,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -538,7 +538,7 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "expr": "sum(kube_daemonset_labels{namespace=\"$namespace\"})",
@@ -549,7 +549,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Nb of Daemonsets",
+      "title": "Daemonsets",
       "type": "stat"
     },
     {
@@ -592,7 +592,7 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "expr": "sum(kube_persistentvolumeclaim_info{namespace=\"$namespace\"})",
@@ -603,7 +603,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Nb of PVC",
+      "title": "PVC",
       "type": "stat"
     },
     {
@@ -646,7 +646,7 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "expr": "sum(kube_hpa_labels{namespace=\"$namespace\"})",
@@ -657,7 +657,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Nb of HPA",
+      "title": "HPA",
       "type": "stat"
     },
     {
@@ -700,7 +700,7 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "expr": "sum(kube_configmap_info{namespace=\"$namespace\"})",
@@ -711,7 +711,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Nb of Configmaps",
+      "title": "Configmaps",
       "type": "stat"
     },
     {
@@ -754,7 +754,7 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "expr": "sum(kube_secret_info{namespace=\"$namespace\"})",
@@ -765,7 +765,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Nb of Secrets",
+      "title": "Secrets",
       "type": "stat"
     },
     {
@@ -808,7 +808,7 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "expr": "sum(kube_networkpolicy_labels{namespace=\"$namespace\"})",
@@ -819,7 +819,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Nb of Network Policies",
+      "title": "Network Policies",
       "type": "stat"
     },
     {
@@ -880,7 +880,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1020,7 +1020,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1119,7 +1119,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1217,7 +1217,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1328,7 +1328,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1439,7 +1439,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1502,6 +1502,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
+      "decimals": 2,
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -1537,7 +1538,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1601,6 +1602,7 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
+      "decimals": 2,
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -1636,7 +1638,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.0",
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
