@@ -11,8 +11,9 @@ TODO
 | Dashboard                      | Description |
 |--------------------------------|-------------|
 | k8s-alerting.json              | Generic alerting dashboard for Kubernetes. |
-| k8s-components-api-server.json | Show information on the API Server component. |
-| k8s-components-coredns.json    | Show information on the CoreDNS component. |
+| k8s-components-api-server.json | Show information on the API Server Kubernetes component. |
+| k8s-components-coredns.json    | Show information on the CoreDNS Kubernetes component. |
+| k8s-components-etcd.json       | Show information on the etcd Kubernetes component. |
 | k8s-views-global.json          | Global level view for your Kubernetes cluster. |
 | k8s-views-namespaces.json      | Namespaces level view for your Kubernetes cluster. |
 | k8s-views-nodes.json           | Nodes level view for your Kubernetes cluster. |
