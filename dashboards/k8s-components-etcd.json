@@ -80,13 +80,20 @@
       },
       "id": 26,
       "options": {
-        "showHeader": true
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": false,
+            "displayName": "Pod"
+          }
+        ]
       },
       "pluginVersion": "7.2.1",
       "targets": [
         {
           "expr": "sum(etcd_server_is_leader{namespace=\"$namespace\"}) by (pod)",
           "format": "table",
+          "instant": true,
           "interval": "",
           "legendFormat": "{{ pod }}",
           "refId": "A"
