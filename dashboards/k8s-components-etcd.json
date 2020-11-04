@@ -91,7 +91,7 @@
       "pluginVersion": "7.2.1",
       "targets": [
         {
-          "expr": "sum(etcd_server_is_leader{namespace=\"$namespace\"}) by (pod)",
+          "expr": "etcd_server_is_leader{namespace=\"$namespace\"}",
           "format": "table",
           "instant": true,
           "interval": "",
