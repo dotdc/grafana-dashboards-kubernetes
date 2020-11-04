@@ -9,14 +9,6 @@
       "pluginName": "Prometheus"
     }
   ],
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "7.2.0"
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -35,6 +27,133 @@
   "graphTooltip": 1,
   "links": [],
   "panels": [
+    {
+      "collapsed": true,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 69,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": null,
+          "description": "Require kube-events-exporter (https://github.com/rhobs/kube-events-exporter)",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 24,
+            "x": 0,
+            "y": 1
+          },
+          "hiddenSeries": false,
+          "id": 65,
+          "legend": {
+            "alignAsTable": false,
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "rightSide": false,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.2.1",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum(rate(kube_events_total{involved_object_namespace!=\"\"}[$__rate_interval])) by (involved_object_namespace)",
+              "instant": false,
+              "interval": "",
+              "legendFormat": "{{involved_object_namespace }}",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Rate of events by namespace",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": null,
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        }
+      ],
+      "title": "Events",
+      "type": "row"
+    },
+    {
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "id": 67,
+      "title": "Resources",
+      "type": "row"
+    },
     {
       "datasource": null,
       "fieldConfig": {
@@ -67,7 +186,7 @@
         "h": 8,
         "w": 4,
         "x": 0,
-        "y": 0
+        "y": 2
       },
       "id": 30,
       "options": {
@@ -127,7 +246,7 @@
         "h": 8,
         "w": 4,
         "x": 4,
-        "y": 0
+        "y": 2
       },
       "id": 32,
       "options": {
@@ -179,7 +298,7 @@
         "h": 5,
         "w": 2,
         "x": 8,
-        "y": 0
+        "y": 2
       },
       "id": 63,
       "options": {
@@ -233,7 +352,7 @@
         "h": 5,
         "w": 2,
         "x": 10,
-        "y": 0
+        "y": 2
       },
       "id": 59,
       "options": {
@@ -282,7 +401,7 @@
         "h": 11,
         "w": 12,
         "x": 12,
-        "y": 0
+        "y": 2
       },
       "hiddenSeries": false,
       "id": 52,
@@ -456,7 +575,7 @@
         "h": 6,
         "w": 2,
         "x": 8,
-        "y": 5
+        "y": 7
       },
       "id": 61,
       "options": {
@@ -510,7 +629,7 @@
         "h": 6,
         "w": 2,
         "x": 10,
-        "y": 5
+        "y": 7
       },
       "id": 62,
       "options": {
@@ -565,7 +684,7 @@
         "h": 3,
         "w": 2,
         "x": 0,
-        "y": 8
+        "y": 10
       },
       "id": 37,
       "options": {
@@ -626,7 +745,7 @@
         "h": 3,
         "w": 2,
         "x": 2,
-        "y": 8
+        "y": 10
       },
       "id": 41,
       "options": {
@@ -681,7 +800,7 @@
         "h": 3,
         "w": 2,
         "x": 4,
-        "y": 8
+        "y": 10
       },
       "id": 39,
       "options": {
@@ -736,7 +855,7 @@
         "h": 3,
         "w": 2,
         "x": 6,
-        "y": 8
+        "y": 10
       },
       "id": 42,
       "options": {
@@ -787,7 +906,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 11
+        "y": 13
       },
       "hiddenSeries": false,
       "id": 54,
@@ -886,7 +1005,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 11
+        "y": 13
       },
       "hiddenSeries": false,
       "id": 55,
@@ -984,7 +1103,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 19
+        "y": 21
       },
       "hiddenSeries": false,
       "id": 46,
@@ -1083,7 +1202,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 19
+        "y": 21
       },
       "hiddenSeries": false,
       "id": 50,
@@ -1181,7 +1300,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 27
+        "y": 29
       },
       "hiddenSeries": false,
       "id": 44,
@@ -1285,7 +1404,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 27
+        "y": 29
       },
       "hiddenSeries": false,
       "id": 53,
@@ -1390,7 +1509,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 35
+        "y": 37
       },
       "hiddenSeries": false,
       "id": 56,
@@ -1488,7 +1607,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 35
+        "y": 37
       },
       "hiddenSeries": false,
       "id": 57,
