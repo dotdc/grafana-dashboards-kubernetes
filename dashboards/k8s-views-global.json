@@ -55,7 +55,7 @@
           "fillGradient": 0,
           "gridPos": {
             "h": 8,
-            "w": 24,
+            "w": 12,
             "x": 0,
             "y": 1
           },
@@ -89,10 +89,10 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum(rate(kube_events_total{involved_object_namespace!=\"\"}[$__rate_interval])) by (involved_object_namespace)",
+              "expr": "sum(increase(kube_events_total[$__rate_interval])) by (type)",
               "instant": false,
               "interval": "",
-              "legendFormat": "{{involved_object_namespace }}",
+              "legendFormat": "{{ type }}",
               "refId": "A"
             }
           ],
@@ -100,7 +100,107 @@
           "timeFrom": null,
           "timeRegions": [],
           "timeShift": null,
-          "title": "Rate of events by namespace",
+          "title": "Events by type",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": null,
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": null,
+          "description": "Require kube-events-exporter (https://github.com/rhobs/kube-events-exporter)",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {}
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 1
+          },
+          "hiddenSeries": false,
+          "id": 70,
+          "legend": {
+            "alignAsTable": false,
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "rightSide": false,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": true
+          },
+          "percentage": false,
+          "pluginVersion": "7.2.1",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "expr": "sum(increase(kube_events_total{involved_object_namespace!=\"\"}[$__rate_interval])) by (involved_object_namespace)",
+              "instant": false,
+              "interval": "",
+              "legendFormat": "{{ involved_object_namespace }}",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Events by namespace",
           "tooltip": {
             "shared": true,
             "sort": 2,
