@@ -60,13 +60,19 @@
           },
           "gridPos": {
             "h": 8,
-            "w": 24,
+            "w": 12,
             "x": 0,
             "y": 1
           },
           "id": 34,
           "options": {
-            "showHeader": true
+            "showHeader": true,
+            "sortBy": [
+              {
+                "desc": false,
+                "displayName": "involved_object_kind"
+              }
+            ]
           },
           "pluginVersion": "7.2.1",
           "targets": [
@@ -81,7 +87,7 @@
           ],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Kubernetes events (instant)",
+          "title": "Events (instant)",
           "transformations": [
             {
               "id": "organize",
@@ -90,14 +96,31 @@
                   "Time": true,
                   "Value": true,
                   "__name__": true,
+                  "container": true,
                   "endpoint": true,
                   "instance": true,
-                  "involved_object_namespace": true,
+                  "involved_object_namespace": false,
                   "job": true,
                   "namespace": true,
+                  "pod": true,
                   "service": true
                 },
-                "indexByName": {},
+                "indexByName": {
+                  "Time": 5,
+                  "Value": 13,
+                  "__name__": 6,
+                  "container": 7,
+                  "endpoint": 8,
+                  "instance": 9,
+                  "involved_object_kind": 2,
+                  "involved_object_namespace": 0,
+                  "job": 10,
+                  "namespace": 4,
+                  "pod": 11,
+                  "reason": 3,
+                  "service": 12,
+                  "type": 1
+                },
                 "renameByName": {
                   "Value": "",
                   "involved_object_namespace": "",
@@ -107,6 +130,120 @@
             }
           ],
           "type": "table"
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "dashLength": 10,
+          "dashes": false,
+          "datasource": null,
+          "description": "Require kube-events-exporter (https://github.com/rhobs/kube-events-exporter)",
+          "fieldConfig": {
+            "defaults": {
+              "custom": {},
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": null
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "fill": 1,
+          "fillGradient": 0,
+          "gridPos": {
+            "h": 8,
+            "w": 12,
+            "x": 12,
+            "y": 1
+          },
+          "hiddenSeries": false,
+          "id": 42,
+          "legend": {
+            "alignAsTable": false,
+            "avg": false,
+            "current": false,
+            "max": false,
+            "min": false,
+            "rightSide": false,
+            "show": false,
+            "total": false,
+            "values": false
+          },
+          "lines": true,
+          "linewidth": 1,
+          "nullPointMode": "null",
+          "options": {
+            "alertThreshold": false
+          },
+          "percentage": false,
+          "pluginVersion": "7.2.1",
+          "pointradius": 2,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "spaceLength": 10,
+          "stack": false,
+          "steppedLine": true,
+          "targets": [
+            {
+              "expr": "sum(increase(kube_events_total{involved_object_namespace=\"$namespace\"}[$__rate_interval])) by (type)",
+              "instant": false,
+              "interval": "",
+              "legendFormat": "{{ type }}",
+              "refId": "A"
+            }
+          ],
+          "thresholds": [],
+          "timeFrom": null,
+          "timeRegions": [],
+          "timeShift": null,
+          "title": "Events by type",
+          "tooltip": {
+            "shared": true,
+            "sort": 2,
+            "value_type": "individual"
+          },
+          "type": "graph",
+          "xaxis": {
+            "buckets": null,
+            "mode": "time",
+            "name": null,
+            "show": true,
+            "values": []
+          },
+          "yaxes": [
+            {
+              "decimals": null,
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            },
+            {
+              "format": "short",
+              "label": null,
+              "logBase": 1,
+              "max": null,
+              "min": null,
+              "show": true
+            }
+          ],
+          "yaxis": {
+            "align": false,
+            "alignLevel": null
+          }
         }
       ],
       "title": "Events",
