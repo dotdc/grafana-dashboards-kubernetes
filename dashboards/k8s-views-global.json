@@ -632,7 +632,7 @@
       "yaxes": [
         {
           "format": "short",
-          "label": null,
+          "label": "NB",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -1138,7 +1138,7 @@
       "targets": [
         {
           "expr": "sum(container_memory_working_set_bytes{image!=\"\"}) by (node)",
-          "interval": "",
+          "interval": "1m",
           "legendFormat": "{{ node}}",
           "refId": "A"
         }
@@ -1164,7 +1164,7 @@
       "yaxes": [
         {
           "format": "bytes",
-          "label": null,
+          "label": "MEMORY",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -1231,7 +1231,7 @@
       "renderer": "flot",
       "seriesOverrides": [],
       "spaceLength": 10,
-      "stack": true,
+      "stack": false,
       "steppedLine": false,
       "targets": [
         {
@@ -1245,7 +1245,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "CPU Utilization by namespace (stacked)",
+      "title": "CPU Utilization by namespace",
       "tooltip": {
         "shared": true,
         "sort": 2,
@@ -1330,12 +1330,12 @@
       "renderer": "flot",
       "seriesOverrides": [],
       "spaceLength": 10,
-      "stack": true,
+      "stack": false,
       "steppedLine": false,
       "targets": [
         {
           "expr": "sum(container_memory_working_set_bytes{image!=\"\"}) by (namespace)",
-          "interval": "",
+          "interval": "1m",
           "legendFormat": "{{ namespace }}",
           "refId": "A"
         }
@@ -1344,7 +1344,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Memory Utilization by namespace (stacked)",
+      "title": "Memory Utilization by namespace",
       "tooltip": {
         "shared": true,
         "sort": 2,
@@ -1360,8 +1360,9 @@
       },
       "yaxes": [
         {
+          "decimals": null,
           "format": "bytes",
-          "label": null,
+          "label": "MEMORY",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -1405,15 +1406,15 @@
       "hiddenSeries": false,
       "id": 44,
       "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": true,
-        "show": true,
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": false,
         "total": false,
-        "values": true
+        "values": false
       },
       "lines": true,
       "linewidth": 1,
@@ -1465,7 +1466,7 @@
       "yaxes": [
         {
           "format": "bytes",
-          "label": null,
+          "label": "BANDWIDTH",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -1509,15 +1510,15 @@
       "hiddenSeries": false,
       "id": 53,
       "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": true,
-        "show": true,
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": false,
         "total": false,
-        "values": true
+        "values": false
       },
       "lines": true,
       "linewidth": 1,
@@ -1552,7 +1553,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Network Sarutation (dropped packets)",
+      "title": "Network Sarutation",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1570,7 +1571,7 @@
         {
           "decimals": null,
           "format": "none",
-          "label": null,
+          "label": "DROPPED PACKETS",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -1614,15 +1615,15 @@
       "hiddenSeries": false,
       "id": 56,
       "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": true,
-        "show": true,
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": false,
         "total": false,
-        "values": true
+        "values": false
       },
       "lines": true,
       "linewidth": 1,
@@ -1642,7 +1643,7 @@
       "targets": [
         {
           "expr": "sum(rate(container_network_receive_bytes_total[$__rate_interval])) by (node)",
-          "interval": "",
+          "interval": "1m",
           "legendFormat": "{{ node }}",
           "refId": "A"
         }
@@ -1668,7 +1669,7 @@
       "yaxes": [
         {
           "format": "bytes",
-          "label": null,
+          "label": "BANDWIDTH",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -1676,7 +1677,7 @@
         },
         {
           "format": "short",
-          "label": null,
+          "label": "",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -1712,15 +1713,15 @@
       "hiddenSeries": false,
       "id": 57,
       "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": true,
-        "show": true,
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": false,
         "total": false,
-        "values": true
+        "values": false
       },
       "lines": true,
       "linewidth": 1,
@@ -1740,7 +1741,7 @@
       "targets": [
         {
           "expr": "- sum(rate(container_network_transmit_bytes_total[$__rate_interval])) by (node)",
-          "interval": "",
+          "interval": "1m",
           "legendFormat": "{{ node }}",
           "refId": "A"
         }
@@ -1766,7 +1767,7 @@
       "yaxes": [
         {
           "format": "bytes",
-          "label": null,
+          "label": "BANDWIDTH",
           "logBase": 1,
           "max": null,
           "min": null,
