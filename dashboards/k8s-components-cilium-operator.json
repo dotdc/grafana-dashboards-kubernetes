@@ -78,7 +78,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "min(irate(cilium_operator_process_cpu_seconds_total{io_cilium_app=\"operator\"}[1m])) by (pod) * 100",
+          "expr": "min(irate(cilium_operator_process_cpu_seconds_total[1m])) by (pod) * 100",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -86,7 +86,7 @@
           "refId": "A"
         },
         {
-          "expr": "avg(irate(cilium_operator_process_cpu_seconds_total{io_cilium_app=\"operator\"}[1m])) by (pod) * 100",
+          "expr": "avg(irate(cilium_operator_process_cpu_seconds_total[1m])) by (pod) * 100",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -94,7 +94,7 @@
           "refId": "B"
         },
         {
-          "expr": "max(irate(cilium_operator_process_cpu_seconds_total{io_cilium_app=\"operator\"}[1m])) by (pod) * 100",
+          "expr": "max(irate(cilium_operator_process_cpu_seconds_total[1m])) by (pod) * 100",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -196,7 +196,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "avg(cilium_operator_process_resident_memory_bytes{io_cilium_app=\"operator\"})",
+          "expr": "avg(cilium_operator_process_resident_memory_bytes)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -204,7 +204,7 @@
           "refId": "C"
         },
         {
-          "expr": "max(cilium_operator_process_resident_memory_bytes{io_cilium_app=\"operator\"})",
+          "expr": "max(cilium_operator_process_resident_memory_bytes)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -212,7 +212,7 @@
           "refId": "D"
         },
         {
-          "expr": "min(cilium_operator_process_resident_memory_bytes{io_cilium_app=\"operator\"})",
+          "expr": "min(cilium_operator_process_resident_memory_bytes)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
