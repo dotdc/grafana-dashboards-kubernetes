@@ -25,10 +25,11 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
+  "id": 1,
   "links": [],
   "panels": [
     {
-      "collapsed": true,
+      "collapsed": false,
       "datasource": null,
       "gridPos": {
         "h": 1,
@@ -36,229 +37,15 @@
         "x": 0,
         "y": 0
       },
-      "id": 69,
-      "panels": [
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": null,
-          "description": "Require kube-events-exporter (https://github.com/rhobs/kube-events-exporter)",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 1
-          },
-          "hiddenSeries": false,
-          "id": 65,
-          "legend": {
-            "alignAsTable": false,
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "rightSide": false,
-            "show": false,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.2.1",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum(increase(kube_events_total[$__rate_interval])) by (type)",
-              "instant": false,
-              "interval": "",
-              "legendFormat": "{{ type }}",
-              "refId": "A"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Events by type",
-          "tooltip": {
-            "shared": true,
-            "sort": 2,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "decimals": null,
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        },
-        {
-          "aliasColors": {},
-          "bars": false,
-          "dashLength": 10,
-          "dashes": false,
-          "datasource": null,
-          "description": "Require kube-events-exporter (https://github.com/rhobs/kube-events-exporter)",
-          "fieldConfig": {
-            "defaults": {
-              "custom": {}
-            },
-            "overrides": []
-          },
-          "fill": 1,
-          "fillGradient": 0,
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 1
-          },
-          "hiddenSeries": false,
-          "id": 70,
-          "legend": {
-            "alignAsTable": false,
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "rightSide": false,
-            "show": false,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "nullPointMode": "null",
-          "options": {
-            "alertThreshold": true
-          },
-          "percentage": false,
-          "pluginVersion": "7.2.1",
-          "pointradius": 2,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
-          "spaceLength": 10,
-          "stack": false,
-          "steppedLine": false,
-          "targets": [
-            {
-              "expr": "sum(increase(kube_events_total{involved_object_namespace!=\"\"}[$__rate_interval])) by (involved_object_namespace)",
-              "instant": false,
-              "interval": "",
-              "legendFormat": "{{ involved_object_namespace }}",
-              "refId": "A"
-            }
-          ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeRegions": [],
-          "timeShift": null,
-          "title": "Events by namespace",
-          "tooltip": {
-            "shared": true,
-            "sort": 2,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "buckets": null,
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
-          "yaxes": [
-            {
-              "decimals": null,
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            },
-            {
-              "format": "short",
-              "label": null,
-              "logBase": 1,
-              "max": null,
-              "min": null,
-              "show": true
-            }
-          ],
-          "yaxis": {
-            "align": false,
-            "alignLevel": null
-          }
-        }
-      ],
-      "title": "Events",
-      "type": "row"
-    },
-    {
-      "datasource": null,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 1
-      },
       "id": 67,
-      "title": "Resources",
+      "panels": [],
+      "title": "Overview",
       "type": "row"
     },
     {
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "decimals": 2,
           "mappings": [],
           "thresholds": {
@@ -286,7 +73,7 @@
         "h": 8,
         "w": 4,
         "x": 0,
-        "y": 2
+        "y": 1
       },
       "id": 30,
       "options": {
@@ -298,9 +85,10 @@
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": true
+        "showThresholdMarkers": true,
+        "text": {}
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/\"}[$__rate_interval])) / sum(machine_cpu_cores)",
@@ -318,7 +106,6 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "decimals": 2,
           "mappings": [],
           "thresholds": {
@@ -346,7 +133,7 @@
         "h": 8,
         "w": 4,
         "x": 4,
-        "y": 2
+        "y": 1
       },
       "id": 32,
       "options": {
@@ -359,9 +146,10 @@
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": true
+        "showThresholdMarkers": true,
+        "text": {}
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "expr": "sum(container_memory_working_set_bytes{id=\"/\"}) / sum (machine_memory_bytes)",
@@ -379,7 +167,6 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "mappings": [],
           "noValue": "0",
           "thresholds": {
@@ -398,7 +185,7 @@
         "h": 5,
         "w": 2,
         "x": 8,
-        "y": 2
+        "y": 1
       },
       "id": 63,
       "options": {
@@ -413,9 +200,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "expr": "count(up{job=\"node-exporter\"})",
@@ -433,7 +221,6 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "mappings": [],
           "noValue": "0",
           "thresholds": {
@@ -452,7 +239,7 @@
         "h": 5,
         "w": 2,
         "x": 10,
-        "y": 2
+        "y": 1
       },
       "id": 59,
       "options": {
@@ -467,9 +254,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "expr": "count(kube_namespace_created)",
@@ -490,9 +278,7 @@
       "dashes": false,
       "datasource": null,
       "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
+        "defaults": {},
         "overrides": []
       },
       "fill": 1,
@@ -501,7 +287,7 @@
         "h": 11,
         "w": 12,
         "x": 12,
-        "y": 2
+        "y": 1
       },
       "hiddenSeries": false,
       "id": 52,
@@ -523,7 +309,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -656,7 +442,6 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "mappings": [],
           "noValue": "0",
           "thresholds": {
@@ -675,7 +460,7 @@
         "h": 6,
         "w": 2,
         "x": 8,
-        "y": 7
+        "y": 6
       },
       "id": 61,
       "options": {
@@ -690,9 +475,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "expr": "sum(kube_service_info)",
@@ -710,7 +496,6 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "mappings": [],
           "noValue": "0",
           "thresholds": {
@@ -729,7 +514,7 @@
         "h": 6,
         "w": 2,
         "x": 10,
-        "y": 7
+        "y": 6
       },
       "id": 62,
       "options": {
@@ -744,9 +529,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "expr": "sum(kube_pod_container_info)",
@@ -764,7 +550,6 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "mappings": [],
           "noValue": "0",
           "thresholds": {
@@ -784,7 +569,7 @@
         "h": 3,
         "w": 2,
         "x": 0,
-        "y": 10
+        "y": 9
       },
       "id": 37,
       "options": {
@@ -799,9 +584,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/\",service!=\"prometheus-operator-kubelet\"}[$__rate_interval]))",
@@ -825,7 +611,6 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "mappings": [],
           "noValue": "0",
           "thresholds": {
@@ -845,7 +630,7 @@
         "h": 3,
         "w": 2,
         "x": 2,
-        "y": 10
+        "y": 9
       },
       "id": 41,
       "options": {
@@ -860,9 +645,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "expr": "sum(machine_cpu_cores{service!=\"prometheus-operator-kubelet\"})",
@@ -880,7 +666,6 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "mappings": [],
           "noValue": "0",
           "thresholds": {
@@ -900,7 +685,7 @@
         "h": 3,
         "w": 2,
         "x": 4,
-        "y": 10
+        "y": 9
       },
       "id": 39,
       "options": {
@@ -915,9 +700,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "expr": "sum(container_memory_working_set_bytes{id=\"/\", service!=\"prometheus-operator-kubelet\"})",
@@ -935,7 +721,6 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "mappings": [],
           "noValue": "0",
           "thresholds": {
@@ -955,7 +740,7 @@
         "h": 3,
         "w": 2,
         "x": 6,
-        "y": 10
+        "y": 9
       },
       "id": 42,
       "options": {
@@ -970,9 +755,10 @@
           "fields": "",
           "values": false
         },
+        "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.5.5",
       "targets": [
         {
           "expr": "sum(machine_memory_bytes{service!=\"prometheus-operator-kubelet\"})",
@@ -987,6 +773,20 @@
       "type": "stat"
     },
     {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 12
+      },
+      "id": 71,
+      "panels": [],
+      "title": "Resources",
+      "type": "row"
+    },
+    {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -995,7 +795,6 @@
       "decimals": 2,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "unit": "percentunit"
         },
         "overrides": []
@@ -1028,7 +827,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1094,7 +893,6 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "unit": "bytes"
         },
         "overrides": []
@@ -1127,7 +925,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1192,7 +990,6 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "unit": "none"
         },
         "overrides": []
@@ -1225,7 +1022,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1291,7 +1088,6 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "unit": "bytes"
         },
         "overrides": []
@@ -1324,7 +1120,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1383,6 +1179,20 @@
       }
     },
     {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 29
+      },
+      "id": 69,
+      "panels": [],
+      "title": "Network",
+      "type": "row"
+    },
+    {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -1390,7 +1200,6 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "unit": "bytes"
         },
         "overrides": []
@@ -1401,7 +1210,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 29
+        "y": 30
       },
       "hiddenSeries": false,
       "id": 44,
@@ -1423,7 +1232,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1494,7 +1303,6 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "unit": "none"
         },
         "overrides": []
@@ -1505,7 +1313,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 29
+        "y": 30
       },
       "hiddenSeries": false,
       "id": 53,
@@ -1527,7 +1335,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1599,7 +1407,6 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "unit": "bytes"
         },
         "overrides": []
@@ -1610,7 +1417,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 37
+        "y": 38
       },
       "hiddenSeries": false,
       "id": 56,
@@ -1632,7 +1439,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1697,7 +1504,6 @@
       "datasource": null,
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "unit": "bytes"
         },
         "overrides": []
@@ -1708,7 +1514,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 37
+        "y": 38
       },
       "hiddenSeries": false,
       "id": 57,
@@ -1730,7 +1536,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.2.1",
+      "pluginVersion": "7.5.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1789,7 +1595,7 @@
     }
   ],
   "refresh": "30s",
-  "schemaVersion": 26,
+  "schemaVersion": 27,
   "style": "dark",
   "tags": [
     "kubernetes"
@@ -1798,7 +1604,7 @@
     "list": []
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {
@@ -1813,6 +1619,6 @@
   },
   "timezone": "",
   "title": "Kubernetes / Views / Global",
-  "uid": null,
+  "uid": "k8sViewsGlobal",
   "version": 1
 }
