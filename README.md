@@ -11,12 +11,12 @@ They are inspired by many dashboards from `kubernetes-mixin` and `grafana.com`.
 
 | File name                  | Description | Screenshot |
 |----------------------------|-------------|------------|
-| k8s-system-api-server.json | Dashboard for the API Server Kubernetes. | [k8s-system-api-server.png](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-system-api-server.png) |
-| k8s-system-coredns.json    | Show information on the CoreDNS Kubernetes component. | [k8s-system-coredns.png](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-system-coredns.png) |
-| k8s-views-global.json      | `Global` level view dashboard for Kubernetes. | [k8s-views-global.png](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-views-global.png) |
-| k8s-views-namespaces.json  | `Namespaces` level view dashboard for Kubernetes. | [k8s-views-namespaces.png](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-views-namespaces.png) |
+| k8s-system-api-server.json | Dashboard for the API Server Kubernetes. | [LINK](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-system-api-server.png) |
+| k8s-system-coredns.json    | Show information on the CoreDNS Kubernetes component. | [LINK](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-system-coredns.png) |
+| k8s-views-global.json      | `Global` level view dashboard for Kubernetes. | [LINK](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-views-global.png) |
+| k8s-views-namespaces.json  | `Namespaces` level view dashboard for Kubernetes. | [LINK](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-views-namespaces.png) |
 | k8s-views-nodes.json       | `Nodes` level view dashboard for Kubernetes. | TODO |
-| k8s-views-pods.json        | `Pods` level view dashboard for Kubernetes. | [k8s-views-pods.png](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-views-pods.png) |
+| k8s-views-pods.json        | `Pods` level view dashboard for Kubernetes. | [LINK](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-views-pods.png) |
 
 ## Contributing
 
