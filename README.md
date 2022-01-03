@@ -1,11 +1,10 @@
 # grafana-dashboards-kubernetes
+![screenshot](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-views-global.png "Kubernetes Global View Screenshot")
 
 ## Description
 
 This repository contains a set of [Grafana](https://github.com/grafana/grafana) dashboards for [Kubernetes](https://github.com/kubernetes/kubernetes).\
 They are inspired by many dashboards from `kubernetes-mixin` and `grafana.com`.
-
-![screenshot](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-views-global.png "Kubernetes Global View Screenshot")
 
 ## Dashboards
 
