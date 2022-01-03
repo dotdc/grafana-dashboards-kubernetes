@@ -27,577 +27,462 @@
     {
       "fieldConfig": {
         "defaults": {
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "text": "DOWN"
+                },
+                "1": {
+                  "text": "UP"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 25,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "value_and_name"
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "datasource": null,
+          "exemplar": true,
+          "expr": "up{job=\"coredns\", instance=~\"$instance\"}",
+          "interval": "",
+          "legendFormat": "{{ instance }}",
+          "refId": "A"
+        }
+      ],
+      "title": "CoreDNS - Health Status",
+      "type": "stat"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 2,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "rgb(255, 255, 255)",
+                "color": "green",
                 "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
           },
-          "unit": "none"
+          "unit": "percentunit"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 2,
+        "h": 8,
         "w": 12,
         "x": 0,
-        "y": 0
+        "y": 3
+      },
+      "id": 19,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "expr": "rate(process_cpu_seconds_total{job=\"coredns\", instance=~\"$instance\"}[$__rate_interval])",
+          "interval": "",
+          "legendFormat": "{{ instance }}",
+          "refId": "A"
+        }
+      ],
+      "title": "CoreDNS - CPU Usage by instance",
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 3
+      },
+      "id": 21,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "expr": "process_resident_memory_bytes{job=\"coredns\", instance=~\"$instance\"}",
+          "interval": "",
+          "legendFormat": "{{ instance }}",
+          "refId": "A"
+        }
+      ],
+      "title": "CoreDNS - Memory Usage by instance",
+      "type": "timeseries"
+    },
+    {
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 11
+      },
+      "id": 9,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "hidden",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "datasource": null,
+          "exemplar": true,
+          "expr": "sum(rate(coredns_dns_requests_total{instance=~\"$instance\",proto=\"$protocol\"}[$__rate_interval]))",
+          "interval": "",
+          "legendFormat": "total $protocol requests",
+          "refId": "A"
+        }
+      ],
+      "title": "CoreDNS - Total DNS Requests ($protocol)",
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 11
+      },
+      "id": 7,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "hidden",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "expr": "avg(rate(coredns_dns_request_size_bytes_sum{instance=~\"$instance\",proto=\"$protocol\"}[$__rate_interval])) by (proto)",
+          "interval": "",
+          "legendFormat": "average $protocol packet size",
+          "refId": "A"
+        }
+      ],
+      "title": "CoreDNS - Average Packet Size  ($protocol)",
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 19
       },
       "id": 2,
       "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "name"
-      },
-      "pluginVersion": "8.3.3",
-      "targets": [
-        {
-          "datasource": null,
-          "exemplar": true,
-          "expr": "kube_pod_info{namespace=\"$namespace\", pod=\"$pod\"}",
-          "interval": "",
-          "legendFormat": "{{ created_by_kind }}: {{ created_by_name }}",
-          "refId": "A"
-        }
-      ],
-      "title": "Created by",
-      "type": "stat"
-    },
-    {
-      "fieldConfig": {
-        "defaults": {
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "rgb(255, 255, 255)",
-                "value": null
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 6,
-        "x": 12,
-        "y": 0
-      },
-      "id": 33,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "name"
-      },
-      "pluginVersion": "8.3.3",
-      "targets": [
-        {
-          "expr": "kube_pod_info{namespace=\"$namespace\", pod=\"$pod\"}",
-          "interval": "",
-          "legendFormat": "{{ node }}",
-          "refId": "A"
-        }
-      ],
-      "title": "Running on",
-      "type": "stat"
-    },
-    {
-      "fieldConfig": {
-        "defaults": {
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "rgb(255, 255, 255)",
-                "value": null
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 6,
-        "x": 18,
-        "y": 0
-      },
-      "id": 41,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "name"
-      },
-      "pluginVersion": "8.3.3",
-      "targets": [
-        {
-          "expr": "kube_pod_info{namespace=\"$namespace\", pod=\"$pod\"}",
-          "interval": "",
-          "legendFormat": "{{ pod_ip }}",
-          "refId": "A"
-        }
-      ],
-      "title": "Pod IP",
-      "type": "stat"
-    },
-    {
-      "fieldConfig": {
-        "defaults": {
-          "decimals": 2,
-          "mappings": [],
-          "max": 1,
-          "min": 0,
-          "thresholds": {
-            "mode": "percentage",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "#EAB839",
-                "value": 60
-              },
-              {
-                "color": "red",
-                "value": 75
-              }
-            ]
-          },
-          "unit": "percentunit"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 6,
-        "x": 0,
-        "y": 2
-      },
-      "id": 39,
-      "options": {
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true
-      },
-      "pluginVersion": "8.3.3",
-      "targets": [
-        {
-          "datasource": null,
-          "exemplar": true,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}[$__rate_interval])) / sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=\"$pod\", unit=\"core\"})",
-          "interval": "",
-          "legendFormat": "Requests",
-          "refId": "A"
-        },
-        {
-          "datasource": null,
-          "exemplar": true,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}[$__rate_interval])) / sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=\"$pod\", unit=\"core\"})",
-          "interval": "",
-          "legendFormat": "Limits",
-          "refId": "B"
-        }
-      ],
-      "title": "CPU Usage",
-      "type": "gauge"
-    },
-    {
-      "fieldConfig": {
-        "defaults": {
-          "decimals": 2,
-          "mappings": [],
-          "max": 1,
-          "min": 0,
-          "thresholds": {
-            "mode": "percentage",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "#EAB839",
-                "value": 60
-              },
-              {
-                "color": "red",
-                "value": 75
-              }
-            ]
-          },
-          "unit": "percentunit"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 6,
-        "x": 6,
-        "y": 2
-      },
-      "id": 40,
-      "options": {
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true
-      },
-      "pluginVersion": "8.3.3",
-      "targets": [
-        {
-          "datasource": null,
-          "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}) / sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=\"$pod\", unit=\"byte\"})",
-          "interval": "",
-          "legendFormat": "Requests",
-          "refId": "A"
-        },
-        {
-          "datasource": null,
-          "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}) / sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=\"$pod\", unit=\"byte\"}) ",
-          "interval": "",
-          "legendFormat": "Limits",
-          "refId": "B"
-        }
-      ],
-      "title": "Memory Usage",
-      "type": "gauge"
-    },
-    {
-      "fieldConfig": {
-        "defaults": {
-          "custom": {
-            "align": "auto",
-            "displayMode": "auto",
-            "filterable": false
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": null
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Memory Requests"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "bytes"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Memory Limits"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "bytes"
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 2
-      },
-      "id": 38,
-      "options": {
-        "footer": {
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
-        },
-        "showHeader": true
-      },
-      "pluginVersion": "8.3.3",
-      "targets": [
-        {
-          "datasource": null,
-          "exemplar": false,
-          "expr": "sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=\"$pod\", unit=\"core\"}) by (container)",
-          "format": "table",
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "refId": "A"
-        },
-        {
-          "datasource": null,
-          "exemplar": false,
-          "expr": "sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=\"$pod\", unit=\"core\"}) by (container)",
-          "format": "table",
-          "instant": true,
-          "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "",
-          "refId": "B"
-        },
-        {
-          "datasource": null,
-          "exemplar": false,
-          "expr": "sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=\"$pod\", unit=\"byte\"}) by (container)",
-          "format": "table",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "C"
-        },
-        {
-          "datasource": null,
-          "exemplar": false,
-          "expr": "sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=\"$pod\", unit=\"byte\"}) by (container)",
-          "format": "table",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "",
-          "refId": "D"
-        }
-      ],
-      "title": "Resources by container",
-      "transformations": [
-        {
-          "id": "seriesToColumns",
-          "options": {
-            "byField": "container"
-          }
-        },
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {
-              "Time": true,
-              "Time 1": true,
-              "Time 2": true,
-              "Time 4": true,
-              "__name__": true,
-              "__name__ 1": true,
-              "__name__ 2": true,
-              "__name__ 3": true,
-              "__name__ 4": true,
-              "container": false,
-              "endpoint": true,
-              "endpoint 2": true,
-              "endpoint 3": true,
-              "endpoint 4": true,
-              "instance": true,
-              "instance 2": true,
-              "instance 3": true,
-              "instance 4": true,
-              "job": true,
-              "job 2": true,
-              "job 3": true,
-              "job 4": true,
-              "namespace": true,
-              "namespace 2": true,
-              "namespace 3": true,
-              "namespace 4": true,
-              "node": true,
-              "node 2": true,
-              "node 3": true,
-              "node 4": true,
-              "pod": true,
-              "pod 2": true,
-              "pod 3": true,
-              "pod 4": true,
-              "resource 1": true,
-              "resource 2": true,
-              "resource 3": true,
-              "resource 4": true,
-              "service": true,
-              "service 2": true,
-              "service 3": true,
-              "service 4": true,
-              "uid 1": true,
-              "uid 2": true,
-              "uid 3": true,
-              "uid 4": true,
-              "unit 1": true,
-              "unit 2": true,
-              "unit 3": true,
-              "unit 4": true
-            },
-            "indexByName": {
-              "Time": 6,
-              "Value #A": 1,
-              "Value #B": 2,
-              "Value #C": 3,
-              "Value #D": 4,
-              "__name__": 5,
-              "container": 0,
-              "endpoint": 7,
-              "instance": 8,
-              "job": 9,
-              "namespace": 10,
-              "node": 11,
-              "pod": 12,
-              "service": 13
-            },
-            "renameByName": {
-              "Value #A": "CPU Requests",
-              "Value #B": "CPU Limits",
-              "Value #C": "Memory Requests",
-              "Value #D": "Memory Limits",
-              "container": "Container"
-            }
-          }
-        }
-      ],
-      "type": "table"
-    },
-    {
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "CPU Cores",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "limit"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#F2495C",
-                  "mode": "fixed"
-                }
-              },
-              {
-                "id": "custom.fillOpacity",
-                "value": 0
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 10
-      },
-      "id": 29,
-      "options": {
         "legend": {
           "calcs": [],
-          "displayMode": "table",
-          "placement": "right"
+          "displayMode": "list",
+          "placement": "bottom"
         },
         "tooltip": {
           "mode": "single"
@@ -608,13 +493,13 @@
         {
           "datasource": null,
           "exemplar": true,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\", pod=\"$pod\", image!=\"\", container!=\"POD\"}[$__rate_interval])) by (container)",
+          "expr": "sum(rate(coredns_dns_requests_total{instance=~\"$instance\"}[$__rate_interval])) by (type)",
           "interval": "",
-          "legendFormat": "{{ container }}",
+          "legendFormat": "{{ type }}",
           "refId": "A"
         }
       ],
-      "title": "CPU Usage by container",
+      "title": "CoreDNS - Requests by type",
       "type": "timeseries"
     },
     {
@@ -665,42 +550,22 @@
               }
             ]
           },
-          "unit": "bytes"
+          "unit": "short"
         },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "limit"
-            },
-            "properties": [
-              {
-                "id": "color",
-                "value": {
-                  "fixedColor": "#F2495C",
-                  "mode": "fixed"
-                }
-              },
-              {
-                "id": "custom.fillOpacity",
-                "value": 0
-              }
-            ]
-          }
-        ]
+        "overrides": []
       },
       "gridPos": {
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 10
+        "y": 19
       },
-      "id": 30,
+      "id": 4,
       "options": {
         "legend": {
           "calcs": [],
-          "displayMode": "table",
-          "placement": "right"
+          "displayMode": "list",
+          "placement": "bottom"
         },
         "tooltip": {
           "mode": "single"
@@ -711,13 +576,266 @@
         {
           "datasource": null,
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\", pod=\"$pod\", image!=\"\", container!=\"POD\"}) by (container)",
+          "expr": "sum(rate(coredns_dns_responses_total{instance=~\"$instance\"}[$__rate_interval])) by (rcode)",
           "interval": "",
-          "legendFormat": "{{ container }}",
+          "legendFormat": "{{ rcode }}",
           "refId": "A"
         }
       ],
-      "title": "Memory Usage by container",
+      "title": "CoreDNS - Requests by return code",
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 27
+      },
+      "id": 23,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "hidden",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "datasource": null,
+          "exemplar": true,
+          "expr": "sum(rate(coredns_forward_requests_total[$__rate_interval]))",
+          "interval": "",
+          "legendFormat": "total forward requests",
+          "refId": "A"
+        }
+      ],
+      "title": "CoreDNS - Total Forward Requests",
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 27
+      },
+      "id": 13,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "datasource": null,
+          "exemplar": true,
+          "expr": "sum(rate(coredns_forward_responses_total{rcode=~\"SERVFAIL|REFUSED\"}[$__rate_interval])) by (rcode)",
+          "interval": "",
+          "legendFormat": "{{ rcode }}",
+          "refId": "A"
+        }
+      ],
+      "title": "CoreDNS - DNS Errors",
+      "type": "timeseries"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 35
+      },
+      "id": 17,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "expr": "sum(rate(coredns_cache_hits_total{instance=~\"$instance\"}[$__rate_interval])) by (type)",
+          "interval": "",
+          "legendFormat": "{{ type }}",
+          "refId": "A"
+        },
+        {
+          "expr": "sum(rate(coredns_cache_misses_total{instance=~\"$instance\"}[$__rate_interval])) by (type)",
+          "interval": "",
+          "legendFormat": "misses",
+          "refId": "B"
+        }
+      ],
+      "title": "CoreDNS - Cache Hits / Misses",
       "type": "timeseries"
     },
     {
@@ -775,10 +893,10 @@
       "gridPos": {
         "h": 8,
         "w": 12,
-        "x": 0,
-        "y": 18
+        "x": 12,
+        "y": 35
       },
-      "id": 31,
+      "id": 15,
       "options": {
         "legend": {
           "calcs": [],
@@ -794,282 +912,13 @@
         {
           "datasource": null,
           "exemplar": true,
-          "expr": "sum(rate(container_network_receive_bytes_total{namespace=\"$namespace\", pod=\"$pod\"}[$__rate_interval]))",
+          "expr": "sum(coredns_cache_entries) by (type)",
           "interval": "",
-          "legendFormat": "Received",
+          "legendFormat": "{{ type }}",
           "refId": "A"
-        },
-        {
-          "datasource": null,
-          "exemplar": true,
-          "expr": "- sum(rate(container_network_receive_bytes_total{namespace=\"$namespace\", pod=\"$pod\"}[$__rate_interval]))",
-          "interval": "",
-          "legendFormat": "Transmitted",
-          "refId": "B"
         }
       ],
-      "title": "Network - Bandwidth",
-      "type": "timeseries"
-    },
-    {
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "pps"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 18
-      },
-      "id": 34,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.3.3",
-      "targets": [
-        {
-          "expr": "sum(rate(container_network_receive_packets_total{namespace=\"$namespace\", pod=\"$pod\"}[$__rate_interval]))",
-          "interval": "",
-          "legendFormat": "Received",
-          "refId": "A"
-        },
-        {
-          "expr": "- sum(rate(container_network_transmit_packets_total{namespace=\"$namespace\", pod=\"$pod\"}[$__rate_interval]))",
-          "interval": "",
-          "legendFormat": "Transmitted",
-          "refId": "B"
-        }
-      ],
-      "title": "Network - Packets Rate",
-      "type": "timeseries"
-    },
-    {
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "pps"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 26
-      },
-      "id": 36,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.3.3",
-      "targets": [
-        {
-          "expr": "sum(rate(container_network_receive_packets_dropped_total{namespace=\"$namespace\", pod=\"$pod\"}[$__rate_interval]))",
-          "interval": "",
-          "legendFormat": "Received",
-          "refId": "A"
-        },
-        {
-          "expr": "- sum(rate(container_network_transmit_packets_dropped_total{namespace=\"$namespace\", pod=\"$pod\"}[$__rate_interval]))",
-          "interval": "",
-          "legendFormat": "Transmitted",
-          "refId": "B"
-        }
-      ],
-      "title": "Network - Packets Dropped",
-      "type": "timeseries"
-    },
-    {
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "pps"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 26
-      },
-      "id": 37,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "pluginVersion": "8.3.3",
-      "targets": [
-        {
-          "expr": "sum(rate(container_network_receive_errors_total{namespace=\"$namespace\", pod=\"$pod\"}[$__rate_interval]))",
-          "interval": "",
-          "legendFormat": "Received",
-          "refId": "A"
-        },
-        {
-          "expr": "- sum(rate(container_network_transmit_errors_total{namespace=\"$namespace\", pod=\"$pod\"}[$__rate_interval]))",
-          "interval": "",
-          "legendFormat": "Transmitted",
-          "refId": "B"
-        }
-      ],
-      "title": "Network - Errors",
+      "title": "CoreDNS - Cache Size",
       "type": "timeseries"
     }
   ],
@@ -1084,19 +933,20 @@
       {
         "current": {
           "selected": false,
-          "text": "monitoring",
-          "value": "monitoring"
+          "text": "All",
+          "value": "$__all"
         },
         "datasource": null,
-        "definition": "label_values(kube_pod_info, namespace)",
+        "definition": "label_values(up{job=\"coredns\"}, instance)",
         "hide": 0,
-        "includeAll": false,
+        "includeAll": true,
+        "label": "",
         "multi": false,
-        "name": "namespace",
+        "name": "instance",
         "options": [],
         "query": {
-          "query": "label_values(kube_pod_info, namespace)",
-          "refId": "Prometheus-namespace-Variable-Query"
+          "query": "label_values(up{job=\"coredns\"}, instance)",
+          "refId": "Prometheus-instance-Variable-Query"
         },
         "refresh": 1,
         "regex": "",
@@ -1108,26 +958,28 @@
         "useTags": false
       },
       {
+        "allValue": "udp,tcp",
         "current": {
           "selected": false,
-          "text": "",
-          "value": ""
+          "text": "udp",
+          "value": "udp"
         },
         "datasource": null,
-        "definition": "label_values(kube_pod_info{namespace=\"$namespace\"}, pod)",
+        "definition": "label_values(coredns_dns_requests_total, proto)",
         "hide": 0,
         "includeAll": false,
+        "label": "",
         "multi": false,
-        "name": "pod",
+        "name": "protocol",
         "options": [],
         "query": {
-          "query": "label_values(kube_pod_info{namespace=\"$namespace\"}, pod)",
-          "refId": "Prometheus-pod-Variable-Query"
+          "query": "label_values(coredns_dns_requests_total, proto)",
+          "refId": "StandardVariableQuery"
         },
-        "refresh": 2,
+        "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
-        "sort": 1,
+        "sort": 2,
         "tagValuesQuery": "",
         "tagsQuery": "",
         "type": "query",
@@ -1150,8 +1002,8 @@
     ]
   },
   "timezone": "",
-  "title": "Kubernetes / Views / Pods",
-  "uid": "k8s_views_pods",
+  "title": "Kubernetes / System / CoreDNS",
+  "uid": "k8s_system_coredns",
   "version": 1,
   "weekStart": ""
 }
