@@ -1,13 +1,15 @@
 # grafana-dashboards-kubernetes
 
+## Description
+
 This repository contains a set of [Grafana](https://github.com/grafana/grafana) dashboards for [Kubernetes](https://github.com/kubernetes/kubernetes).\
 They are inspired by many dashboards from `kubernetes-mixin` and `grafana.com`.
 
 ![screenshot](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-views-global.png "Kubernetes Global View Screenshot")
 
-## Description
+## Dashboards
 
-| Dashboard                  | Description | Screenshot |
+| File name                  | Description | Screenshot |
 |----------------------------|-------------|------------|
 | k8s-system-api-server.json | Dashboard for the API Server Kubernetes. | [k8s-system-api-server.png](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-system-api-server.png) |
 | k8s-system-coredns.json    | Show information on the CoreDNS Kubernetes component. | [k8s-system-coredns.png](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-system-coredns.png) |
