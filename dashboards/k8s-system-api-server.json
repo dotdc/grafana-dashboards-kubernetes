@@ -27,6 +27,10 @@
   "liveNow": false,
   "panels": [
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "fieldConfig": {
         "defaults": {
           "mappings": [
@@ -82,7 +86,10 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
-          "datasource": null,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
           "exemplar": true,
           "expr": "up{job=\"apiserver\", instance=~\"$instance\"}",
           "interval": "",
@@ -94,6 +101,10 @@
       "type": "stat"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -165,6 +176,10 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
           "expr": "sum by (code) (rate(apiserver_request_total{instance=~\"$instance\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "{{ code }}",
@@ -175,6 +190,10 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -246,6 +265,10 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
           "expr": "sum by (verb) (rate(apiserver_request_total{instance=~\"$instance\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "{{ verb}}",
@@ -256,6 +279,10 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -327,6 +354,10 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
           "expr": "sum(rate(rest_client_request_duration_seconds_bucket{job=\"apiserver\", instance=~\"$instance\"}[$__rate_interval])) by (instance)",
           "interval": "",
           "legendFormat": "{{ instance }}",
@@ -337,6 +368,10 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -408,6 +443,10 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
           "expr": "sum(rate(rest_client_request_duration_seconds_bucket{job=\"apiserver\", instance=~\"$instance\"}[$__rate_interval])) by (verb)",
           "interval": "",
           "legendFormat": "{{ verb }}",
@@ -418,6 +457,10 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -489,6 +532,10 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
           "expr": "sum by(instance) (rate(apiserver_request_total{code=~\"5..\", job=\"apiserver\", instance=~\"$instance\"}[$__rate_interval]))\n / sum by(instance) (rate(apiserver_request_total{job=\"apiserver\", instance=~\"$instance\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "{{ instance }}",
@@ -499,6 +546,10 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -570,6 +621,10 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
           "expr": "sum by(verb) (rate(apiserver_request_total{code=~\"5..\",job=\"apiserver\"}[$__rate_interval]))\n / sum by(verb) (rate(apiserver_request_total{job=\"apiserver\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "{{ verb }}",
@@ -580,6 +635,10 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -651,6 +710,10 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
           "expr": "sum(rate(apiserver_request_total{instance=~\"$instance\"}[$__rate_interval])) by (instance)",
           "interval": "",
           "legendFormat": "{{ instance }}",
@@ -661,6 +724,10 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -732,6 +799,10 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
           "expr": "sum(rate(workqueue_depth{job=\"apiserver\", instance=~\"$instance\"}[$__rate_interval])) by (instance)",
           "interval": "",
           "legendFormat": "{{ instance }}",
@@ -742,6 +813,10 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -814,6 +889,10 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
           "expr": "rate(process_cpu_seconds_total{job=\"apiserver\", instance=~\"$instance\"}[$__rate_interval])",
           "interval": "",
           "legendFormat": "{{ instance }}",
@@ -824,6 +903,10 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -895,6 +978,10 @@
       "pluginVersion": "8.3.3",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
           "expr": "process_resident_memory_bytes{job=\"apiserver\", instance=~\"$instance\"}",
           "interval": "",
           "legendFormat": "{{ instance }}",
@@ -916,8 +1003,8 @@
       {
         "current": {
           "selected": true,
-          "text": "default",
-          "value": "default"
+          "text": "Prometheus",
+          "value": "Prometheus"
         },
         "hide": 0,
         "includeAll": false,
@@ -938,7 +1025,6 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": null,
         "definition": "label_values(apiserver_request_total{job=\"apiserver\"}, instance)",
         "hide": 0,
         "includeAll": true,
