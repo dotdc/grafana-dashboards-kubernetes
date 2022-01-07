@@ -1245,8 +1245,8 @@
       {
         "current": {
           "selected": false,
-          "text": "alertmanager-kube-prometheus-stack-alertmanager-0",
-          "value": "alertmanager-kube-prometheus-stack-alertmanager-0"
+          "text": "",
+          "value": ""
         },
         "definition": "label_values(kube_pod_info{namespace=\"$namespace\"}, pod)",
         "hide": 0,
