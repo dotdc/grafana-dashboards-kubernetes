@@ -679,16 +679,6 @@
           "interval": "",
           "legendFormat": "",
           "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${datasource}"
-          },
-          "expr": "",
-          "interval": "",
-          "legendFormat": "",
-          "refId": "B"
         }
       ],
       "title": "CPU Used",
@@ -973,8 +963,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "exemplar": true,
           "expr": "sum(rate(container_cpu_usage_seconds_total{image!=\"\"}[$__rate_interval])) by (node) / sum(machine_cpu_cores) by (node)",
-          "interval": "1m",
+          "interval": "$resolution",
           "legendFormat": "{{ node }}",
           "refId": "A"
         }
@@ -1067,8 +1058,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "exemplar": true,
           "expr": "sum(container_memory_working_set_bytes{image!=\"\"}) by (node)",
-          "interval": "1m",
+          "interval": "",
           "legendFormat": "{{ node}}",
           "refId": "A"
         }
@@ -1161,8 +1153,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "exemplar": true,
           "expr": "sum(rate(container_cpu_usage_seconds_total{image!=\"\"}[$__rate_interval])) by (namespace)",
-          "interval": "1m",
+          "interval": "$resolution",
           "legendFormat": "{{ namespace }}",
           "refId": "A"
         }
@@ -1255,8 +1248,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "exemplar": true,
           "expr": "sum(container_memory_working_set_bytes{image!=\"\"}) by (namespace)",
-          "interval": "1m",
+          "interval": "$resolution",
           "legendFormat": "{{ namespace }}",
           "refId": "A"
         }
@@ -1357,8 +1351,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "exemplar": true,
           "expr": "sum(rate(container_network_receive_bytes_total[$__rate_interval]))",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "In",
           "refId": "A"
         },
@@ -1367,8 +1362,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "exemplar": true,
           "expr": "- sum(rate(container_network_transmit_bytes_total[$__rate_interval]))",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "Out",
           "refId": "B"
         }
@@ -1456,8 +1452,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "exemplar": true,
           "expr": "sum(rate(container_network_receive_packets_dropped_total[$__rate_interval]))",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "In",
           "refId": "A"
         },
@@ -1466,8 +1463,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "exemplar": true,
           "expr": "- sum(rate(container_network_transmit_packets_dropped_total[$__rate_interval]))",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "Out",
           "refId": "B"
         }
@@ -1555,8 +1553,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "exemplar": true,
           "expr": "sum(rate(container_network_receive_bytes_total[$__rate_interval])) by (node)",
-          "interval": "1m",
+          "interval": "$resolution",
           "legendFormat": "{{ node }}",
           "refId": "A"
         }
@@ -1644,8 +1643,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "exemplar": true,
           "expr": "- sum(rate(container_network_transmit_bytes_total[$__rate_interval])) by (node)",
-          "interval": "1m",
+          "interval": "$resolution",
           "legendFormat": "{{ node }}",
           "refId": "A"
         }
@@ -1674,10 +1674,48 @@
         "name": "datasource",
         "options": [],
         "query": "prometheus",
+        "queryValue": "",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "type": "datasource"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "1m",
+          "value": "1m"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "resolution",
+        "options": [
+          {
+            "selected": true,
+            "text": "1m",
+            "value": "1m"
+          },
+          {
+            "selected": false,
+            "text": "2m",
+            "value": "2m"
+          },
+          {
+            "selected": false,
+            "text": "3m",
+            "value": "3m"
+          },
+          {
+            "selected": false,
+            "text": "5m",
+            "value": "5m"
+          }
+        ],
+        "query": "1m, 2m, 3m, 5m",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
       }
     ]
   },
