@@ -179,8 +179,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "exemplar": true,
           "expr": "rate(process_cpu_seconds_total{job=\"coredns\", instance=~\"$instance\"}[$__rate_interval])",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "refId": "A"
         }
@@ -360,7 +361,7 @@
           },
           "exemplar": true,
           "expr": "sum(rate(coredns_dns_requests_total{instance=~\"$instance\",proto=\"$protocol\"}[$__rate_interval]))",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "total $protocol requests",
           "refId": "A"
         }
@@ -448,8 +449,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "exemplar": true,
           "expr": "avg(rate(coredns_dns_request_size_bytes_sum{instance=~\"$instance\",proto=\"$protocol\"}[$__rate_interval])) by (proto)",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "average $protocol packet size",
           "refId": "A"
         }
@@ -539,7 +541,7 @@
           },
           "exemplar": true,
           "expr": "sum(rate(coredns_dns_requests_total{instance=~\"$instance\"}[$__rate_interval])) by (type)",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "{{ type }}",
           "refId": "A"
         }
@@ -629,7 +631,7 @@
           },
           "exemplar": true,
           "expr": "sum(rate(coredns_dns_responses_total{instance=~\"$instance\"}[$__rate_interval])) by (rcode)",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "{{ rcode }}",
           "refId": "A"
         }
@@ -719,7 +721,7 @@
           },
           "exemplar": true,
           "expr": "sum(rate(coredns_forward_requests_total[$__rate_interval]))",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "total forward requests",
           "refId": "A"
         }
@@ -809,7 +811,7 @@
           },
           "exemplar": true,
           "expr": "sum(rate(coredns_forward_responses_total{rcode=~\"SERVFAIL|REFUSED\"}[$__rate_interval])) by (rcode)",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "{{ rcode }}",
           "refId": "A"
         }
@@ -897,8 +899,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "exemplar": true,
           "expr": "sum(rate(coredns_cache_hits_total{instance=~\"$instance\"}[$__rate_interval])) by (type)",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "{{ type }}",
           "refId": "A"
         },
@@ -907,8 +910,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "exemplar": true,
           "expr": "sum(rate(coredns_cache_misses_total{instance=~\"$instance\"}[$__rate_interval])) by (type)",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "misses",
           "refId": "B"
         }
@@ -1017,7 +1021,7 @@
     "list": [
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "Prometheus",
           "value": "Prometheus"
         },
@@ -1085,6 +1089,43 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "1m",
+          "value": "1m"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "resolution",
+        "options": [
+          {
+            "selected": true,
+            "text": "1m",
+            "value": "1m"
+          },
+          {
+            "selected": false,
+            "text": "2m",
+            "value": "2m"
+          },
+          {
+            "selected": false,
+            "text": "3m",
+            "value": "3m"
+          },
+          {
+            "selected": false,
+            "text": "5m",
+            "value": "5m"
+          }
+        ],
+        "query": "1m, 2m, 3m, 5m",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
       }
     ]
   },

@@ -257,9 +257,10 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "exemplar": true,
+          "exemplar": false,
           "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}[$__rate_interval])) / sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=\"$pod\", unit=\"core\"})",
-          "interval": "",
+          "instant": true,
+          "interval": "$resolution",
           "legendFormat": "Requests",
           "refId": "A"
         },
@@ -268,9 +269,10 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "exemplar": true,
+          "exemplar": false,
           "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}[$__rate_interval])) / sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=\"$pod\", unit=\"core\"})",
-          "interval": "",
+          "instant": true,
+          "interval": "$resolution",
           "legendFormat": "Limits",
           "refId": "B"
         }
@@ -336,9 +338,10 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "exemplar": true,
+          "exemplar": false,
           "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}) / sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=\"$pod\", unit=\"byte\"})",
-          "interval": "",
+          "instant": true,
+          "interval": "$resolution",
           "legendFormat": "Requests",
           "refId": "A"
         },
@@ -347,9 +350,10 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "exemplar": true,
+          "exemplar": false,
           "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}) / sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=\"$pod\", unit=\"byte\"}) ",
-          "interval": "",
+          "instant": true,
+          "interval": "$resolution",
           "legendFormat": "Limits",
           "refId": "B"
         }
@@ -675,7 +679,7 @@
           },
           "exemplar": true,
           "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\", pod=\"$pod\", image!=\"\", container!=\"POD\"}[$__rate_interval])) by (container)",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "{{ container }}",
           "refId": "A"
         }
@@ -875,7 +879,7 @@
           },
           "exemplar": true,
           "expr": "sum(rate(container_network_receive_bytes_total{namespace=\"$namespace\", pod=\"$pod\"}[$__rate_interval]))",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "Received",
           "refId": "A"
         },
@@ -886,7 +890,7 @@
           },
           "exemplar": true,
           "expr": "- sum(rate(container_network_receive_bytes_total{namespace=\"$namespace\", pod=\"$pod\"}[$__rate_interval]))",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "Transmitted",
           "refId": "B"
         }
@@ -974,8 +978,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "exemplar": true,
           "expr": "sum(rate(container_network_receive_packets_total{namespace=\"$namespace\", pod=\"$pod\"}[$__rate_interval]))",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "Received",
           "refId": "A"
         },
@@ -984,8 +989,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "exemplar": true,
           "expr": "- sum(rate(container_network_transmit_packets_total{namespace=\"$namespace\", pod=\"$pod\"}[$__rate_interval]))",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "Transmitted",
           "refId": "B"
         }
@@ -1073,8 +1079,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "exemplar": true,
           "expr": "sum(rate(container_network_receive_packets_dropped_total{namespace=\"$namespace\", pod=\"$pod\"}[$__rate_interval]))",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "Received",
           "refId": "A"
         },
@@ -1083,8 +1090,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "exemplar": true,
           "expr": "- sum(rate(container_network_transmit_packets_dropped_total{namespace=\"$namespace\", pod=\"$pod\"}[$__rate_interval]))",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "Transmitted",
           "refId": "B"
         }
@@ -1172,8 +1180,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "exemplar": true,
           "expr": "sum(rate(container_network_receive_errors_total{namespace=\"$namespace\", pod=\"$pod\"}[$__rate_interval]))",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "Received",
           "refId": "A"
         },
@@ -1182,8 +1191,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "exemplar": true,
           "expr": "- sum(rate(container_network_transmit_errors_total{namespace=\"$namespace\", pod=\"$pod\"}[$__rate_interval]))",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "Transmitted",
           "refId": "B"
         }
@@ -1266,6 +1276,43 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "1m",
+          "value": "1m"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "resolution",
+        "options": [
+          {
+            "selected": true,
+            "text": "1m",
+            "value": "1m"
+          },
+          {
+            "selected": false,
+            "text": "2m",
+            "value": "2m"
+          },
+          {
+            "selected": false,
+            "text": "3m",
+            "value": "3m"
+          },
+          {
+            "selected": false,
+            "text": "5m",
+            "value": "5m"
+          }
+        ],
+        "query": "1m, 2m, 3m, 5m",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
       }
     ]
   },

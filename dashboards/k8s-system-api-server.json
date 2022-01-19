@@ -180,8 +180,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "exemplar": true,
           "expr": "sum by (code) (rate(apiserver_request_total{instance=~\"$instance\"}[$__rate_interval]))",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "{{ code }}",
           "refId": "A"
         }
@@ -269,8 +270,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "exemplar": true,
           "expr": "sum by (verb) (rate(apiserver_request_total{instance=~\"$instance\"}[$__rate_interval]))",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "{{ verb}}",
           "refId": "A"
         }
@@ -358,8 +360,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "exemplar": true,
           "expr": "sum(rate(rest_client_request_duration_seconds_bucket{job=\"apiserver\", instance=~\"$instance\"}[$__rate_interval])) by (instance)",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "refId": "A"
         }
@@ -447,8 +450,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "exemplar": true,
           "expr": "sum(rate(rest_client_request_duration_seconds_bucket{job=\"apiserver\", instance=~\"$instance\"}[$__rate_interval])) by (verb)",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "{{ verb }}",
           "refId": "A"
         }
@@ -536,8 +540,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "exemplar": true,
           "expr": "sum by(instance) (rate(apiserver_request_total{code=~\"5..\", job=\"apiserver\", instance=~\"$instance\"}[$__rate_interval]))\n / sum by(instance) (rate(apiserver_request_total{job=\"apiserver\", instance=~\"$instance\"}[$__rate_interval]))",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "refId": "A"
         }
@@ -625,8 +630,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "exemplar": true,
           "expr": "sum by(verb) (rate(apiserver_request_total{code=~\"5..\",job=\"apiserver\"}[$__rate_interval]))\n / sum by(verb) (rate(apiserver_request_total{job=\"apiserver\"}[$__rate_interval]))",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "{{ verb }}",
           "refId": "A"
         }
@@ -714,8 +720,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "exemplar": true,
           "expr": "sum(rate(apiserver_request_total{instance=~\"$instance\"}[$__rate_interval])) by (instance)",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "refId": "A"
         }
@@ -803,8 +810,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "exemplar": true,
           "expr": "sum(rate(workqueue_depth{job=\"apiserver\", instance=~\"$instance\"}[$__rate_interval])) by (instance)",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "refId": "A"
         }
@@ -893,8 +901,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "exemplar": true,
           "expr": "rate(process_cpu_seconds_total{job=\"apiserver\", instance=~\"$instance\"}[$__rate_interval])",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "refId": "A"
         }
@@ -982,8 +991,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "exemplar": true,
           "expr": "process_resident_memory_bytes{job=\"apiserver\", instance=~\"$instance\"}",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "refId": "A"
         }
@@ -1002,7 +1012,7 @@
     "list": [
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "Prometheus",
           "value": "Prometheus"
         },
@@ -1044,6 +1054,43 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "1m",
+          "value": "1m"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "resolution",
+        "options": [
+          {
+            "selected": true,
+            "text": "1m",
+            "value": "1m"
+          },
+          {
+            "selected": false,
+            "text": "2m",
+            "value": "2m"
+          },
+          {
+            "selected": false,
+            "text": "3m",
+            "value": "3m"
+          },
+          {
+            "selected": false,
+            "text": "5m",
+            "value": "5m"
+          }
+        ],
+        "query": "1m, 2m, 3m, 5m",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
       }
     ]
   },
