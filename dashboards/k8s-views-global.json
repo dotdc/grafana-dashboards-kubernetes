@@ -676,7 +676,7 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/\",service!=\"prometheus-operator-kubelet\"}[$__rate_interval]))",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/\",service!=\"kube-prometheus-stack-kubelet\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -736,7 +736,7 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "sum(machine_cpu_cores{service!=\"prometheus-operator-kubelet\"})",
+          "expr": "sum(machine_cpu_cores{service!=\"kube-prometheus-stack-kubelet\"})",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -796,7 +796,7 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "sum(container_memory_working_set_bytes{id=\"/\", service!=\"prometheus-operator-kubelet\"})",
+          "expr": "sum(container_memory_working_set_bytes{id=\"/\", service!=\"kube-prometheus-stack-kubelet\"})",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -856,7 +856,7 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "sum(machine_memory_bytes{service!=\"prometheus-operator-kubelet\"})",
+          "expr": "sum(machine_memory_bytes{service!=\"kube-prometheus-stack-kubelet\"})",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
