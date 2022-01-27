@@ -1579,7 +1579,7 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "sum(kubelet_volume_stats_used_bytes{namespace=\"$namespace\"}) by (persistentvolumeclaim) / sum(kubelet_volume_stats_capacity_bytes{namespace=\"$namespace\"}) by (persistentvolumeclaim)",
+          "expr": "sum(kubelet_volume_stats_used_bytes{namespace=\"$namespace\", service!=\"kube-prometheus-stack-kubelet\"}) by (persistentvolumeclaim) / sum(kubelet_volume_stats_capacity_bytes{namespace=\"$namespace\", service!=\"kube-prometheus-stack-kubelet\"}) by (persistentvolumeclaim)",
           "interval": "",
           "legendFormat": "{{ persistentvolumeclaim }}",
           "refId": "A"
@@ -1669,7 +1669,7 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "sum(kubelet_volume_stats_inodes_used{namespace=\"$namespace\"}) by (persistentvolumeclaim) / sum(kubelet_volume_stats_inodes{namespace=\"$namespace\"}) by (persistentvolumeclaim) * 100",
+          "expr": "sum(kubelet_volume_stats_inodes_used{namespace=\"$namespace\", service!=\"kube-prometheus-stack-kubelet\"}) by (persistentvolumeclaim) / sum(kubelet_volume_stats_inodes{namespace=\"$namespace\", service!=\"kube-prometheus-stack-kubelet\"}) by (persistentvolumeclaim) * 100",
           "interval": "",
           "legendFormat": "{{ persistentvolumeclaim }}",
           "refId": "A"
