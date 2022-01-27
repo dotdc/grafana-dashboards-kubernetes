@@ -864,7 +864,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(node_cpu_seconds_total{instance=~\"$instance\"}[$__rate_interval]) * 100) by (mode) / $cores",
+          "expr": "sum(rate(node_cpu_seconds_total{instance=~\"$instance\"}[$__rate_interval]) * 100) by (mode) / scalar(sum(machine_cpu_cores{service!=\"kube-prometheus-stack-kubelet\", node=~\"$node\"}))",
           "hide": false,
           "instant": false,
           "interval": "$resolution",
@@ -3528,64 +3528,6 @@
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
-      },
-      {
-        "current": {
-          "selected": true,
-          "text": "4",
-          "value": "4"
-        },
-        "hide": 0,
-        "includeAll": false,
-        "label": "",
-        "multi": false,
-        "name": "cores",
-        "options": [
-          {
-            "selected": false,
-            "text": "1",
-            "value": "1"
-          },
-          {
-            "selected": false,
-            "text": "2",
-            "value": "2"
-          },
-          {
-            "selected": true,
-            "text": "4",
-            "value": "4"
-          },
-          {
-            "selected": false,
-            "text": "8",
-            "value": "8"
-          },
-          {
-            "selected": false,
-            "text": "16",
-            "value": "16"
-          },
-          {
-            "selected": false,
-            "text": "32",
-            "value": "32"
-          },
-          {
-            "selected": false,
-            "text": "64",
-            "value": "64"
-          },
-          {
-            "selected": false,
-            "text": "128",
-            "value": "128"
-          }
-        ],
-        "query": "1, 2, 4, 8, 16, 32, 64, 128",
-        "queryValue": "",
-        "skipUrlSync": false,
-        "type": "custom"
       }
     ]
   },
