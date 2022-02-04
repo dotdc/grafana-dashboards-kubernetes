@@ -21,7 +21,7 @@
   "description": "",
   "editable": true,
   "fiscalYearStartMonth": 0,
-  "graphTooltip": 0,
+  "graphTooltip": 1,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -98,7 +98,7 @@
             "uid": "${datasource}"
           },
           "exemplar": false,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/\", service!=\"kube-prometheus-stack-kubelet\", node=~\"$node\"}[$__rate_interval])) / sum(machine_cpu_cores{node=~\"$node\"})",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/\", service=~\"$service\", node=~\"$node\"}[$__rate_interval])) / sum(machine_cpu_cores{node=~\"$node\"})",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "",
@@ -168,7 +168,7 @@
             "uid": "${datasource}"
           },
           "exemplar": false,
-          "expr": "sum(container_memory_working_set_bytes{id=\"/\", service!=\"kube-prometheus-stack-kubelet\", node=~\"$node\"}) / sum (machine_memory_bytes{service!=\"kube-prometheus-stack-kubelet\", node=~\"$node\"})",
+          "expr": "sum(container_memory_working_set_bytes{id=\"/\", service=~\"$service\", node=~\"$node\"}) / sum (machine_memory_bytes{service=~\"$service\", node=~\"$node\"})",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "",
@@ -502,7 +502,7 @@
             "uid": "${datasource}"
           },
           "exemplar": false,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/\", service!=\"kube-prometheus-stack-kubelet\", node=~\"$node\"}[$__rate_interval]))",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/\", service=~\"$service\", node=~\"$node\"}[$__rate_interval]))",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "",
@@ -564,7 +564,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(machine_cpu_cores{service!=\"kube-prometheus-stack-kubelet\", node=~\"$node\"})",
+          "expr": "sum(machine_cpu_cores{service=~\"$service\", node=~\"$node\"})",
           "interval": "$resolution",
           "legendFormat": "",
           "refId": "A"
@@ -625,7 +625,7 @@
             "uid": "${datasource}"
           },
           "exemplar": false,
-          "expr": "sum(container_memory_working_set_bytes{id=\"/\", service!=\"kube-prometheus-stack-kubelet\", node=~\"$node\"})",
+          "expr": "sum(container_memory_working_set_bytes{id=\"/\", service=~\"$service\", node=~\"$node\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -687,7 +687,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "machine_memory_bytes{service!=\"kube-prometheus-stack-kubelet\", node=~\"$node\"}",
+          "expr": "machine_memory_bytes{service=~\"$service\", node=~\"$node\"}",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -864,7 +864,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(node_cpu_seconds_total{instance=~\"$instance\"}[$__rate_interval]) * 100) by (mode) / scalar(sum(machine_cpu_cores{service!=\"kube-prometheus-stack-kubelet\", node=~\"$node\"}))",
+          "expr": "sum(rate(node_cpu_seconds_total{instance=~\"$instance\"}[$__rate_interval]) * 100) by (mode) / scalar(sum(machine_cpu_cores{service=~\"$service\", node=~\"$node\"}))",
           "hide": false,
           "instant": false,
           "interval": "$resolution",
@@ -1121,7 +1121,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{node=~\"$node\", image!=\"\"}[$__rate_interval])) by (pod)",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{node=~\"$node\", image!=\"\", service=~\"$service\"}[$__rate_interval])) by (pod)",
           "interval": "$resolution",
           "legendFormat": "{{ pod }}",
           "refId": "A"
@@ -1211,7 +1211,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{node=~\"$node\", image!=\"\"}) by (pod)",
+          "expr": "sum(container_memory_working_set_bytes{node=~\"$node\", image!=\"\", service=~\"$service\"}) by (pod)",
           "interval": "$resolution",
           "legendFormat": "{{ pod }}",
           "refId": "A"
@@ -2385,7 +2385,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(kubelet_volume_stats_used_bytes{node=~\"$node\", service!=\"kube-prometheus-stack-kubelet\"}) by (persistentvolumeclaim) / sum(kubelet_volume_stats_capacity_bytes{node=~\"$node\", service!=\"kube-prometheus-stack-kubelet\"}) by (persistentvolumeclaim)",
+          "expr": "sum(kubelet_volume_stats_used_bytes{node=~\"$node\", service=~\"$service\"}) by (persistentvolumeclaim) / sum(kubelet_volume_stats_capacity_bytes{node=~\"$node\", service=~\"$service\"}) by (persistentvolumeclaim)",
           "interval": "",
           "legendFormat": "{{ persistentvolumeclaim }}",
           "refId": "A"
@@ -2478,7 +2478,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(kubelet_volume_stats_used_bytes{node=~\"$node\", service!=\"kube-prometheus-stack-kubelet\"}) by (persistentvolumeclaim)",
+          "expr": "sum(kubelet_volume_stats_used_bytes{node=~\"$node\", service=~\"$service\"}) by (persistentvolumeclaim)",
           "format": "table",
           "hide": false,
           "interval": "",
@@ -2491,7 +2491,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(kubelet_volume_stats_capacity_bytes{node=~\"$node\", service!=\"kube-prometheus-stack-kubelet\"}) by (persistentvolumeclaim) ",
+          "expr": "sum(kubelet_volume_stats_capacity_bytes{node=~\"$node\", service=~\"$service\"}) by (persistentvolumeclaim) ",
           "format": "table",
           "hide": false,
           "interval": "",
@@ -2633,7 +2633,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(kubelet_volume_stats_inodes_used{node=~\"$node\", service!=\"kube-prometheus-stack-kubelet\"}) by (persistentvolumeclaim) / sum(kubelet_volume_stats_inodes{node=~\"$node\", service!=\"kube-prometheus-stack-kubelet\"}) by (persistentvolumeclaim) * 100",
+          "expr": "sum(kubelet_volume_stats_inodes_used{node=~\"$node\", service=~\"$service\"}) by (persistentvolumeclaim) / sum(kubelet_volume_stats_inodes{node=~\"$node\", service=~\"$service\"}) by (persistentvolumeclaim) * 100",
           "interval": "",
           "legendFormat": "{{ persistentvolumeclaim }}",
           "refId": "A"
@@ -3388,7 +3388,7 @@
       "type": "timeseries"
     }
   ],
-  "refresh": false,
+  "refresh": "30s",
   "schemaVersion": 34,
   "style": "dark",
   "tags": [
@@ -3527,7 +3527,33 @@
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
-        "sort": 0,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "kube-prometheus-stack-kubelet",
+          "value": "kube-prometheus-stack-kubelet"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "definition": "label_values(machine_cpu_cores, service)",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "service",
+        "options": [],
+        "query": {
+          "query": "label_values(machine_cpu_cores, service)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
         "type": "query"
       }
     ]
