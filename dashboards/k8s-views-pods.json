@@ -1224,6 +1224,7 @@
         "name": "datasource",
         "options": [],
         "query": "prometheus",
+        "queryValue": "",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -1234,6 +1235,10 @@
           "selected": false,
           "text": "monitoring",
           "value": "monitoring"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
         },
         "definition": "label_values(kube_pod_info, namespace)",
         "hide": 0,
@@ -1260,6 +1265,10 @@
           "text": "",
           "value": ""
         },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
         "definition": "label_values(kube_pod_info{namespace=\"$namespace\"}, pod)",
         "hide": 0,
         "includeAll": false,
@@ -1281,7 +1290,7 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "1m",
           "value": "1m"
         },
@@ -1318,7 +1327,7 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "kube-prometheus-stack-kubelet",
           "value": "kube-prometheus-stack-kubelet"
         },
