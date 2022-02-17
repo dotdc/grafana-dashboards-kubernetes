@@ -28,7 +28,7 @@ As an example, here's how the `Kubernetes / Views / Global` dashboard looks like
 ## Dashboards
 
 | File name                  | Description | Screenshot |
-|:---------------------------|:------------|:-----------|
+|:---------------------------|:------------|:----------:|
 | k8s-system-api-server.json | Dashboard for the API Server Kubernetes. | [LINK](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-system-api-server.png) |
 | k8s-system-coredns.json    | Show information on the CoreDNS Kubernetes component. | [LINK](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-system-coredns.png) |
 | k8s-views-global.json      | `Global` level view dashboard for Kubernetes. | [LINK](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-views-global.png) |
