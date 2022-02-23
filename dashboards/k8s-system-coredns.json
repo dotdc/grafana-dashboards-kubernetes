@@ -1164,6 +1164,6 @@
   "timezone": "",
   "title": "Kubernetes / System / CoreDNS",
   "uid": "k8s_system_coredns",
-  "version": 2,
+  "version": 3,
   "weekStart": ""
 }
