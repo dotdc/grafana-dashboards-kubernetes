@@ -598,7 +598,7 @@
           "refId": "K"
         }
       ],
-      "title": "Kubernetes Ressource Count",
+      "title": "Kubernetes Resource Count",
       "type": "timeseries"
     },
     {
@@ -1825,6 +1825,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Namespaces",
   "uid": "k8s_views_ns",
-  "version": 3,
+  "version": 4,
   "weekStart": ""
 }
