@@ -434,7 +434,7 @@
           "refId": "B"
         }
       ],
-      "title": "Memory Usage",
+      "title": "RAM Usage",
       "type": "gauge"
     },
     {
@@ -1455,6 +1455,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Pods",
   "uid": "k8s_views_pods",
-  "version": 5,
+  "version": 6,
   "weekStart": ""
 }

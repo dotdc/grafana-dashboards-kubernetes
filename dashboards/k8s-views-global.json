@@ -216,7 +216,7 @@
           "refId": "A"
         }
       ],
-      "title": "Memory Usage",
+      "title": "RAM Usage",
       "type": "gauge"
     },
     {
@@ -850,7 +850,7 @@
           "refId": "A"
         }
       ],
-      "title": "Memory Used",
+      "title": "RAM Used",
       "type": "stat"
     },
     {
@@ -911,7 +911,7 @@
           "refId": "A"
         }
       ],
-      "title": "Memory Total",
+      "title": "RAM Total",
       "type": "stat"
     },
     {
@@ -1968,7 +1968,7 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "kube-prometheus-stack-kubelet",
           "value": "kube-prometheus-stack-kubelet"
         },
@@ -2002,6 +2002,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Global",
   "uid": "k8s_views_global",
-  "version": 3,
+  "version": 4,
   "weekStart": ""
 }
