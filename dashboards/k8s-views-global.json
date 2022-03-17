@@ -133,7 +133,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.4",
+      "pluginVersion": "8.4.1",
       "targets": [
         {
           "datasource": {
@@ -141,7 +141,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/\", service=~\"$service\"}[$__rate_interval])) / sum(machine_cpu_cores)",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/\", service=\"$service\"}[$__rate_interval])) / sum(machine_cpu_cores{service=\"$service\"})",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -202,7 +202,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.3.4",
+      "pluginVersion": "8.4.1",
       "targets": [
         {
           "datasource": {
@@ -210,7 +210,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{id=\"/\", service=~\"$service\"}) / sum (machine_memory_bytes)",
+          "expr": "sum(container_memory_working_set_bytes{id=\"/\", service=\"$service\"}) / sum(machine_memory_bytes{service=\"$service\"})",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -262,7 +262,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "8.3.4",
+      "pluginVersion": "8.4.1",
       "targets": [
         {
           "datasource": {
@@ -322,7 +322,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "8.3.4",
+      "pluginVersion": "8.4.1",
       "targets": [
         {
           "datasource": {
@@ -412,7 +412,8 @@
           "placement": "right"
         },
         "tooltip": {
-          "mode": "multi"
+          "mode": "multi",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.3.3",
@@ -595,7 +596,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "8.3.4",
+      "pluginVersion": "8.4.1",
       "targets": [
         {
           "datasource": {
@@ -654,7 +655,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "8.3.4",
+      "pluginVersion": "8.4.1",
       "targets": [
         {
           "datasource": {
@@ -714,7 +715,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.4",
+      "pluginVersion": "8.4.1",
       "targets": [
         {
           "datasource": {
@@ -722,7 +723,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/\", service=~\"$service\"}[$__rate_interval]))",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/\", service=\"$service\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -775,7 +776,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.4",
+      "pluginVersion": "8.4.1",
       "targets": [
         {
           "datasource": {
@@ -783,7 +784,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(machine_cpu_cores{service=~\"$service\"})",
+          "expr": "sum(machine_cpu_cores{service=\"$service\"})",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -836,7 +837,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.4",
+      "pluginVersion": "8.4.1",
       "targets": [
         {
           "datasource": {
@@ -844,7 +845,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{id=\"/\", service=~\"$service\"})",
+          "expr": "sum(container_memory_working_set_bytes{id=\"/\", service=\"$service\"})",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -897,7 +898,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.4",
+      "pluginVersion": "8.4.1",
       "targets": [
         {
           "datasource": {
@@ -905,7 +906,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(machine_memory_bytes{service=~\"$service\"})",
+          "expr": "sum(machine_memory_bytes{service=\"$service\"})",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -1006,7 +1007,8 @@
           "placement": "right"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.3.3",
@@ -1017,7 +1019,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/\", service=~\"$service\"}[$__rate_interval])) / sum(machine_cpu_cores)",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/\", service=\"$service\"}[$__rate_interval])) / sum(machine_cpu_cores{service=\"$service\"})",
           "interval": "$resolution",
           "legendFormat": "CPU usage in %",
           "refId": "A"
@@ -1105,7 +1107,8 @@
           "placement": "right"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.3.3",
@@ -1116,7 +1119,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{id=\"/\", service=~\"$service\"}) / sum (machine_memory_bytes)",
+          "expr": "sum(container_memory_working_set_bytes{id=\"/\", service=\"$service\"}) / sum(machine_memory_bytes{service=\"$service\"})",
           "interval": "",
           "legendFormat": "Memory usage in %",
           "refId": "A"
@@ -1203,7 +1206,8 @@
           "placement": "right"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.3.3",
@@ -1214,7 +1218,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{image!=\"\", service=~\"$service\"}[$__rate_interval])) by (namespace)",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{image!=\"\", service=\"$service\"}[$__rate_interval])) by (namespace)",
           "interval": "$resolution",
           "legendFormat": "{{ namespace }}",
           "refId": "A"
@@ -1297,7 +1301,8 @@
           "placement": "right"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.3.3",
@@ -1308,7 +1313,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{image!=\"\", service=~\"$service\"}) by (namespace)",
+          "expr": "sum(container_memory_working_set_bytes{image!=\"\", service=\"$service\"}) by (namespace)",
           "interval": "$resolution",
           "legendFormat": "{{ namespace }}",
           "refId": "A"
@@ -1392,7 +1397,8 @@
           "placement": "right"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.3.3",
@@ -1403,7 +1409,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{image!=\"\", service=~\"$service\"}[$__rate_interval])) by (node) / sum(machine_cpu_cores) by (node)",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{image!=\"\", service=\"$service\"}[$__rate_interval])) by (node) / sum(machine_cpu_cores{service=\"$service\"}) by (node)",
           "interval": "$resolution",
           "legendFormat": "{{ node }}",
           "refId": "A"
@@ -1486,7 +1492,8 @@
           "placement": "right"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.3.3",
@@ -1497,7 +1504,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{image!=\"\", service=~\"$service\"}) by (node)",
+          "expr": "sum(container_memory_working_set_bytes{image!=\"\", service=\"$service\"}) by (node)",
           "interval": "",
           "legendFormat": "{{ node}}",
           "refId": "A"
@@ -1589,7 +1596,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "multi"
+          "mode": "multi",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.3.3",
@@ -1600,7 +1608,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(container_network_receive_bytes_total{service=~\"$service\"}[$__rate_interval]))",
+          "expr": "sum(rate(container_network_receive_bytes_total{service=\"$service\"}[$__rate_interval]))",
           "interval": "$resolution",
           "legendFormat": "In",
           "refId": "A"
@@ -1611,7 +1619,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "- sum(rate(container_network_transmit_bytes_total{service=~\"$service\"}[$__rate_interval]))",
+          "expr": "- sum(rate(container_network_transmit_bytes_total{service=\"$service\"}[$__rate_interval]))",
           "interval": "$resolution",
           "legendFormat": "Out",
           "refId": "B"
@@ -1690,7 +1698,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "multi"
+          "mode": "multi",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.3.3",
@@ -1701,7 +1710,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(container_network_receive_packets_dropped_total{service=~\"$service\"}[$__rate_interval]))",
+          "expr": "sum(rate(container_network_receive_packets_dropped_total{service=\"$service\"}[$__rate_interval]))",
           "interval": "$resolution",
           "legendFormat": "In",
           "refId": "A"
@@ -1712,7 +1721,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "- sum(rate(container_network_transmit_packets_dropped_total{service=~\"$service\"}[$__rate_interval]))",
+          "expr": "- sum(rate(container_network_transmit_packets_dropped_total{service=\"$service\"}[$__rate_interval]))",
           "interval": "$resolution",
           "legendFormat": "Out",
           "refId": "B"
@@ -1791,7 +1800,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.3.3",
@@ -1802,7 +1812,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(container_network_receive_bytes_total{service=~\"$service\"}[$__rate_interval])) by (node)",
+          "expr": "sum(rate(container_network_receive_bytes_total{service=\"$service\"}[$__rate_interval])) by (node)",
           "interval": "$resolution",
           "legendFormat": "{{ node }}",
           "refId": "A"
@@ -1881,7 +1891,8 @@
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "pluginVersion": "8.3.3",
@@ -1892,7 +1903,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(container_network_transmit_bytes_total{service=~\"$service\"}[$__rate_interval])) by (node)",
+          "expr": "sum(rate(container_network_transmit_bytes_total{service=\"$service\"}[$__rate_interval])) by (node)",
           "interval": "$resolution",
           "legendFormat": "{{ node }}",
           "refId": "A"
@@ -1903,7 +1914,7 @@
     }
   ],
   "refresh": "30s",
-  "schemaVersion": 34,
+  "schemaVersion": 35,
   "style": "dark",
   "tags": [
     "Kubernetes",
@@ -2002,6 +2013,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Global",
   "uid": "k8s_views_global",
-  "version": 4,
+  "version": 5,
   "weekStart": ""
 }
