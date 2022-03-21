@@ -133,7 +133,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "datasource": {
@@ -202,7 +202,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "datasource": {
@@ -262,7 +262,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "datasource": {
@@ -322,7 +322,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "datasource": {
@@ -409,7 +409,9 @@
             "mean"
           ],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "right",
+          "sortBy": "Max",
+          "sortDesc": true
         },
         "tooltip": {
           "mode": "multi",
@@ -596,7 +598,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "datasource": {
@@ -655,7 +657,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "datasource": {
@@ -715,7 +717,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "datasource": {
@@ -776,7 +778,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "datasource": {
@@ -837,7 +839,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "datasource": {
@@ -898,7 +900,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "datasource": {
@@ -1203,7 +1205,9 @@
             "mean"
           ],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "right",
+          "sortBy": "Max",
+          "sortDesc": true
         },
         "tooltip": {
           "mode": "single",
@@ -1298,7 +1302,9 @@
             "mean"
           ],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "right",
+          "sortBy": "Max",
+          "sortDesc": true
         },
         "tooltip": {
           "mode": "single",
@@ -1394,7 +1400,9 @@
             "mean"
           ],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "right",
+          "sortBy": "Max",
+          "sortDesc": true
         },
         "tooltip": {
           "mode": "single",
@@ -1489,7 +1497,9 @@
             "mean"
           ],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "right",
+          "sortBy": "Max",
+          "sortDesc": true
         },
         "tooltip": {
           "mode": "single",
@@ -2013,6 +2023,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Global",
   "uid": "k8s_views_global",
-  "version": 5,
+  "version": 6,
   "weekStart": ""
 }

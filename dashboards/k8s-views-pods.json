@@ -129,7 +129,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "datasource": {
@@ -188,7 +188,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "datasource": {
@@ -246,7 +246,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "datasource": {
@@ -326,7 +326,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "datasource": {
@@ -407,7 +407,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "datasource": {
@@ -505,7 +505,7 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "datasource": {
@@ -744,7 +744,7 @@
         },
         "tooltip": {
           "mode": "multi",
-          "sort": "none"
+          "sort": "desc"
         }
       },
       "pluginVersion": "8.3.3",
@@ -855,7 +855,7 @@
         },
         "tooltip": {
           "mode": "multi",
-          "sort": "none"
+          "sort": "desc"
         }
       },
       "pluginVersion": "8.3.3",
@@ -1455,6 +1455,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Pods",
   "uid": "k8s_views_pods",
-  "version": 7,
+  "version": 8,
   "weekStart": ""
 }

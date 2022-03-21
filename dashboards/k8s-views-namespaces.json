@@ -127,7 +127,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "datasource": {
@@ -196,7 +196,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "datasource": {
@@ -255,7 +255,7 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "datasource": {
@@ -313,7 +313,7 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "datasource": {
@@ -400,11 +400,13 @@
             "mean"
           ],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "right",
+          "sortBy": "Max",
+          "sortDesc": true
         },
         "tooltip": {
           "mode": "multi",
-          "sort": "none"
+          "sort": "desc"
         }
       },
       "pluginVersion": "8.3.3",
@@ -565,7 +567,7 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "datasource": {
@@ -623,7 +625,7 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "datasource": {
@@ -683,7 +685,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "datasource": {
@@ -744,7 +746,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "datasource": {
@@ -805,7 +807,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "datasource": {
@@ -866,7 +868,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "datasource": {
@@ -925,7 +927,7 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "datasource": {
@@ -983,7 +985,7 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "8.4.1",
+      "pluginVersion": "8.4.2",
       "targets": [
         {
           "datasource": {
@@ -1279,7 +1281,7 @@
         },
         "tooltip": {
           "mode": "multi",
-          "sort": "none"
+          "sort": "desc"
         }
       },
       "pluginVersion": "8.3.3",
@@ -1695,7 +1697,7 @@
         },
         "tooltip": {
           "mode": "multi",
-          "sort": "none"
+          "sort": "desc"
         }
       },
       "pluginVersion": "8.3.3",
@@ -1787,7 +1789,7 @@
         },
         "tooltip": {
           "mode": "multi",
-          "sort": "none"
+          "sort": "desc"
         }
       },
       "pluginVersion": "8.3.3",
@@ -1936,6 +1938,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Namespaces",
   "uid": "k8s_views_ns",
-  "version": 7,
+  "version": 8,
   "weekStart": ""
 }
