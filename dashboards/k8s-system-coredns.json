@@ -127,7 +127,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "up{job=\"coredns\", instance=~\"$instance\"}",
+          "expr": "up{job=\"coredns\", instance=\"$instance\"}",
           "interval": "",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -219,7 +219,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "rate(process_cpu_seconds_total{job=\"coredns\", instance=~\"$instance\"}[$__rate_interval])",
+          "expr": "rate(process_cpu_seconds_total{job=\"coredns\", instance=\"$instance\"}[$__rate_interval])",
           "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -309,7 +309,7 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "process_resident_memory_bytes{job=\"coredns\", instance=~\"$instance\"}",
+          "expr": "process_resident_memory_bytes{job=\"coredns\", instance=\"$instance\"}",
           "interval": "",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -400,7 +400,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(coredns_dns_requests_total{instance=~\"$instance\",proto=\"$protocol\"}[$__rate_interval]))",
+          "expr": "sum(rate(coredns_dns_requests_total{instance=\"$instance\",proto=\"$protocol\"}[$__rate_interval]))",
           "interval": "$resolution",
           "legendFormat": "total $protocol requests",
           "refId": "A"
@@ -491,7 +491,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "avg(rate(coredns_dns_request_size_bytes_sum{instance=~\"$instance\",proto=\"$protocol\"}[$__rate_interval])) by (proto)",
+          "expr": "avg(rate(coredns_dns_request_size_bytes_sum{instance=\"$instance\",proto=\"$protocol\"}[$__rate_interval])) by (proto)",
           "interval": "$resolution",
           "legendFormat": "average $protocol packet size",
           "refId": "A"
@@ -582,7 +582,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(coredns_dns_requests_total{instance=~\"$instance\"}[$__rate_interval])) by (type)",
+          "expr": "sum(rate(coredns_dns_requests_total{instance=\"$instance\"}[$__rate_interval])) by (type)",
           "interval": "$resolution",
           "legendFormat": "{{ type }}",
           "refId": "A"
@@ -673,7 +673,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(coredns_dns_responses_total{instance=~\"$instance\"}[$__rate_interval])) by (rcode)",
+          "expr": "sum(rate(coredns_dns_responses_total{instance=\"$instance\"}[$__rate_interval])) by (rcode)",
           "interval": "$resolution",
           "legendFormat": "{{ rcode }}",
           "refId": "A"
@@ -855,7 +855,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(coredns_forward_responses_total{rcode=~\"SERVFAIL|REFUSED\"}[$__rate_interval])) by (rcode)",
+          "expr": "sum(rate(coredns_forward_responses_total{rcode=\"SERVFAIL|REFUSED\"}[$__rate_interval])) by (rcode)",
           "interval": "$resolution",
           "legendFormat": "{{ rcode }}",
           "refId": "A"
@@ -946,7 +946,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(coredns_cache_hits_total{instance=~\"$instance\"}[$__rate_interval])) by (type)",
+          "expr": "sum(rate(coredns_cache_hits_total{instance=\"$instance\"}[$__rate_interval])) by (type)",
           "interval": "$resolution",
           "legendFormat": "{{ type }}",
           "refId": "A"
@@ -957,7 +957,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(coredns_cache_misses_total{instance=~\"$instance\"}[$__rate_interval])) by (type)",
+          "expr": "sum(rate(coredns_cache_misses_total{instance=\"$instance\"}[$__rate_interval])) by (type)",
           "interval": "$resolution",
           "legendFormat": "misses",
           "refId": "B"

@@ -127,7 +127,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "up{job=\"apiserver\", instance=~\"$instance\"}",
+          "expr": "up{job=\"apiserver\", instance=\"$instance\"}",
           "interval": "",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -218,7 +218,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by (code) (rate(apiserver_request_total{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum by (code) (rate(apiserver_request_total{instance=\"$instance\"}[$__rate_interval]))",
           "interval": "$resolution",
           "legendFormat": "{{ code }}",
           "refId": "A"
@@ -309,7 +309,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by (verb) (rate(apiserver_request_total{instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum by (verb) (rate(apiserver_request_total{instance=\"$instance\"}[$__rate_interval]))",
           "interval": "$resolution",
           "legendFormat": "{{ verb}}",
           "refId": "A"
@@ -400,7 +400,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(rest_client_request_duration_seconds_bucket{job=\"apiserver\", instance=~\"$instance\"}[$__rate_interval])) by (instance)",
+          "expr": "sum(rate(rest_client_request_duration_seconds_bucket{job=\"apiserver\", instance=\"$instance\"}[$__rate_interval])) by (instance)",
           "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -491,7 +491,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(rest_client_request_duration_seconds_bucket{job=\"apiserver\", instance=~\"$instance\"}[$__rate_interval])) by (verb)",
+          "expr": "sum(rate(rest_client_request_duration_seconds_bucket{job=\"apiserver\", instance=\"$instance\"}[$__rate_interval])) by (verb)",
           "interval": "$resolution",
           "legendFormat": "{{ verb }}",
           "refId": "A"
@@ -582,7 +582,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by(instance) (rate(apiserver_request_total{code=~\"5..\", job=\"apiserver\", instance=~\"$instance\"}[$__rate_interval]))\n / sum by(instance) (rate(apiserver_request_total{job=\"apiserver\", instance=~\"$instance\"}[$__rate_interval]))",
+          "expr": "sum by(instance) (rate(apiserver_request_total{code=\"5..\", job=\"apiserver\", instance=\"$instance\"}[$__rate_interval]))\n / sum by(instance) (rate(apiserver_request_total{job=\"apiserver\", instance=\"$instance\"}[$__rate_interval]))",
           "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -673,7 +673,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by(verb) (rate(apiserver_request_total{code=~\"5..\",job=\"apiserver\"}[$__rate_interval]))\n / sum by(verb) (rate(apiserver_request_total{job=\"apiserver\"}[$__rate_interval]))",
+          "expr": "sum by(verb) (rate(apiserver_request_total{code=\"5..\",job=\"apiserver\"}[$__rate_interval]))\n / sum by(verb) (rate(apiserver_request_total{job=\"apiserver\"}[$__rate_interval]))",
           "interval": "$resolution",
           "legendFormat": "{{ verb }}",
           "refId": "A"
@@ -764,7 +764,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(apiserver_request_total{instance=~\"$instance\"}[$__rate_interval])) by (instance)",
+          "expr": "sum(rate(apiserver_request_total{instance=\"$instance\"}[$__rate_interval])) by (instance)",
           "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -855,7 +855,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(workqueue_depth{job=\"apiserver\", instance=~\"$instance\"}[$__rate_interval])) by (instance)",
+          "expr": "sum(rate(workqueue_depth{job=\"apiserver\", instance=\"$instance\"}[$__rate_interval])) by (instance)",
           "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -947,7 +947,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "rate(process_cpu_seconds_total{job=\"apiserver\", instance=~\"$instance\"}[$__rate_interval])",
+          "expr": "rate(process_cpu_seconds_total{job=\"apiserver\", instance=\"$instance\"}[$__rate_interval])",
           "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -1038,7 +1038,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "process_resident_memory_bytes{job=\"apiserver\", instance=~\"$instance\"}",
+          "expr": "process_resident_memory_bytes{job=\"apiserver\", instance=\"$instance\"}",
           "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "refId": "A"
