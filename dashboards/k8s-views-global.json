@@ -550,6 +550,18 @@
           "interval": "",
           "legendFormat": "Network Policies",
           "refId": "M"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "exemplar": true,
+          "expr": "count(up{job=\"node-exporter\"})",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Nodes",
+          "refId": "N"
         }
       ],
       "title": "Kubernetes Resource Count",
@@ -2023,6 +2035,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Global",
   "uid": "k8s_views_global",
-  "version": 6,
+  "version": 7,
   "weekStart": ""
 }
