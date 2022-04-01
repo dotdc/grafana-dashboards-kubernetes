@@ -15,7 +15,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "8.3.4"
+      "version": "8.4.4"
     },
     {
       "type": "datasource",
@@ -99,8 +99,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
-        "w": 24,
+        "h": 8,
+        "w": 9,
         "x": 0,
         "y": 0
       },
@@ -109,7 +109,7 @@
         "colorMode": "background",
         "graphMode": "none",
         "justifyMode": "auto",
-        "orientation": "vertical",
+        "orientation": "horizontal",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -119,7 +119,7 @@
         },
         "textMode": "value_and_name"
       },
-      "pluginVersion": "8.4.2",
+      "pluginVersion": "8.4.4",
       "targets": [
         {
           "datasource": {
@@ -127,7 +127,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "up{job=\"apiserver\", instance=\"$instance\"}",
+          "expr": "up{job=\"apiserver\"}",
           "interval": "",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -135,6 +135,235 @@
       ],
       "title": "API Server - Health Status",
       "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "decimals": 0,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 1
+              },
+              {
+                "color": "orange",
+                "value": 5
+              },
+              {
+                "color": "red",
+                "value": 10
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 3,
+        "x": 9,
+        "y": 0
+      },
+      "id": 58,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.4.4",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "exemplar": false,
+          "expr": "sum(apiserver_requested_deprecated_apis)",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Nb of deprecated API resources",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "__name__"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 188
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 60,
+      "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": []
+      },
+      "pluginVersion": "8.4.4",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "exemplar": true,
+          "expr": "apiserver_requested_deprecated_apis",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Deprecated Kubernetes Resources",
+      "transformations": [
+        {
+          "id": "labelsToFields",
+          "options": {
+            "keepLabels": [
+              "group",
+              "job",
+              "removed_release",
+              "resource",
+              "version",
+              "name"
+            ],
+            "mode": "columns"
+          }
+        },
+        {
+          "id": "merge",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "Value": true,
+              "job": true
+            },
+            "indexByName": {
+              "Time": 6,
+              "Value": 7,
+              "group": 1,
+              "job": 5,
+              "namespace": 0,
+              "removed_release": 4,
+              "resource": 3,
+              "version": 2
+            },
+            "renameByName": {}
+          }
+        },
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "group": {
+                "aggregations": [
+                  "lastNotNull"
+                ],
+                "operation": "groupby"
+              },
+              "job": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "namespace": {
+                "aggregations": [
+                  "lastNotNull"
+                ],
+                "operation": "groupby"
+              },
+              "removed_release": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "resource": {
+                "aggregations": [
+                  "lastNotNull"
+                ],
+                "operation": "groupby"
+              },
+              "version": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        }
+      ],
+      "type": "table"
     },
     {
       "datasource": {
@@ -196,7 +425,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 3
+        "y": 8
       },
       "id": 38,
       "options": {
@@ -218,7 +447,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by (code) (rate(apiserver_request_total{instance=\"$instance\"}[$__rate_interval]))",
+          "expr": "sum by (code) (rate(apiserver_request_total[$__rate_interval]))",
           "interval": "$resolution",
           "legendFormat": "{{ code }}",
           "refId": "A"
@@ -287,7 +516,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 3
+        "y": 8
       },
       "id": 39,
       "options": {
@@ -309,7 +538,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by (verb) (rate(apiserver_request_total{instance=\"$instance\"}[$__rate_interval]))",
+          "expr": "sum by (verb) (rate(apiserver_request_total[$__rate_interval]))",
           "interval": "$resolution",
           "legendFormat": "{{ verb}}",
           "refId": "A"
@@ -378,7 +607,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 11
+        "y": 16
       },
       "id": 53,
       "options": {
@@ -400,7 +629,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(rest_client_request_duration_seconds_bucket{job=\"apiserver\", instance=\"$instance\"}[$__rate_interval])) by (instance)",
+          "expr": "sum(rate(rest_client_request_duration_seconds_bucket{job=\"apiserver\"}[$__rate_interval])) by (instance)",
           "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -469,7 +698,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 11
+        "y": 16
       },
       "id": 54,
       "options": {
@@ -491,7 +720,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(rest_client_request_duration_seconds_bucket{job=\"apiserver\", instance=\"$instance\"}[$__rate_interval])) by (verb)",
+          "expr": "sum(rate(rest_client_request_duration_seconds_bucket{job=\"apiserver\"}[$__rate_interval])) by (verb)",
           "interval": "$resolution",
           "legendFormat": "{{ verb }}",
           "refId": "A"
@@ -560,7 +789,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 19
+        "y": 24
       },
       "id": 50,
       "options": {
@@ -582,7 +811,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by(instance) (rate(apiserver_request_total{code=\"5..\", job=\"apiserver\", instance=\"$instance\"}[$__rate_interval]))\n / sum by(instance) (rate(apiserver_request_total{job=\"apiserver\", instance=\"$instance\"}[$__rate_interval]))",
+          "expr": "sum by(instance) (rate(apiserver_request_total{code=\"5..\", job=\"apiserver\"}[$__rate_interval]))\n / sum by(instance) (rate(apiserver_request_total{job=\"apiserver\"}[$__rate_interval]))",
           "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -651,7 +880,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 19
+        "y": 24
       },
       "id": 51,
       "options": {
@@ -742,7 +971,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 27
+        "y": 32
       },
       "id": 40,
       "options": {
@@ -764,7 +993,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(apiserver_request_total{instance=\"$instance\"}[$__rate_interval])) by (instance)",
+          "expr": "sum(rate(apiserver_request_total[$__rate_interval])) by (instance)",
           "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -833,7 +1062,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 27
+        "y": 32
       },
       "id": 56,
       "options": {
@@ -855,7 +1084,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(workqueue_depth{job=\"apiserver\", instance=\"$instance\"}[$__rate_interval])) by (instance)",
+          "expr": "sum(rate(workqueue_depth{job=\"apiserver\"}[$__rate_interval])) by (instance)",
           "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -925,7 +1154,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 35
+        "y": 40
       },
       "id": 47,
       "options": {
@@ -947,7 +1176,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "rate(process_cpu_seconds_total{job=\"apiserver\", instance=\"$instance\"}[$__rate_interval])",
+          "expr": "rate(process_cpu_seconds_total{job=\"apiserver\"}[$__rate_interval])",
           "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -1016,7 +1245,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 35
+        "y": 40
       },
       "id": 48,
       "options": {
@@ -1038,7 +1267,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "process_resident_memory_bytes{job=\"apiserver\", instance=\"$instance\"}",
+          "expr": "process_resident_memory_bytes{job=\"apiserver\"}",
           "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -1075,32 +1304,6 @@
         "regex": "",
         "skipUrlSync": false,
         "type": "datasource"
-      },
-      {
-        "current": {
-          "selected": false,
-          "text": "All",
-          "value": "$__all"
-        },
-        "definition": "label_values(apiserver_request_total{job=\"apiserver\"}, instance)",
-        "hide": 0,
-        "includeAll": true,
-        "label": "",
-        "multi": false,
-        "name": "instance",
-        "options": [],
-        "query": {
-          "query": "label_values(apiserver_request_total{job=\"apiserver\"}, instance)",
-          "refId": "Prometheus-instance-Variable-Query"
-        },
-        "refresh": 2,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 1,
-        "tagValuesQuery": "",
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
       },
       {
         "current": {
@@ -1149,6 +1352,6 @@
   "timezone": "",
   "title": "Kubernetes / System / API Server",
   "uid": "k8s_system_apisrv",
-  "version": 4,
+  "version": 5,
   "weekStart": ""
 }
