@@ -409,9 +409,7 @@
             "mean"
           ],
           "displayMode": "table",
-          "placement": "right",
-          "sortBy": "Max",
-          "sortDesc": true
+          "placement": "right"
         },
         "tooltip": {
           "mode": "multi",
