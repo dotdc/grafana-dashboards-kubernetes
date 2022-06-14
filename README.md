@@ -1,6 +1,16 @@
-# grafana-dashboards-kubernetes
+# grafana-dashboards-kubernetes <!-- omit in toc -->
 
 ![logo](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/kubernetes-grafana-dashboards-logo.png)
+
+- [Description](#description)
+- [Features](#features)
+- [Dashboards](#dashboards)
+- [Installation](#installation)
+  - [Install manually](#install-manually)
+  - [Install via grafana.com](#install-via-grafanacom)
+  - [Install as ConfigMaps](#install-as-configmaps)
+  - [Install as ConfigMaps with Terraform](#install-as-configmaps-with-terraform)
+- [Contributing](#contributing)
 
 ## Description
 
@@ -36,6 +46,51 @@ As an example, here's how the `Kubernetes / Views / Global` dashboard looks like
 | k8s-views-namespaces.json  | `Namespaces` level view dashboard for Kubernetes. | [LINK](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-views-namespaces.png) |
 | k8s-views-nodes.json       | `Nodes` level view dashboard for Kubernetes. | [LINK](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-views-nodes.png) |
 | k8s-views-pods.json        | `Pods` level view dashboard for Kubernetes. | [LINK](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-views-pods.png) |
+
+## Installation
+
+In most installation cases, you will need to clone this repository (or your fork):
+
+```terminal
+git clone https://github.com/dotdc/grafana-dashboards-kubernetes.git
+cd grafana-dashboards-kubernetes
+```
+
+### Install manually
+
+On the WebUI of your Grafana instance, put your mouse over the `+` sign on the left menu, then click on `Import`.\
+Once you are on the Import page, you can upload the JSON files one by one from your local copy using the `Upload JSON file` button.
+
+### Install via grafana.com
+
+On the WebUI of your Grafana instance, put your mouse over the `+` sign on the left menu, then click on `Import`.\
+Once you are on the Import page, you can put the grafana.com dashboard id (see table bellow) under `Import via grafana.com` then click on the `Load` button. Repeat for each dashboard.
+
+Grafana.com dashboard id list:
+
+| Dashboard                          | ID    |
+|:-----------------------------------|:------|
+| k8s-addons-starboard-operator.json | 16337 |
+| k8s-system-api-server.json         | 15761 |
+| k8s-system-coredns.json            | 15762 |
+| k8s-views-global.json              | 15757 |
+| k8s-views-namespaces.json          | 15758 |
+| k8s-views-nodes.json               | 15759 |
+| k8s-views-pods.json                | 15760 |
+
+### Install as ConfigMaps
+
+Grafana dashboards can be provisionned as Kubernetes ConfigMaps if you configure the [dashboard sidecar](https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml#L667) available on the official [Grafana Helm Chart](https://github.com/grafana/helm-charts/tree/main/charts/grafana).
+
+To build the ConfigMaps and output them on STDOUT : `kubectl kustomize .`
+
+To build and deploy them directly on your kubernetes cluster : `kubectl apply -k .`
+
+### Install as ConfigMaps with Terraform
+
+If you use terraform to provision your Kubernetes resources, you can convert the generated ConfigMaps to Terraform code using [tfk8s](https://github.com/jrhouston/tfk8s).
+
+To build and convert ConfigMaps to Terraform code : `kubectl kustomize . | tfk8s`
 
 ## Contributing
 
