@@ -1,5 +1,6 @@
 # Global labels
 generatorOptions:
+  disableNameSuffixHash: true
   labels:
     grafana_dashboard: "true"
 
@@ -16,26 +17,18 @@ configMapGenerator:
 - name: dashboards-k8s-views-global
   files:
   - dashboards/k8s-views-global.json
-  options:
-    disableNameSuffixHash: true
 
 - name: dashboards-k8s-views-namespaces
   files:
   - dashboards/k8s-views-namespaces.json
-  options:
-    disableNameSuffixHash: true
 
 - name: dashboards-k8s-views-nodes
   files:
   - dashboards/k8s-views-nodes.json
-  options:
-    disableNameSuffixHash: true
 
 - name: dashboards-k8s-views-pods
   files:
   - dashboards/k8s-views-pods.json
-  options:
-    disableNameSuffixHash: true
 
 #################################################
 # System / Addons Dashboards
@@ -44,17 +37,11 @@ configMapGenerator:
 - name: dashboards-k8s-system-api-server
   files:
   - dashboards/k8s-system-api-server.json
-  options:
-    disableNameSuffixHash: true
 
 - name: dashboards-k8s-system-coredns
   files:
   - dashboards/k8s-system-coredns.json
-  options:
-    disableNameSuffixHash: true
 
 - name: dashboards-k8s-addons-starboard-operator
   files:
   - dashboards/k8s-addons-starboard-operator.json
-  options:
-    disableNameSuffixHash: true
