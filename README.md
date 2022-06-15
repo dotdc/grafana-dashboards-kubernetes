@@ -2,6 +2,8 @@
 
 ![logo](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/kubernetes-grafana-dashboards-logo.png)
 
+## Table of contents <!-- omit in toc -->
+
 - [Description](#description)
 - [Features](#features)
 - [Dashboards](#dashboards)
@@ -82,15 +84,27 @@ Grafana.com dashboard id list:
 
 Grafana dashboards can be provisionned as Kubernetes ConfigMaps if you configure the [dashboard sidecar](https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml#L667) available on the official [Grafana Helm Chart](https://github.com/grafana/helm-charts/tree/main/charts/grafana).
 
-To build the ConfigMaps and output them on STDOUT : `kubectl kustomize .`
+To build the ConfigMaps and output them on STDOUT :
 
-To build and deploy them directly on your kubernetes cluster : `kubectl apply -k .`
+```terminal
+kubectl kustomize .
+```
+
+To build and deploy them directly on your kubernetes cluster :
+
+```terminal
+kubectl apply -k .
+```
 
 ### Install as ConfigMaps with Terraform
 
 If you use terraform to provision your Kubernetes resources, you can convert the generated ConfigMaps to Terraform code using [tfk8s](https://github.com/jrhouston/tfk8s).
 
-To build and convert ConfigMaps to Terraform code : `kubectl kustomize . | tfk8s`
+To build and convert ConfigMaps to Terraform code :
+
+```terminal
+kubectl kustomize . | tfk8s
+```
 
 ## Contributing
 
