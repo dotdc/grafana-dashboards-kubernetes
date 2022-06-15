@@ -1,10 +1,8 @@
-# Global labels
+# Global options
 generatorOptions:
   disableNameSuffixHash: true
   labels:
     grafana_dashboard: "true"
-
-# Global namespace
 namespace: monitoring
 
 # Generate a ConfigMap for each dashboard
@@ -15,33 +13,26 @@ configMapGenerator:
 #################################################
 
 - name: dashboards-k8s-views-global
-  files:
-  - dashboards/k8s-views-global.json
+  files: [ dashboards/k8s-views-global.json ]
 
 - name: dashboards-k8s-views-namespaces
-  files:
-  - dashboards/k8s-views-namespaces.json
+  files: [ dashboards/k8s-views-namespaces.json ]
 
 - name: dashboards-k8s-views-nodes
-  files:
-  - dashboards/k8s-views-nodes.json
+  files: [ dashboards/k8s-views-nodes.json ]
 
 - name: dashboards-k8s-views-pods
-  files:
-  - dashboards/k8s-views-pods.json
+  files: [ dashboards/k8s-views-pods.json ]
 
 #################################################
 # System / Addons Dashboards
 #################################################
 
 - name: dashboards-k8s-system-api-server
-  files:
-  - dashboards/k8s-system-api-server.json
+  files: [ dashboards/k8s-system-api-server.json ]
 
 - name: dashboards-k8s-system-coredns
-  files:
-  - dashboards/k8s-system-coredns.json
+  files: [ dashboards/k8s-system-coredns.json ]
 
 - name: dashboards-k8s-addons-starboard-operator
-  files:
-  - dashboards/k8s-addons-starboard-operator.json
+  files: [ dashboards/k8s-addons-starboard-operator.json ]
