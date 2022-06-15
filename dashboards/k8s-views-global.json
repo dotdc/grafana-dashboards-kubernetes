@@ -141,7 +141,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/\", service=\"$service\"}[$__rate_interval])) / sum(machine_cpu_cores{service=\"$service\"})",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/\"}[$__rate_interval])) / sum(machine_cpu_cores)",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -210,7 +210,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{id=\"/\", service=\"$service\"}) / sum(machine_memory_bytes{service=\"$service\"})",
+          "expr": "sum(container_memory_working_set_bytes{id=\"/\"}) / sum(machine_memory_bytes)",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -735,7 +735,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/\", service=\"$service\"}[$__rate_interval]))",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -796,7 +796,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(machine_cpu_cores{service=\"$service\"})",
+          "expr": "sum(machine_cpu_cores)",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -857,7 +857,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{id=\"/\", service=\"$service\"})",
+          "expr": "sum(container_memory_working_set_bytes{id=\"/\"})",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -918,7 +918,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(machine_memory_bytes{service=\"$service\"})",
+          "expr": "sum(machine_memory_bytes)",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -1031,7 +1031,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/\", service=\"$service\"}[$__rate_interval])) / sum(machine_cpu_cores{service=\"$service\"})",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/\"}[$__rate_interval])) / sum(machine_cpu_cores)",
           "interval": "$resolution",
           "legendFormat": "CPU usage in %",
           "refId": "A"
@@ -1131,7 +1131,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{id=\"/\", service=\"$service\"}) / sum(machine_memory_bytes{service=\"$service\"})",
+          "expr": "sum(container_memory_working_set_bytes{id=\"/\"}) / sum(machine_memory_bytes)",
           "interval": "",
           "legendFormat": "Memory usage in %",
           "refId": "A"
@@ -1232,7 +1232,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{image!=\"\", service=\"$service\"}[$__rate_interval])) by (namespace)",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{image!=\"\"}[$__rate_interval])) by (namespace)",
           "interval": "$resolution",
           "legendFormat": "{{ namespace }}",
           "refId": "A"
@@ -1329,7 +1329,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{image!=\"\", service=\"$service\"}) by (namespace)",
+          "expr": "sum(container_memory_working_set_bytes{image!=\"\"}) by (namespace)",
           "interval": "$resolution",
           "legendFormat": "{{ namespace }}",
           "refId": "A"
@@ -1427,7 +1427,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{image!=\"\", service=\"$service\"}[$__rate_interval])) by (node) / sum(machine_cpu_cores{service=\"$service\"}) by (node)",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{image!=\"\"}[$__rate_interval])) by (node) / sum(machine_cpu_cores) by (node)",
           "interval": "$resolution",
           "legendFormat": "{{ node }}",
           "refId": "A"
@@ -1524,7 +1524,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{image!=\"\", service=\"$service\"}) by (node)",
+          "expr": "sum(container_memory_working_set_bytes{image!=\"\"}) by (node)",
           "interval": "",
           "legendFormat": "{{ node}}",
           "refId": "A"
@@ -1628,7 +1628,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(container_network_receive_bytes_total{service=\"$service\"}[$__rate_interval]))",
+          "expr": "sum(rate(container_network_receive_bytes_total[$__rate_interval]))",
           "interval": "$resolution",
           "legendFormat": "In",
           "refId": "A"
@@ -1639,7 +1639,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "- sum(rate(container_network_transmit_bytes_total{service=\"$service\"}[$__rate_interval]))",
+          "expr": "- sum(rate(container_network_transmit_bytes_total[$__rate_interval]))",
           "interval": "$resolution",
           "legendFormat": "Out",
           "refId": "B"
@@ -1730,7 +1730,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(container_network_receive_packets_dropped_total{service=\"$service\"}[$__rate_interval]))",
+          "expr": "sum(rate(container_network_receive_packets_dropped_total[$__rate_interval]))",
           "interval": "$resolution",
           "legendFormat": "In",
           "refId": "A"
@@ -1741,7 +1741,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "- sum(rate(container_network_transmit_packets_dropped_total{service=\"$service\"}[$__rate_interval]))",
+          "expr": "- sum(rate(container_network_transmit_packets_dropped_total[$__rate_interval]))",
           "interval": "$resolution",
           "legendFormat": "Out",
           "refId": "B"
@@ -1832,7 +1832,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(container_network_receive_bytes_total{service=\"$service\"}[$__rate_interval])) by (node)",
+          "expr": "sum(rate(container_network_receive_bytes_total[$__rate_interval])) by (node)",
           "interval": "$resolution",
           "legendFormat": "{{ node }}",
           "refId": "A"
@@ -1923,7 +1923,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(container_network_transmit_bytes_total{service=\"$service\"}[$__rate_interval])) by (node)",
+          "expr": "sum(rate(container_network_transmit_bytes_total[$__rate_interval])) by (node)",
           "interval": "$resolution",
           "legendFormat": "{{ node }}",
           "refId": "A"
@@ -1996,32 +1996,6 @@
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
-      },
-      {
-        "current": {
-          "selected": false,
-          "text": "kube-prometheus-stack-kubelet",
-          "value": "kube-prometheus-stack-kubelet"
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${datasource}"
-        },
-        "definition": "label_values(machine_cpu_cores, service)",
-        "hide": 0,
-        "includeAll": false,
-        "multi": false,
-        "name": "service",
-        "options": [],
-        "query": {
-          "query": "label_values(machine_cpu_cores, service)",
-          "refId": "StandardVariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 1,
-        "type": "query"
       }
     ]
   },
@@ -2033,6 +2007,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Global",
   "uid": "k8s_views_global",
-  "version": 8,
+  "version": 9,
   "weekStart": ""
 }
