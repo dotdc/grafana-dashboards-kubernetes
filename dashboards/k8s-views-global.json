@@ -1816,6 +1816,7 @@
           "editorMode": "code",
           "expr": "- sum(rate(container_network_transmit_bytes_total[$__rate_interval])) by (namespace)",
           "hide": false,
+          "interval": "$resolution",
           "legendFormat": "Transmitted bytes in {{ namespace }}",
           "range": true,
           "refId": "B"
@@ -1921,6 +1922,7 @@
           "editorMode": "code",
           "expr": "- sum(rate(container_network_transmit_bytes_total[$__rate_interval])) by (node)",
           "hide": false,
+          "interval": "$resolution",
           "legendFormat": "Transmitted bytes in {{ node }}",
           "range": true,
           "refId": "B"
@@ -2004,6 +2006,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Global",
   "uid": "k8s_views_global",
-  "version": 10,
+  "version": 11,
   "weekStart": ""
 }
