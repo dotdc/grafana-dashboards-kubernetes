@@ -1087,10 +1087,12 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "sum(container_memory_working_set_bytes{id=\"/\"}) / sum(machine_memory_bytes)",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "Memory usage in %",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -1480,10 +1482,12 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "sum(container_memory_working_set_bytes{image!=\"\"}) by (node)",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "{{ node}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -1962,8 +1966,8 @@
       {
         "current": {
           "selected": true,
-          "text": "1m",
-          "value": "1m"
+          "text": "30s",
+          "value": "30s"
         },
         "hide": 0,
         "includeAll": false,
@@ -1971,14 +1975,24 @@
         "name": "resolution",
         "options": [
           {
-            "selected": true,
-            "text": "1m",
-            "value": "1m"
+            "selected": false,
+            "text": "1s",
+            "value": "1s"
           },
           {
             "selected": false,
-            "text": "2m",
-            "value": "2m"
+            "text": "15s",
+            "value": "15s"
+          },
+          {
+            "selected": true,
+            "text": "30s",
+            "value": "30s"
+          },
+          {
+            "selected": false,
+            "text": "1m",
+            "value": "1m"
           },
           {
             "selected": false,
@@ -1991,7 +2005,7 @@
             "value": "5m"
           }
         ],
-        "query": "1m, 2m, 3m, 5m",
+        "query": "1s, 15s, 30s, 1m, 3m, 5m",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
@@ -2006,6 +2020,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Global",
   "uid": "k8s_views_global",
-  "version": 11,
+  "version": 12,
   "weekStart": ""
 }

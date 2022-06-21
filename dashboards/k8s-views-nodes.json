@@ -52,7 +52,10 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -76,6 +79,10 @@
   "panels": [
     {
       "collapsed": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -139,7 +146,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.4.2",
+      "pluginVersion": "8.5.0",
       "targets": [
         {
           "datasource": {
@@ -209,7 +216,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.4.2",
+      "pluginVersion": "8.5.0",
       "targets": [
         {
           "datasource": {
@@ -270,7 +277,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "8.4.2",
+      "pluginVersion": "8.5.0",
       "targets": [
         {
           "datasource": {
@@ -299,7 +306,8 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto"
+            "displayMode": "auto",
+            "inspect": false
           },
           "mappings": [],
           "thresholds": {
@@ -397,7 +405,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "8.4.2",
+      "pluginVersion": "8.5.0",
       "targets": [
         {
           "datasource": {
@@ -543,7 +551,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.4.2",
+      "pluginVersion": "8.5.0",
       "targets": [
         {
           "datasource": {
@@ -605,7 +613,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.4.2",
+      "pluginVersion": "8.5.0",
       "targets": [
         {
           "datasource": {
@@ -666,7 +674,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.4.2",
+      "pluginVersion": "8.5.0",
       "targets": [
         {
           "datasource": {
@@ -728,7 +736,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.4.2",
+      "pluginVersion": "8.5.0",
       "targets": [
         {
           "datasource": {
@@ -798,7 +806,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.4.2",
+      "pluginVersion": "8.5.0",
       "targets": [
         {
           "datasource": {
@@ -818,6 +826,10 @@
     },
     {
       "collapsed": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1275,6 +1287,10 @@
     },
     {
       "collapsed": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1368,10 +1384,12 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "node_load1{instance=\"$instance\"}",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "1m",
+          "range": true,
           "refId": "A"
         },
         {
@@ -1379,11 +1397,13 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "node_load5{instance=\"$instance\"}",
           "hide": false,
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "5m",
+          "range": true,
           "refId": "B"
         },
         {
@@ -1391,11 +1411,13 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "node_load15{instance=\"$instance\"}",
           "hide": false,
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "15m",
+          "range": true,
           "refId": "C"
         }
       ],
@@ -1481,11 +1503,13 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "rate(node_context_switches_total{instance=\"$instance\"}[$__rate_interval])",
-          "interval": "",
+          "interval": "$resolution",
           "intervalFactor": 1,
           "legendFormat": "Context switches",
+          "range": true,
           "refId": "A"
         },
         {
@@ -1493,11 +1517,13 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "rate(node_intr_total{instance=\"$instance\"}[$__rate_interval])",
           "hide": false,
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "Interrupts",
+          "range": true,
           "refId": "B"
         }
       ],
@@ -1586,10 +1612,11 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "node_filefd_maximum{instance=\"$instance\"}",
           "instant": false,
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "Maximum file descriptors",
           "refId": "A"
         },
@@ -1598,11 +1625,12 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "node_filefd_allocated{instance=\"$instance\"}",
           "hide": false,
           "instant": false,
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "Allocated file descriptors",
           "refId": "B"
         }
@@ -1693,10 +1721,11 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "node_timex_estimated_error_seconds{instance=\"$instance\"}",
           "instant": false,
-          "interval": "",
+          "interval": "$resolution",
           "intervalFactor": 1,
           "legendFormat": "Estimated error in seconds",
           "refId": "A"
@@ -1706,12 +1735,14 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "node_timex_maxerror_seconds{instance=\"$instance\"}",
           "hide": false,
-          "interval": "",
+          "interval": "$resolution",
           "intervalFactor": 1,
           "legendFormat": "Maximum error in seconds",
+          "range": true,
           "refId": "B"
         }
       ],
@@ -1720,6 +1751,10 @@
     },
     {
       "collapsed": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -1812,10 +1847,12 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "sum(rate(node_network_receive_bytes_total{instance=\"$instance\"}[$__rate_interval]))",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "In",
+          "range": true,
           "refId": "A"
         },
         {
@@ -1823,10 +1860,12 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "- sum(rate(node_network_transmit_bytes_total{instance=\"$instance\"}[$__rate_interval]))",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "Out",
+          "range": true,
           "refId": "B"
         }
       ],
@@ -1925,10 +1964,12 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "- sum(rate(node_network_transmit_errs_total{instance=\"$instance\"}[$__rate_interval]))",
           "interval": "$resolution",
           "legendFormat": "Out",
+          "range": true,
           "refId": "B"
         }
       ],
@@ -2016,10 +2057,12 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "sum(rate(node_network_receive_packets_total{instance=\"$instance\"}[$__rate_interval]))",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "In",
+          "range": true,
           "refId": "A"
         },
         {
@@ -2027,10 +2070,12 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "- sum(rate(node_network_transmit_packets_total{instance=\"$instance\"}[$__rate_interval]))",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "Out",
+          "range": true,
           "refId": "B"
         }
       ],
@@ -2222,10 +2267,11 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "node_netstat_Tcp_CurrEstab{instance=\"$instance\"}",
           "instant": false,
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "TCP Currently Established",
           "refId": "A"
         }
@@ -2330,10 +2376,11 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "node_nf_conntrack_entries{instance=\"$instance\"}",
           "instant": false,
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "NF Conntrack entries",
           "refId": "A"
         },
@@ -2342,11 +2389,13 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "node_nf_conntrack_entries_limit{instance=\"$instance\"}",
           "hide": false,
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "NF Conntrack limit",
+          "range": true,
           "refId": "B"
         }
       ],
@@ -2355,6 +2404,10 @@
     },
     {
       "collapsed": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2448,10 +2501,12 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "sum(kubelet_volume_stats_used_bytes{node=\"$node\"}) by (persistentvolumeclaim) / sum(kubelet_volume_stats_capacity_bytes{node=\"$node\"}) by (persistentvolumeclaim)",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "{{ persistentvolumeclaim }}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -2471,7 +2526,8 @@
           "custom": {
             "align": "auto",
             "displayMode": "auto",
-            "filterable": false
+            "filterable": false,
+            "inspect": false
           },
           "mappings": [],
           "thresholds": {
@@ -2534,7 +2590,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "8.4.2",
+      "pluginVersion": "8.5.0",
       "targets": [
         {
           "datasource": {
@@ -2697,10 +2753,12 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "sum(kubelet_volume_stats_inodes_used{node=\"$node\"}) by (persistentvolumeclaim) / sum(kubelet_volume_stats_inodes{node=\"$node\"}) by (persistentvolumeclaim) * 100",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "{{ persistentvolumeclaim }}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -2709,6 +2767,10 @@
     },
     {
       "collapsed": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2802,11 +2864,13 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "100 - ((node_filesystem_avail_bytes{instance=\"$instance\"} * 100) / node_filesystem_size_bytes{instance=\"$instance\"})",
           "hide": false,
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "{{ mountpoint }}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -2895,11 +2959,13 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "100 - (node_filesystem_files_free{instance=\"$instance\"} / node_filesystem_files{instance=\"$instance\"} * 100)",
           "hide": false,
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "{{ mountpoint }}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -2988,10 +3054,12 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "rate(node_disk_read_bytes_total{instance=\"$instance\"}[$__rate_interval])",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "{{device}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -3080,11 +3148,13 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "rate(node_disk_written_bytes_total{instance=\"$instance\"}[$__rate_interval])",
           "hide": false,
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "{{device}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -3173,10 +3243,12 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "rate(node_disk_reads_completed_total{instance=\"$instance\"}[$__rate_interval])",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "{{device}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -3265,11 +3337,13 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "rate(node_disk_writes_completed_total{instance=\"$instance\"}[$__rate_interval])",
           "hide": false,
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "{{device}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -3358,10 +3432,12 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "rate(node_disk_io_now{instance=\"$instance\"}[$__rate_interval]) ",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "{{device}}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -3450,10 +3526,12 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "sum(node_filesystem_device_error) by (mountpoint)",
-          "interval": "",
+          "interval": "$resolution",
           "legendFormat": "{{ mountpoint }}",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -3462,7 +3540,7 @@
     }
   ],
   "refresh": "30s",
-  "schemaVersion": 35,
+  "schemaVersion": 36,
   "style": "dark",
   "tags": [
     "Kubernetes",
@@ -3517,8 +3595,8 @@
       {
         "current": {
           "selected": true,
-          "text": "1m",
-          "value": "1m"
+          "text": "30s",
+          "value": "30s"
         },
         "hide": 0,
         "includeAll": false,
@@ -3526,14 +3604,24 @@
         "name": "resolution",
         "options": [
           {
-            "selected": true,
-            "text": "1m",
-            "value": "1m"
+            "selected": false,
+            "text": "1s",
+            "value": "1s"
           },
           {
             "selected": false,
-            "text": "2m",
-            "value": "2m"
+            "text": "15s",
+            "value": "15s"
+          },
+          {
+            "selected": true,
+            "text": "30s",
+            "value": "30s"
+          },
+          {
+            "selected": false,
+            "text": "1m",
+            "value": "1m"
           },
           {
             "selected": false,
@@ -3546,7 +3634,7 @@
             "value": "5m"
           }
         ],
-        "query": "1m, 2m, 3m, 5m",
+        "query": "1s, 15s, 30s, 1m, 3m, 5m",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
@@ -3613,6 +3701,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Nodes",
   "uid": "k8s_views_nodes",
-  "version": 7,
+  "version": 8,
   "weekStart": ""
 }

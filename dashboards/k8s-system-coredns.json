@@ -1150,8 +1150,8 @@
       {
         "current": {
           "selected": true,
-          "text": "1m",
-          "value": "1m"
+          "text": "30s",
+          "value": "30s"
         },
         "hide": 0,
         "includeAll": false,
@@ -1159,14 +1159,24 @@
         "name": "resolution",
         "options": [
           {
-            "selected": true,
-            "text": "1m",
-            "value": "1m"
+            "selected": false,
+            "text": "1s",
+            "value": "1s"
           },
           {
             "selected": false,
-            "text": "2m",
-            "value": "2m"
+            "text": "15s",
+            "value": "15s"
+          },
+          {
+            "selected": true,
+            "text": "30s",
+            "value": "30s"
+          },
+          {
+            "selected": false,
+            "text": "1m",
+            "value": "1m"
           },
           {
             "selected": false,
@@ -1179,7 +1189,7 @@
             "value": "5m"
           }
         ],
-        "query": "1m, 2m, 3m, 5m",
+        "query": "1s, 15s, 30s, 1m, 3m, 5m",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
@@ -1194,6 +1204,6 @@
   "timezone": "",
   "title": "Kubernetes / System / CoreDNS",
   "uid": "k8s_system_coredns",
-  "version": 5,
+  "version": 6,
   "weekStart": ""
 }
