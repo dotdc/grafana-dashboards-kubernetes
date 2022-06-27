@@ -143,7 +143,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=~\"$namespace\", image!=\"\"}[$__rate_interval])) / sum(machine_cpu_cores)",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=~\"$namespace\", container!=\"\"}[$__rate_interval])) / sum(machine_cpu_cores)",
           "instant": true,
           "interval": "",
           "legendFormat": "",
@@ -716,7 +716,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=~\"$namespace\", image!=\"\"}[$__rate_interval])) by (pod)",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=~\"$namespace\", container!=\"\"}[$__rate_interval])) by (pod)",
           "interval": "$resolution",
           "legendFormat": "{{ pod }}",
           "refId": "A"
@@ -807,7 +807,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{namespace=~\"$namespace\", image!=\"\"}) by (pod)",
+          "expr": "sum(container_memory_working_set_bytes{namespace=~\"$namespace\", container!=\"\"}) by (pod)",
           "interval": "$resolution",
           "legendFormat": "{{ pod }}",
           "refId": "A"
@@ -1555,6 +1555,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Namespaces",
   "uid": "k8s_views_ns",
-  "version": 12,
+  "version": 13,
   "weekStart": ""
 }

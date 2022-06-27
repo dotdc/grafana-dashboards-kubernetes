@@ -1191,7 +1191,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{image!=\"\"}[$__rate_interval])) by (namespace)",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{container!=\"\"}[$__rate_interval])) by (namespace)",
           "interval": "$resolution",
           "legendFormat": "{{ namespace }}",
           "refId": "A"
@@ -1288,7 +1288,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{image!=\"\"}) by (namespace)",
+          "expr": "sum(container_memory_working_set_bytes{container!=\"\"}) by (namespace)",
           "interval": "$resolution",
           "legendFormat": "{{ namespace }}",
           "refId": "A"
@@ -1386,7 +1386,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{image!=\"\"}[$__rate_interval])) by (node) / sum(machine_cpu_cores) by (node)",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{container!=\"\"}[$__rate_interval])) by (node) / sum(machine_cpu_cores) by (node)",
           "interval": "$resolution",
           "legendFormat": "{{ node }}",
           "refId": "A"
@@ -1484,7 +1484,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{image!=\"\"}) by (node)",
+          "expr": "sum(container_memory_working_set_bytes{container!=\"\"}) by (node)",
           "interval": "$resolution",
           "legendFormat": "{{ node}}",
           "range": true,
@@ -2020,6 +2020,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Global",
   "uid": "k8s_views_global",
-  "version": 12,
+  "version": 13,
   "weekStart": ""
 }
