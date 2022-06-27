@@ -871,7 +871,7 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "sum(kube_pod_container_info)",
+          "expr": "sum(kube_pod_info)",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -2020,6 +2020,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Global",
   "uid": "k8s_views_global",
-  "version": 12,
+  "version": 13,
   "weekStart": ""
 }
