@@ -741,7 +741,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by(instance) (rate(apiserver_request_total{code=\"5..\", job=\"apiserver\"}[$__rate_interval]))\n / sum by(instance) (rate(apiserver_request_total{job=\"apiserver\"}[$__rate_interval]))",
+          "expr": "sum by(instance) (rate(apiserver_request_total{code=~\"5..\", job=\"apiserver\"}[$__rate_interval]))\n / sum by(instance) (rate(apiserver_request_total{job=\"apiserver\"}[$__rate_interval]))",
           "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -832,7 +832,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by(verb) (rate(apiserver_request_total{code=\"5..\",job=\"apiserver\"}[$__rate_interval]))\n / sum by(verb) (rate(apiserver_request_total{job=\"apiserver\"}[$__rate_interval]))",
+          "expr": "sum by(verb) (rate(apiserver_request_total{code=~\"5..\",job=\"apiserver\"}[$__rate_interval]))\n / sum by(verb) (rate(apiserver_request_total{job=\"apiserver\"}[$__rate_interval]))",
           "interval": "$resolution",
           "legendFormat": "{{ verb }}",
           "refId": "A"
