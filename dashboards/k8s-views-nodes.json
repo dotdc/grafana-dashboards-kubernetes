@@ -3649,14 +3649,14 @@
           "type": "prometheus",
           "uid": "${datasource}"
         },
-        "definition": "label_values(node_uname_info{job=\"$job\"}, nodename)",
+        "definition": "label_values(kube_node_info, node)",
         "hide": 0,
         "includeAll": false,
         "multi": false,
         "name": "node",
         "options": [],
         "query": {
-          "query": "label_values(node_uname_info{job=\"$job\"}, nodename)",
+          "query": "label_values(kube_node_info, node)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 2,
@@ -3675,14 +3675,14 @@
           "type": "prometheus",
           "uid": "${datasource}"
         },
-        "definition": "label_values(node_uname_info{nodename=\"$node\"}, instance)",
+        "definition": "label_values(node_uname_info{nodename=~\"(?i:($node))\"}, instance)",
         "hide": 2,
         "includeAll": false,
         "multi": false,
         "name": "instance",
         "options": [],
         "query": {
-          "query": "label_values(node_uname_info{nodename=\"$node\"}, instance)",
+          "query": "label_values(node_uname_info{nodename=~\"(?i:($node))\"}, instance)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 2,
@@ -3701,6 +3701,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Nodes",
   "uid": "k8s_views_nodes",
-  "version": 8,
+  "version": 9,
   "weekStart": ""
 }
