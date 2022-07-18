@@ -154,7 +154,7 @@
             "uid": "${datasource}"
           },
           "exemplar": false,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/\", node=\"$node\"}[$__rate_interval])) / sum(machine_cpu_cores{node=\"$node\"})",
+          "expr": "avg(1-rate(node_cpu_seconds_total{mode=\"idle\", instance=\"$instance\"}[$__rate_interval]))",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "",
@@ -559,7 +559,7 @@
             "uid": "${datasource}"
           },
           "exemplar": false,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/\", node=\"$node\"}[$__rate_interval]))",
+          "expr": "sum(1-rate(node_cpu_seconds_total{mode=\"idle\", instance=\"$instance\"}[$__rate_interval]))",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "",
@@ -926,7 +926,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(node_cpu_seconds_total{instance=\"$instance\"}[$__rate_interval]) * 100) by (mode) / scalar(sum(machine_cpu_cores{node=\"$node\"}))",
+          "expr": "avg(rate(node_cpu_seconds_total{instance=\"$instance\"}[$__rate_interval]) * 100) by (mode)",
           "hide": false,
           "instant": false,
           "interval": "$resolution",
@@ -3701,6 +3701,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Nodes",
   "uid": "k8s_views_nodes",
-  "version": 9,
+  "version": 10,
   "weekStart": ""
 }
