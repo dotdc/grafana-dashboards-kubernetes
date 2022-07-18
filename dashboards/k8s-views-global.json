@@ -686,7 +686,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(1-rate(node_cpu_seconds_total{mode=\"idle\"}}[$__rate_interval]))",
+          "expr": "sum(1-rate(node_cpu_seconds_total{mode=\"idle\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "Real",
           "range": true,
@@ -2030,6 +2030,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Global",
   "uid": "k8s_views_global",
-  "version": 14,
+  "version": 15,
   "weekStart": ""
 }
