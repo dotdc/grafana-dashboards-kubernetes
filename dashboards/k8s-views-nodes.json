@@ -224,7 +224,7 @@
             "uid": "${datasource}"
           },
           "exemplar": false,
-          "expr": "sum(container_memory_working_set_bytes{id=\"/\", node=\"$node\"}) / sum(machine_memory_bytes{node=\"$node\"})",
+          "expr": "sum(node_memory_MemTotal_bytes{instance=\"$instance\"} - node_memory_MemAvailable_bytes{instance=\"$instance\"}) / sum(node_memory_MemTotal_bytes{instance=\"$instance\"})",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "",
@@ -682,7 +682,7 @@
             "uid": "${datasource}"
           },
           "exemplar": false,
-          "expr": "sum(container_memory_working_set_bytes{id=\"/\", node=\"$node\"})",
+          "expr": "sum(node_memory_MemTotal_bytes{instance=\"$instance\"} - node_memory_MemAvailable_bytes{instance=\"$instance\"})",
           "instant": true,
           "interval": "",
           "legendFormat": "",
