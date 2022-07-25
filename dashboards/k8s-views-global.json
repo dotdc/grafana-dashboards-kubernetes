@@ -1494,7 +1494,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{image!=\"\"}) by (node)",
+          "expr": "sum(node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes) by (instance)",
           "interval": "$resolution",
           "legendFormat": "{{ node}}",
           "range": true,
