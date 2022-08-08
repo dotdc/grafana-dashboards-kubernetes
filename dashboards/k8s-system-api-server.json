@@ -1292,6 +1292,6 @@
   "timezone": "",
   "title": "Kubernetes / System / API Server",
   "uid": "k8s_system_apisrv",
-  "version": 8,
+  "version": 9,
   "weekStart": ""
 }
