@@ -10,6 +10,7 @@
 - [Installation](#installation)
   - [Install manually](#install-manually)
   - [Install via grafana.com](#install-via-grafanacom)
+  - [Install with ArgoCD](#install-with-argocd)
   - [Install as ConfigMaps](#install-as-configmaps)
   - [Install as ConfigMaps with Terraform](#install-as-configmaps-with-terraform)
 - [Contributing](#contributing)
@@ -79,6 +80,14 @@ Grafana.com dashboard id list:
 | k8s-views-namespaces.json          | 15758 |
 | k8s-views-nodes.json               | 15759 |
 | k8s-views-pods.json                | 15760 |
+
+### Install with ArgoCD
+
+If you have ArgoCD, this will deploy the dashboards in ArgoCD's default project:
+
+```terminal
+kubectl apply -f argocd-app.yml
+```
 
 ### Install as ConfigMaps
 
