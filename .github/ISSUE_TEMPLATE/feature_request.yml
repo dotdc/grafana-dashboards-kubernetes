@@ -2,7 +2,7 @@ name: Feature request
 description: Suggest an idea for this project
 title: "[enhancement] "
 labels: ["enhancement"]
-assignees: 
+assignees:
   - dotdc
 # Doc: https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms
 body:

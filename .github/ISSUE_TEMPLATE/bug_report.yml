@@ -2,7 +2,7 @@ name: Bug Report
 description: File a bug report
 title: "[bug] "
 labels: ["bug"]
-assignees: 
+assignees:
   - dotdc
 # Doc: https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms
 body:
