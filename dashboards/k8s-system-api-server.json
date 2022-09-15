@@ -55,7 +55,7 @@
       }
     ]
   },
-  "description": "This is a modern API Server dashboard for your Kubernetes cluster(s). Made for kube-prometheus-stack and take advantage of the latest Grafana features (8.x.x). GitHub repository: https://github.com/dotdc/grafana-dashboards-kubernetes",
+  "description": "This is a modern API Server dashboard for your Kubernetes cluster(s). Made for kube-prometheus-stack and take advantage of the latest Grafana features. GitHub repository: https://github.com/dotdc/grafana-dashboards-kubernetes",
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
@@ -1292,6 +1292,6 @@
   "timezone": "",
   "title": "Kubernetes / System / API Server",
   "uid": "k8s_system_apisrv",
-  "version": 9,
+  "version": 10,
   "weekStart": ""
 }

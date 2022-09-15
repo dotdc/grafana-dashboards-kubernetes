@@ -70,7 +70,7 @@
       }
     ]
   },
-  "description": "This is a modern 'Nodes View' dashboard for your Kubernetes cluster(s). Made for kube-prometheus-stack and take advantage of the latest Grafana features (8.x.x). GitHub repository: https://github.com/dotdc/grafana-dashboards-kubernetes",
+  "description": "This is a modern 'Nodes View' dashboard for your Kubernetes cluster(s). Made for kube-prometheus-stack and take advantage of the latest Grafana features. GitHub repository: https://github.com/dotdc/grafana-dashboards-kubernetes",
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
@@ -3701,6 +3701,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Nodes",
   "uid": "k8s_views_nodes",
-  "version": 10,
+  "version": 11,
   "weekStart": ""
 }

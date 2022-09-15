@@ -64,7 +64,7 @@
       }
     ]
   },
-  "description": "This is a modern 'Global View' dashboard for your Kubernetes cluster(s). Made for kube-prometheus-stack and take advantage of the latest Grafana features (8.x.x). GitHub repository: https://github.com/dotdc/grafana-dashboards-kubernetes",
+  "description": "This is a modern 'Global View' dashboard for your Kubernetes cluster(s). Made for kube-prometheus-stack and take advantage of the latest Grafana features. GitHub repository: https://github.com/dotdc/grafana-dashboards-kubernetes",
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
@@ -2030,6 +2030,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Global",
   "uid": "k8s_views_global",
-  "version": 16,
+  "version": 17,
   "weekStart": ""
 }

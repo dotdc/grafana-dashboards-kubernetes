@@ -1,47 +1,4 @@
 {
-    "__inputs": [
-      {
-        "name": "DS_PROMETHEUS",
-        "label": "Prometheus",
-        "description": "",
-        "type": "datasource",
-        "pluginId": "prometheus",
-        "pluginName": "Prometheus"
-      }
-    ],
-    "__elements": [],
-    "__requires": [
-      {
-        "type": "grafana",
-        "id": "grafana",
-        "name": "Grafana",
-        "version": "8.5.0"
-      },
-      {
-        "type": "datasource",
-        "id": "prometheus",
-        "name": "Prometheus",
-        "version": "5.0.0"
-      },
-      {
-        "type": "panel",
-        "id": "timeseries",
-        "name": "Time series",
-        "version": ""
-      },
-      {
-        "type": "panel",
-        "id": "stat",
-        "name": "Stat",
-        "version": ""
-      },
-      {
-        "type": "panel",
-        "id": "table",
-        "name": "Table",
-        "version": ""
-      }
-    ],
   "annotations": {
     "list": [
       {
@@ -64,10 +21,12 @@
       }
     ]
   },
-  "description": "This is a modern dashboard for the Trivy / Starboard Operator from Aqua Security (starboard-exporter required). Made to take advantage of the latest Grafana features. GitHub repository: https://github.com/dotdc/grafana-dashboards-kubernetes",
+  "description": "This is a modern dashboard for the Trivy / Starboard Operator from Aqua Security (starboard-exporter required). Made to take advantage of the latest Grafana features (8.x.x). GitHub repository: https://github.com/dotdc/grafana-dashboards-kubernetes",
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
+  "id": 9,
+  "iteration": 1658145653359,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -137,7 +96,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
           "datasource": {
@@ -146,7 +105,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(starboard_exporter_vulnerabilityreport_image_vulnerability_severity_count{severity=\"LOW\", image_namespace=~\"$namespace\"})",
+          "expr": "sum(trivy_image_vulnerabilities{severity=\"Low\", namespace=~\"$namespace\"})",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "__auto",
@@ -205,7 +164,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
           "datasource": {
@@ -214,7 +173,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(starboard_exporter_vulnerabilityreport_image_vulnerability_severity_count{severity=\"MEDIUM\", image_namespace=~\"$namespace\"})",
+          "expr": "sum(trivy_image_vulnerabilities{severity=\"Medium\", namespace=~\"$namespace\"})",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "__auto",
@@ -273,7 +232,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
           "datasource": {
@@ -282,7 +241,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(starboard_exporter_vulnerabilityreport_image_vulnerability_severity_count{severity=\"HIGH\", image_namespace=~\"$namespace\"})",
+          "expr": "sum(trivy_image_vulnerabilities{severity=\"High\", namespace=~\"$namespace\"})",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "__auto",
@@ -341,7 +300,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
           "datasource": {
@@ -350,7 +309,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(starboard_exporter_vulnerabilityreport_image_vulnerability_severity_count{severity=\"CRITICAL\", image_namespace=~\"$namespace\"})",
+          "expr": "sum(trivy_image_vulnerabilities{severity=\"Critical\", namespace=~\"$namespace\"})",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "__auto",
@@ -409,7 +368,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
           "datasource": {
@@ -418,7 +377,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(starboard_exporter_vulnerabilityreport_image_vulnerability_severity_count{severity=\"UNKNOWN\", image_namespace=~\"$namespace\"})",
+          "expr": "sum(trivy_image_vulnerabilities{severity=\"Unknown\", namespace=~\"$namespace\"})",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "__auto",
@@ -477,7 +436,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
           "datasource": {
@@ -486,7 +445,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(starboard_exporter_vulnerabilityreport_image_vulnerability_severity_count{image_namespace=~\"$namespace\"})",
+          "expr": "sum(trivy_image_vulnerabilities{namespace=~\"$namespace\"})",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "__auto",
@@ -579,10 +538,10 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(starboard_exporter_vulnerabilityreport_image_vulnerability_severity_count) by (image_namespace)",
+          "expr": "sum(trivy_image_vulnerabilities) by (namespace)",
           "instant": false,
           "interval": "$resolution",
-          "legendFormat": "__auto",
+          "legendFormat": "{{ namespace }}",
           "range": true,
           "refId": "A"
         }
@@ -647,7 +606,7 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
           "datasource": {
@@ -772,7 +731,7 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
           "datasource": {
@@ -923,10 +882,10 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(starboard_exporter_vulnerabilityreport_image_vulnerability_severity_count) by (severity)",
+          "expr": "sum(trivy_image_vulnerabilities) by (severity)",
           "instant": false,
           "interval": "$resolution",
-          "legendFormat": "__auto",
+          "legendFormat": "{{ severity }}",
           "range": true,
           "refId": "A"
         }
@@ -1000,7 +959,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
           "datasource": {
@@ -1009,7 +968,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(starboard_exporter_configauditreport_resource_checks_summary_count{severity=\"LOW\", resource_namespace=~\"$namespace\"})",
+          "expr": "sum(trivy_resource_configaudits{severity=\"Low\", namespace=~\"$namespace\"})",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "__auto",
@@ -1068,7 +1027,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
           "datasource": {
@@ -1077,7 +1036,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(starboard_exporter_configauditreport_resource_checks_summary_count{severity=\"MEDIUM\", resource_namespace=~\"$namespace\"})",
+          "expr": "sum(trivy_resource_configaudits{severity=\"Medium\", namespace=~\"$namespace\"})",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "__auto",
@@ -1136,7 +1095,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
           "datasource": {
@@ -1145,7 +1104,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(starboard_exporter_configauditreport_resource_checks_summary_count{severity=\"HIGH\", resource_namespace=~\"$namespace\"})",
+          "expr": "sum(trivy_resource_configaudits{severity=\"High\", namespace=~\"$namespace\"})",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "__auto",
@@ -1204,7 +1163,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
           "datasource": {
@@ -1213,7 +1172,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(starboard_exporter_configauditreport_resource_checks_summary_count{severity=\"CRITICAL\", resource_namespace=~\"$namespace\"})",
+          "expr": "sum(trivy_resource_configaudits{severity=\"Critical\", namespace=~\"$namespace\"})",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "__auto",
@@ -1272,7 +1231,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.0.2",
       "targets": [
         {
           "datasource": {
@@ -1281,7 +1240,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(starboard_exporter_configauditreport_resource_checks_summary_count{resource_namespace=~\"$namespace\"})",
+          "expr": "sum(trivy_resource_configaudits{namespace=~\"$namespace\"})",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "__auto",
@@ -1374,7 +1333,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(starboard_exporter_configauditreport_resource_checks_summary_count) by (resource_namespace)",
+          "expr": "sum(trivy_resource_configaudits) by (namespace)",
           "instant": false,
           "interval": "$resolution",
           "legendFormat": "__auto",
@@ -1468,7 +1427,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(starboard_exporter_configauditreport_resource_checks_summary_count) by (severity)",
+          "expr": "sum(trivy_resource_configaudits) by (severity)",
           "instant": false,
           "interval": "$resolution",
           "legendFormat": "__auto",
@@ -1484,18 +1443,18 @@
   "schemaVersion": 36,
   "style": "dark",
   "tags": [
-    "Starboard",
     "Prometheus",
     "Addons",
-    "Trivy"
+    "Trivy",
+    "Security"
   ],
   "templating": {
     "list": [
       {
         "current": {
           "selected": false,
-          "text": "",
-          "value": ""
+          "text": "Prometheus",
+          "value": "Prometheus"
         },
         "hide": 0,
         "includeAll": false,
@@ -1596,6 +1555,6 @@
   "timezone": "",
   "title": "Trivy / Starboard Operator vulnerabilities",
   "uid": "trivy_starboard_operator",
-  "version": 4,
+  "version": 1,
   "weekStart": ""
 }
