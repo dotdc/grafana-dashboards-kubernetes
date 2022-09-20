@@ -5,7 +5,6 @@ generatorOptions:
     grafana_dashboard: "true"
 commonAnnotations:
   grafana_folder: "Kubernetes"
-namespace: monitoring
 
 # Generate a ConfigMap for each dashboard
 configMapGenerator:
