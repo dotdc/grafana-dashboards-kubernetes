@@ -99,11 +99,15 @@ To build the ConfigMaps and output them on STDOUT :
 kubectl kustomize .
 ```
 
+*Note: no namespace is set by default, you can change that in the `kustomization.yaml` file.*
+
 To build and deploy them directly on your kubernetes cluster :
 
 ```terminal
-kubectl apply -k .
+kubectl apply -k . -n monitoring
 ```
+
+*Note: you can change the namespace if needed.*
 
 ### Install as ConfigMaps with Terraform
 
@@ -114,6 +118,8 @@ To build and convert ConfigMaps to Terraform code :
 ```terminal
 kubectl kustomize . | tfk8s
 ```
+
+*Note: no namespace is set by default, you can change that in the `kustomization.yaml` file.*
 
 ## Contributing
 
