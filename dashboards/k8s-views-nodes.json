@@ -309,6 +309,11 @@
             "displayMode": "auto",
             "inspect": false
           },
+          "links": [{
+            "targetBlank": true,
+            "title": "Pod details",
+            "url": "/d/k8s_views_pods/kubernetes-views-pods?${datasource:queryparam}&var-namespace=${__data.fields.namespace}&var-pod=${__data.fields.pod}&${resolution:queryparam}&${__url_time_range}"
+          }],
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
