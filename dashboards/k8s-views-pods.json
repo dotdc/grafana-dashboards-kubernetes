@@ -1872,6 +1872,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Pods",
   "uid": "k8s_views_pods",
-  "version": 12,
+  "version": 13,
   "weekStart": ""
 }
