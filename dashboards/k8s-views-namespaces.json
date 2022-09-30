@@ -449,7 +449,7 @@
       },
       "id": 62,
       "options": {
-        "colorMode": "value",
+        "colorMode": "none",
         "graphMode": "none",
         "justifyMode": "center",
         "orientation": "auto",
@@ -548,7 +548,7 @@
       },
       "id": 64,
       "options": {
-        "colorMode": "value",
+        "colorMode": "none",
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
