@@ -145,7 +145,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "9.0.6",
+      "pluginVersion": "9.2.4",
       "targets": [
         {
           "datasource": {
@@ -204,7 +204,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "9.0.6",
+      "pluginVersion": "9.2.4",
       "targets": [
         {
           "datasource": {
@@ -262,7 +262,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "9.0.6",
+      "pluginVersion": "9.2.4",
       "targets": [
         {
           "datasource": {
@@ -359,7 +359,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "9.0.6",
+      "pluginVersion": "9.2.4",
       "targets": [
         {
           "datasource": {
@@ -428,7 +428,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "9.0.6",
+      "pluginVersion": "9.2.4",
       "targets": [
         {
           "datasource": {
@@ -501,7 +501,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "9.0.6",
+      "pluginVersion": "9.2.4",
       "targets": [
         {
           "datasource": {
@@ -570,7 +570,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "9.0.6",
+      "pluginVersion": "9.2.4",
       "targets": [
         {
           "datasource": {
@@ -670,7 +670,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "9.0.6",
+      "pluginVersion": "9.2.4",
       "targets": [
         {
           "datasource": {
@@ -859,6 +859,8 @@
             "mode": "thresholds"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "Percent",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -929,7 +931,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "right",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "multi",
@@ -979,6 +982,8 @@
             "mode": "thresholds"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "Percent",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -1052,7 +1057,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "right",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "multi",
@@ -1101,6 +1107,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "CPU Cores",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -1177,7 +1185,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "right",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "multi",
@@ -1212,6 +1221,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "Bytes",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -1271,7 +1282,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "right",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "multi",
@@ -1332,6 +1344,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -1388,7 +1402,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "multi",
@@ -1434,6 +1449,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -1490,7 +1507,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "multi",
@@ -1536,6 +1554,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -1592,7 +1612,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "multi",
@@ -1638,6 +1659,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -1694,7 +1717,8 @@
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "multi",
@@ -1731,7 +1755,7 @@
     }
   ],
   "refresh": "30s",
-  "schemaVersion": 36,
+  "schemaVersion": 37,
   "style": "dark",
   "tags": [
     "Kubernetes",
@@ -1872,6 +1896,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Pods",
   "uid": "k8s_views_pods",
-  "version": 14,
+  "version": 15,
   "weekStart": ""
 }

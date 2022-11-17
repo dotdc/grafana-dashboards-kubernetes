@@ -139,7 +139,7 @@
         },
         "showUnfilled": true
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.2.4",
       "targets": [
         {
           "datasource": {
@@ -235,7 +235,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.2.4",
       "targets": [
         {
           "datasource": {
@@ -321,7 +321,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.2.4",
       "targets": [
         {
           "datasource": {
@@ -349,6 +349,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "NB",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -409,7 +411,8 @@
             "mean"
           ],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "right",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "multi",
@@ -618,7 +621,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.2.4",
       "targets": [
         {
           "datasource": {
@@ -678,7 +681,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.2.4",
       "targets": [
         {
           "datasource": {
@@ -777,7 +780,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.2.4",
       "targets": [
         {
           "datasource": {
@@ -875,7 +878,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "8.5.0",
+      "pluginVersion": "9.2.4",
       "targets": [
         {
           "datasource": {
@@ -920,6 +923,8 @@
             "seriesBy": "last"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "CPU %",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -983,8 +988,9 @@
       "options": {
         "legend": {
           "calcs": [],
-          "displayMode": "hidden",
-          "placement": "right"
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -1019,6 +1025,8 @@
             "mode": "continuous-GrYlRd"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "MEMORY",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -1083,8 +1091,9 @@
             "max",
             "min"
           ],
-          "displayMode": "hidden",
-          "placement": "right"
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -1121,6 +1130,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "CPU Cores",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -1186,6 +1197,7 @@
           ],
           "displayMode": "table",
           "placement": "right",
+          "showLegend": true,
           "sortBy": "Max",
           "sortDesc": true
         },
@@ -1222,6 +1234,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "MEMORY",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -1283,6 +1297,7 @@
           ],
           "displayMode": "table",
           "placement": "right",
+          "showLegend": true,
           "sortBy": "Max",
           "sortDesc": true
         },
@@ -1319,6 +1334,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "CPU %",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -1381,6 +1398,7 @@
           ],
           "displayMode": "table",
           "placement": "right",
+          "showLegend": true,
           "sortBy": "Max",
           "sortDesc": true
         },
@@ -1417,6 +1435,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "MEMORY",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -1478,6 +1498,7 @@
           ],
           "displayMode": "table",
           "placement": "right",
+          "showLegend": true,
           "sortBy": "Max",
           "sortDesc": true
         },
@@ -1533,6 +1554,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "BANDWIDTH",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -1588,8 +1611,9 @@
       "options": {
         "legend": {
           "calcs": [],
-          "displayMode": "hidden",
-          "placement": "bottom"
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
         },
         "tooltip": {
           "mode": "multi",
@@ -1639,6 +1663,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "DROPPED PACKETS",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -1694,8 +1720,9 @@
       "options": {
         "legend": {
           "calcs": [],
-          "displayMode": "hidden",
-          "placement": "bottom"
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
         },
         "tooltip": {
           "mode": "multi",
@@ -1745,6 +1772,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "BANDWIDTH",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -1800,8 +1829,9 @@
       "options": {
         "legend": {
           "calcs": [],
-          "displayMode": "hidden",
-          "placement": "bottom"
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -1851,6 +1881,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "BANDWIDTH",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -1906,8 +1938,9 @@
       "options": {
         "legend": {
           "calcs": [],
-          "displayMode": "hidden",
-          "placement": "bottom"
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -1948,7 +1981,7 @@
     }
   ],
   "refresh": "30s",
-  "schemaVersion": 36,
+  "schemaVersion": 37,
   "style": "dark",
   "tags": [
     "Kubernetes",
@@ -2031,6 +2064,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Global",
   "uid": "k8s_views_global",
-  "version": 19,
+  "version": 20,
   "weekStart": ""
 }
