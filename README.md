@@ -11,6 +11,7 @@
   - [Install manually](#install-manually)
   - [Install via grafana.com](#install-via-grafanacom)
   - [Install with ArgoCD](#install-with-argocd)
+  - [Install with Helm values](#install-with-helm-values)
   - [Install as ConfigMaps](#install-as-configmaps)
   - [Install as ConfigMaps with Terraform](#install-as-configmaps-with-terraform)
 - [Contributing](#contributing)
@@ -89,6 +90,50 @@ If you have ArgoCD, this will deploy the dashboards in ArgoCD's default project:
 
 ```terminal
 kubectl apply -f argocd-app.yml
+```
+
+### Install with Helm values
+
+If you use the official Grafana helm chart or kube-prometheus-stack, you can install the dashboards directly using the `dashboardProviders` & `dashboards` helm chart values.
+
+Depending on your setup, add or merge the following block example to your helm chart values.\
+The example is for [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack), for the official [Grafana helm chart](https://github.com/grafana/helm-charts/tree/main/charts/grafana), remove the first line (`grafana:`), and reduce the indentation level of the entire block.
+
+```yaml
+grafana:
+  # Provision grafana-dashboards-kubernetes
+  dashboardProviders:
+    dashboardproviders.yaml:
+      apiVersion: 1
+      providers:
+      - name: 'grafana-dashboards-kubernetes'
+        orgId: 1
+        folder: 'Kubernetes'
+        type: file
+        disableDeletion: true
+        editable: true
+        options:
+          path: /var/lib/grafana/dashboards/grafana-dashboards-kubernetes
+  dashboards:
+    grafana-dashboards-kubernetes:
+      k8s-system-api-server:
+        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-api-server.json
+        token: ''
+      k8s-system-coredns:
+        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-system-coredns.json
+        token: ''
+      k8s-views-global:
+        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-global.json
+        token: ''
+      k8s-views-namespaces:
+        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-namespaces.json
+        token: ''
+      k8s-views-nodes:
+        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-nodes.json
+        token: ''
+      k8s-views-pods:
+        url: https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/master/dashboards/k8s-views-pods.json
+        token: ''
 ```
 
 ### Install as ConfigMaps
