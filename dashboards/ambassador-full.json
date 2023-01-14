@@ -20,7 +20,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 10850,
   "graphTooltip": 0,
-  "id": 68,
+  "id": 71,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -171,9 +171,11 @@
             "type": "prometheus",
             "uid": "0n1T8p24z"
           },
-          "expr": "sum(envoy_http_downstream_cx_ssl_active)-sum(envoy_cluster_upstream_cx_active)",
+          "editorMode": "code",
+          "expr": "sum(envoy_cluster_upstream_cx_active)",
           "format": "time_series",
           "intervalFactor": 1,
+          "range": true,
           "refId": "A"
         }
       ],
@@ -2288,12 +2290,14 @@
         "uid": "0n1T8p24z"
       },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
         "y": 98
       },
+      "hiddenSeries": false,
       "hideTimeOverride": false,
       "id": 2,
       "legend": {
@@ -2313,7 +2317,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null as zero",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "9.3.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2435,12 +2443,14 @@
         "uid": "0n1T8p24z"
       },
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
         "y": 105
       },
+      "hiddenSeries": false,
       "id": 5,
       "legend": {
         "alignAsTable": true,
@@ -2456,7 +2466,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null as zero",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "9.3.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2553,12 +2567,14 @@
       },
       "decimals": 0,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 7,
         "w": 24,
         "x": 0,
         "y": 112
       },
+      "hiddenSeries": false,
       "id": 33,
       "legend": {
         "alignAsTable": true,
@@ -2577,7 +2593,11 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null as zero",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
+      "pluginVersion": "9.3.1",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2703,7 +2723,7 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
