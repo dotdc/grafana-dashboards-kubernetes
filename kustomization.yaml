@@ -45,3 +45,6 @@ configMapGenerator:
 
 - name: dashboards-argocd-all
   files: [ dashboards/argocd-full.json ]
+
+- name: dashboards-argo-workflow-all
+  files: [ dashboards/argoworkflow-full.json ]
