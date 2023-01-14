@@ -48,3 +48,6 @@ configMapGenerator:
 
 - name: dashboards-argo-workflow-all
   files: [ dashboards/argoworkflow-full.json ]
+
+- name: dashboards-ambassador-all
+  files: [ dashboards/ambassador-full.json ]
