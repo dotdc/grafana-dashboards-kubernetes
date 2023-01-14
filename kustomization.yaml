@@ -51,3 +51,6 @@ configMapGenerator:
 
 - name: dashboards-ambassador-all
   files: [ dashboards/ambassador-full.json ]
+
+- name: dashboards-keycloak-all
+  files: [ dashboards/keycloak-full.json ]
