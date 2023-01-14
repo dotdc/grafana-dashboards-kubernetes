@@ -98,7 +98,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_THANOS-MASTER}"
+        "uid": "$datasource"
       },
       "fieldConfig": {
         "defaults": {
@@ -149,7 +149,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_THANOS-MASTER}"
+            "uid": "$datasource"
           },
           "exemplar": false,
           "expr": "argo_workflows_count{origin_prometheus=~\"^$dc$\",kubernetes_namespace=~\"$ns\",status=\"Pending\"} ",
@@ -167,7 +167,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_THANOS-MASTER}"
+        "uid": "$datasource"
       },
       "fieldConfig": {
         "defaults": {
@@ -218,7 +218,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_THANOS-MASTER}"
+            "uid": "$datasource"
           },
           "exemplar": false,
           "expr": "argo_workflows_count{origin_prometheus=~\"^$dc$\",kubernetes_namespace=~\"$ns\",status=\"Running\"}",
@@ -236,7 +236,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_THANOS-MASTER}"
+        "uid": "$datasource"
       },
       "fieldConfig": {
         "defaults": {
@@ -287,7 +287,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_THANOS-MASTER}"
+            "uid": "$datasource"
           },
           "exemplar": false,
           "expr": "argo_workflows_count{origin_prometheus=~\"^$dc$\",kubernetes_namespace=~\"$ns\",status=\"Error\"}",
@@ -305,7 +305,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_THANOS-MASTER}"
+        "uid": "$datasource"
       },
       "fieldConfig": {
         "defaults": {
@@ -356,7 +356,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_THANOS-MASTER}"
+            "uid": "$datasource"
           },
           "exemplar": false,
           "expr": "argo_workflows_count{origin_prometheus=~\"^$dc$\",kubernetes_namespace=~\"$ns\",status=\"Failed\"}",
@@ -426,7 +426,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_THANOS-MASTER}"
+            "uid": "$datasource"
           },
           "exemplar": false,
           "expr": "argo_workflows_count{origin_prometheus=~\"^$dc$\",kubernetes_namespace=~\"$ns\",status=\"Skipped\"}",
@@ -444,7 +444,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_THANOS-MASTER}"
+        "uid": "$datasource"
       },
       "fieldConfig": {
         "defaults": {
@@ -491,7 +491,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_THANOS-MASTER}"
+            "uid": "$datasource"
           },
           "exemplar": false,
           "expr": "argo_workflows_count{origin_prometheus=~\"^$dc$\",kubernetes_namespace=~\"$ns\",status=\"Succeeded\"}",
@@ -526,7 +526,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_THANOS-MASTER}"
+        "uid": "$datasource"
       },
       "decimals": 0,
       "fill": 0,
@@ -572,7 +572,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_THANOS-MASTER}"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "argo_workflows_count{status!~\"(Error|Failed)\",kubernetes_namespace=~\"$ns\",origin_prometheus=~\"^$dc$\"}",
@@ -623,7 +623,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_THANOS-MASTER}"
+        "uid": "$datasource"
       },
       "decimals": 0,
       "fill": 0,
@@ -669,7 +669,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_THANOS-MASTER}"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "argo_workflows_count{status=~\"(Error|Failed)\",kubernetes_namespace=~\"$ns\",origin_prometheus=~\"^$dc$\"}",
@@ -733,7 +733,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_THANOS-MASTER}"
+        "uid": "$datasource"
       },
       "decimals": 2,
       "fill": 1,
@@ -779,7 +779,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_THANOS-MASTER}"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "histogram_quantile(0.95, sum(rate(argo_workflows_operation_duration_seconds_bucket{origin_prometheus=~\"^$dc$\",kubernetes_namespace=~\"^$ns$\"}[5m])) by (le,origin_prometheus,kubernetes_namespace)) ",
@@ -842,7 +842,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_THANOS-MASTER}"
+        "uid": "$datasource"
       },
       "decimals": 2,
       "fill": 1,
@@ -888,7 +888,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_THANOS-MASTER}"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "delta(argo_workflows_queue_adds_count{origin_prometheus=~\"^$dc$\",kubernetes_namespace=~\"$ns\"}[2m])",
@@ -939,7 +939,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_THANOS-MASTER}"
+        "uid": "$datasource"
       },
       "decimals": 2,
       "fill": 1,
@@ -985,7 +985,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_THANOS-MASTER}"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "argo_workflows_queue_depth_count{origin_prometheus=~\"^$dc$\",kubernetes_namespace=~\"$ns\"}",
@@ -1037,7 +1037,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_THANOS-MASTER}"
+        "uid": "$datasource"
       },
       "decimals": 2,
       "fill": 0,
@@ -1083,7 +1083,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_THANOS-MASTER}"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "  rate(argo_workflows_queue_latency_sum{queue_name=\"cron_wf_queue\",kubernetes_namespace=~\"^$ns$\"}[1m])\n/\n  rate(argo_workflows_queue_latency_count{queue_name=\"cron_wf_queue\",kubernetes_namespace=~\"^$ns$\",origin_prometheus=~\"^$dc$\"}[1m])",
@@ -1095,7 +1095,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_THANOS-MASTER}"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "  rate(argo_workflows_queue_latency_sum{queue_name=\"pod_queue\",kubernetes_namespace=~\"^$ns$\",origin_prometheus=~\"^$dc$\"}[1m])\n/\n  rate(argo_workflows_queue_latency_count{queue_name=\"pod_queue\",kubernetes_namespace=~\"^$ns$\",origin_prometheus=~\"^$dc$\"}[1m])",
@@ -1106,7 +1106,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_THANOS-MASTER}"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "  rate(argo_workflows_queue_latency_sum{queue_name=\"wf_cron_queue\",kubernetes_namespace=~\"^$ns$\",origin_prometheus=~\"^$dc$\"}[1m])\n/\n  rate(argo_workflows_queue_latency_count{queue_name=\"wf_cron_queue\",kubernetes_namespace=~\"^$ns$\",origin_prometheus=~\"^$dc$\"}[1m])",
@@ -1118,7 +1118,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_THANOS-MASTER}"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "  rate(argo_workflows_queue_latency_sum{queue_name=\"workflow_queue\",kubernetes_namespace=~\"^$ns$\",origin_prometheus=~\"^$dc$\"}[1m])\n/\n  rate(argo_workflows_queue_latency_count{queue_name=\"workflow_queue\",kubernetes_namespace=~\"^$ns$\",origin_prometheus=~\"^$dc$\"}[1m])",
@@ -1183,7 +1183,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_THANOS-MASTER}"
+        "uid": "$datasource"
       },
       "decimals": 2,
       "description": "",
@@ -1230,7 +1230,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_THANOS-MASTER}"
+            "uid": "$datasource"
           },
           "exemplar": true,
           "expr": "rate(log_messages{kubernetes_namespace=~\"$ns\",origin_prometheus=~\"^$dc$\"}[1m])",
@@ -1288,7 +1288,7 @@
         "current": {},
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_THANOS-MASTER}"
+          "uid": "$datasource"
         },
         "definition": "label_values(argo_workflows_count,origin_prometheus) ",
         "description": "Kubernetes datacenter",
@@ -1316,7 +1316,7 @@
         "current": {},
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_THANOS-MASTER}"
+          "uid": "$datasource"
         },
         "definition": "label_values(argo_workflows_count{origin_prometheus=~\"^$dc$\"},kubernetes_namespace) ",
         "description": "Kubernetes namespace",
