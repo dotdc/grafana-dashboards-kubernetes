@@ -38,3 +38,10 @@ configMapGenerator:
 
 - name: dashboards-k8s-addons-starboard-operator
   files: [ dashboards/k8s-addons-starboard-operator.json ]
+
+#################################################
+# Argo CD Dashboards
+#################################################
+
+- name: dashboards-argocd-all
+  files: [ dashboards/argocd-full.json ]
