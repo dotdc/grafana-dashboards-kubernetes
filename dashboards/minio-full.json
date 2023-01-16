@@ -1,59 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_PROMETHEUS",
-      "label": "Prometheus",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__elements": [],
-  "__requires": [
-    {
-      "type": "panel",
-      "id": "bargauge",
-      "name": "Bar gauge",
-      "version": ""
-    },
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "9.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph (old)",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "piechart",
-      "name": "Pie chart",
-      "version": ""
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "1.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "stat",
-      "name": "Stat",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "timeseries",
-      "name": "Time series",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -81,8 +26,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 13502,
   "graphTooltip": 0,
-  "id": null,
-  "iteration": 1658390817994,
+  "id": 62,
   "links": [
     {
       "icon": "external link",
@@ -99,7 +43,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "description": "",
       "fieldConfig": {
@@ -152,9 +96,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0",
+      "pluginVersion": "9.3.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "time() - max(minio_node_process_starttime_seconds{job=\"$scrape_jobs\"})",
           "format": "time_series",
@@ -164,11 +112,7 @@
           "legendFormat": "{{instance}}",
           "metric": "process_start_time_seconds",
           "refId": "A",
-          "step": 60,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "step": 60
         }
       ],
       "title": "Uptime",
@@ -177,7 +121,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "description": "",
       "fieldConfig": {
@@ -230,9 +174,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0",
+      "pluginVersion": "9.3.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "sum by (instance) (minio_s3_traffic_received_bytes{job=\"$scrape_jobs\"})",
           "format": "table",
@@ -243,11 +191,7 @@
           "legendFormat": "{{instance}}",
           "metric": "process_start_time_seconds",
           "refId": "A",
-          "step": 60,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "step": 60
         }
       ],
       "title": "Total S3 Traffic Inbound",
@@ -256,7 +200,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "description": "",
       "fieldConfig": {
@@ -332,6 +276,7 @@
         "legend": {
           "displayMode": "table",
           "placement": "bottom",
+          "showLegend": true,
           "values": [
             "percent"
           ]
@@ -352,6 +297,10 @@
       "pluginVersion": "8.2.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "topk(1, sum(minio_cluster_capacity_usable_total_bytes{job=\"$scrape_jobs\"}) by (instance)) - topk(1, sum(minio_cluster_capacity_usable_free_bytes{job=\"$scrape_jobs\"}) by (instance))",
           "format": "time_series",
@@ -360,23 +309,19 @@
           "intervalFactor": 1,
           "legendFormat": "Used",
           "refId": "A",
-          "step": 300,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "step": 300
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "topk(1, sum(minio_cluster_capacity_usable_free_bytes{job=\"$scrape_jobs\"}) by (instance)) ",
           "hide": false,
           "interval": "1m",
           "legendFormat": "Free",
-          "refId": "B",
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "refId": "B"
         }
       ],
       "title": "Capacity",
@@ -385,7 +330,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "fieldConfig": {
         "defaults": {
@@ -393,6 +338,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -488,8 +435,9 @@
       "options": {
         "legend": {
           "calcs": [],
-          "displayMode": "hidden",
-          "placement": "bottom"
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
         },
         "tooltip": {
           "mode": "single",
@@ -499,15 +447,15 @@
       "pluginVersion": "8.2.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "sum(minio_bucket_usage_total_bytes{job=\"$scrape_jobs\"}) by (instance)",
           "interval": "",
           "legendFormat": "Usage",
-          "refId": "A",
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "refId": "A"
         }
       ],
       "title": "Data Usage Growth",
@@ -516,7 +464,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "fieldConfig": {
         "defaults": {
@@ -560,9 +508,13 @@
         "showUnfilled": false,
         "text": {}
       },
-      "pluginVersion": "9.0.0",
+      "pluginVersion": "9.3.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "max by (range) (minio_bucket_objects_size_distribution{job=\"$scrape_jobs\"})",
           "format": "time_series",
@@ -571,11 +523,7 @@
           "intervalFactor": 1,
           "legendFormat": "{{range}}",
           "refId": "A",
-          "step": 300,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "step": 300
         }
       ],
       "title": "Object size distribution",
@@ -584,7 +532,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "description": "",
       "fieldConfig": {
@@ -641,9 +589,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0",
+      "pluginVersion": "9.3.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "sum (minio_node_file_descriptor_open_total{job=\"$scrape_jobs\"})",
           "format": "table",
@@ -654,11 +606,7 @@
           "legendFormat": "",
           "metric": "process_start_time_seconds",
           "refId": "A",
-          "step": 60,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "step": 60
         }
       ],
       "title": "Total Open FDs",
@@ -667,7 +615,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "description": "",
       "fieldConfig": {
@@ -720,9 +668,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0",
+      "pluginVersion": "9.3.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "sum by (instance) (minio_s3_traffic_sent_bytes{job=\"$scrape_jobs\"})",
           "format": "table",
@@ -733,11 +685,7 @@
           "legendFormat": "",
           "metric": "process_start_time_seconds",
           "refId": "A",
-          "step": 60,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "step": 60
         }
       ],
       "title": "Total S3 Traffic Outbound",
@@ -746,7 +694,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "description": "",
       "fieldConfig": {
@@ -803,9 +751,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0",
+      "pluginVersion": "9.3.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "sum without (server,instance) (minio_node_go_routine_total{job=\"$scrape_jobs\"})",
           "format": "table",
@@ -816,11 +768,7 @@
           "legendFormat": "",
           "metric": "process_start_time_seconds",
           "refId": "A",
-          "step": 60,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "step": 60
         }
       ],
       "title": "Total Goroutines",
@@ -829,7 +777,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "description": "",
       "fieldConfig": {
@@ -886,9 +834,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0",
+      "pluginVersion": "9.3.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "minio_cluster_nodes_online_total{job=\"$scrape_jobs\"}",
           "format": "table",
@@ -899,11 +851,7 @@
           "legendFormat": "",
           "metric": "process_start_time_seconds",
           "refId": "A",
-          "step": 60,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "step": 60
         }
       ],
       "title": "Total Online Servers",
@@ -912,7 +860,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "description": "",
       "fieldConfig": {
@@ -969,9 +917,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0",
+      "pluginVersion": "9.3.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "minio_cluster_disk_online_total{job=\"$scrape_jobs\"}",
           "format": "table",
@@ -982,11 +934,7 @@
           "legendFormat": "Total online disks in MinIO Cluster",
           "metric": "process_start_time_seconds",
           "refId": "A",
-          "step": 60,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "step": 60
         }
       ],
       "title": "Total Online Disks",
@@ -995,7 +943,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "fieldConfig": {
         "defaults": {
@@ -1055,9 +1003,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0",
+      "pluginVersion": "9.3.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "count(count by (bucket) (minio_bucket_usage_total_bytes{job=\"$scrape_jobs\"}))",
           "format": "time_series",
@@ -1065,11 +1017,7 @@
           "interval": "1m",
           "intervalFactor": 1,
           "legendFormat": "",
-          "refId": "A",
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "refId": "A"
         }
       ],
       "title": "Number of Buckets",
@@ -1085,7 +1033,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -1113,7 +1061,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.0.0",
+      "pluginVersion": "9.3.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1123,16 +1071,16 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "sum by (server) (rate(minio_s3_traffic_received_bytes{job=\"$scrape_jobs\"}[$__rate_interval]))",
           "interval": "1m",
           "intervalFactor": 2,
           "legendFormat": "Data Received [{{server}}]",
-          "refId": "A",
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "refId": "A"
         }
       ],
       "thresholds": [],
@@ -1177,7 +1125,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -1205,7 +1153,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.0.0",
+      "pluginVersion": "9.3.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1215,16 +1163,16 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "sum by (server) (rate(minio_s3_traffic_sent_bytes{job=\"$scrape_jobs\"}[$__rate_interval]))",
           "interval": "1m",
           "intervalFactor": 2,
           "legendFormat": "Data Sent [{{server}}]",
-          "refId": "A",
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "refId": "A"
         }
       ],
       "thresholds": [],
@@ -1262,7 +1210,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "description": "",
       "fieldConfig": {
@@ -1319,9 +1267,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0",
+      "pluginVersion": "9.3.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "minio_cluster_nodes_offline_total{job=\"$scrape_jobs\"}",
           "format": "table",
@@ -1332,11 +1284,7 @@
           "legendFormat": "",
           "metric": "process_start_time_seconds",
           "refId": "A",
-          "step": 60,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "step": 60
         }
       ],
       "title": "Total Offline Servers",
@@ -1345,7 +1293,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "description": "",
       "fieldConfig": {
@@ -1402,9 +1350,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0",
+      "pluginVersion": "9.3.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "minio_cluster_disk_offline_total{job=\"$scrape_jobs\"}",
           "format": "table",
@@ -1415,11 +1367,7 @@
           "legendFormat": "",
           "metric": "process_start_time_seconds",
           "refId": "A",
-          "step": 60,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "step": 60
         }
       ],
       "title": "Total Offline Disks",
@@ -1428,7 +1376,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "fieldConfig": {
         "defaults": {
@@ -1488,9 +1436,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0",
+      "pluginVersion": "9.3.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "topk(1, sum(minio_bucket_usage_object_total{job=\"$scrape_jobs\"}) by (instance))",
           "format": "time_series",
@@ -1498,11 +1450,7 @@
           "interval": "1m",
           "intervalFactor": 1,
           "legendFormat": "",
-          "refId": "A",
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "refId": "A"
         }
       ],
       "title": "Number of Objects",
@@ -1511,7 +1459,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "description": "",
       "fieldConfig": {
@@ -1557,9 +1505,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0",
+      "pluginVersion": "9.3.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "minio_heal_time_last_activity_nano_seconds{job=\"$scrape_jobs\"}",
           "format": "time_series",
@@ -1569,11 +1521,7 @@
           "legendFormat": "{{server}}",
           "metric": "process_start_time_seconds",
           "refId": "A",
-          "step": 60,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "step": 60
         }
       ],
       "title": "Time Since Last Heal Activity",
@@ -1582,7 +1530,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "description": "",
       "fieldConfig": {
@@ -1628,9 +1576,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.0.0",
+      "pluginVersion": "9.3.1",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "minio_usage_last_activity_nano_seconds{job=\"$scrape_jobs\"}",
           "format": "time_series",
@@ -1640,11 +1592,7 @@
           "legendFormat": "{{server}}",
           "metric": "process_start_time_seconds",
           "refId": "A",
-          "step": 60,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "step": 60
         }
       ],
       "title": "Time Since Last Scan Activity",
@@ -1660,7 +1608,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -1688,7 +1636,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.0.0",
+      "pluginVersion": "9.3.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1698,16 +1646,16 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "sum by (server,api) (increase(minio_s3_requests_total{job=\"$scrape_jobs\"}[$__rate_interval]))",
           "interval": "1m",
           "intervalFactor": 2,
           "legendFormat": "{{server,api}}",
-          "refId": "A",
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "refId": "A"
         }
       ],
       "thresholds": [],
@@ -1752,7 +1700,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -1780,7 +1728,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.0.0",
+      "pluginVersion": "9.3.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1790,16 +1738,16 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "sum by (server,api) (increase(minio_s3_requests_errors_total{job=\"$scrape_jobs\"}[$__rate_interval]))",
           "interval": "1m",
           "intervalFactor": 2,
           "legendFormat": "{{server,api}}",
-          "refId": "A",
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "refId": "A"
         }
       ],
       "thresholds": [],
@@ -1837,7 +1785,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "description": "Total s3 bytes sent per bucket",
       "fieldConfig": {
@@ -1878,8 +1826,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1907,6 +1854,7 @@
           ],
           "displayMode": "table",
           "placement": "right",
+          "showLegend": true,
           "sortBy": "Max",
           "sortDesc": true
         },
@@ -1919,7 +1867,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "0n1T8p24z"
           },
           "editorMode": "builder",
           "expr": "sum by(bucket) (minio_bucket_traffic_sent_bytes{job=\"$scrape_jobs\"})",
@@ -1934,7 +1882,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "description": "Total s3 bytes received per bucket",
       "fieldConfig": {
@@ -1975,8 +1923,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2003,7 +1950,8 @@
             "mean"
           ],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "right",
+          "showLegend": true
         },
         "tooltip": {
           "mode": "multi",
@@ -2014,7 +1962,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "0n1T8p24z"
           },
           "editorMode": "builder",
           "expr": "sum by(bucket) (minio_bucket_traffic_received_bytes{job=\"$scrape_jobs\"})",
@@ -2036,7 +1984,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -2074,16 +2022,16 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "sum by (server,api) (increase(minio_s3_requests_5xx_errors_total{job=\"$scrape_jobs\"}[$__rate_interval]))",
           "interval": "1m",
           "intervalFactor": 2,
           "legendFormat": "{{server,api}}",
-          "refId": "A",
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "refId": "A"
         }
       ],
       "thresholds": [],
@@ -2128,7 +2076,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -2166,16 +2114,16 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "sum by (server,api) (increase(minio_s3_requests_4xx_errors_total{job=\"$scrape_jobs\"}[$__rate_interval]))",
           "interval": "1m",
           "intervalFactor": 2,
           "legendFormat": "{{server,api}}",
-          "refId": "A",
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "refId": "A"
         }
       ],
       "thresholds": [],
@@ -2221,7 +2169,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "description": "Total number of bytes received and sent among all MinIO server instances",
       "fieldConfig": {
@@ -2268,6 +2216,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "rate(minio_inter_node_traffic_sent_bytes{job=\"$scrape_jobs\"}[$__rate_interval])",
           "format": "time_series",
@@ -2276,22 +2228,18 @@
           "legendFormat": "Internode Bytes Received [{{server}}]",
           "metric": "minio_http_requests_duration_seconds_count",
           "refId": "A",
-          "step": 4,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "step": 4
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "rate(minio_inter_node_traffic_received_bytes{job=\"$scrape_jobs\"}[$__rate_interval])",
           "interval": "",
           "legendFormat": "Internode Bytes Sent [{{server}}]",
-          "refId": "B",
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "refId": "B"
         }
       ],
       "thresholds": [],
@@ -2333,7 +2281,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -2371,39 +2319,39 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "sum by (instance) (minio_heal_objects_heal_total{job=\"$scrape_jobs\"})",
           "interval": "",
           "legendFormat": "Objects healed in current self heal run",
-          "refId": "A",
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "sum by (instance) (minio_heal_objects_error_total{job=\"$scrape_jobs\"})",
           "hide": false,
           "interval": "",
           "legendFormat": "Heal errors in current self heal run",
-          "refId": "B",
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "sum by (instance) (minio_heal_objects_total{job=\"$scrape_jobs\"}) ",
           "hide": false,
           "interval": "",
           "legendFormat": "Objects scanned in current self heal run",
-          "refId": "C",
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "refId": "C"
         }
       ],
       "thresholds": [],
@@ -2445,7 +2393,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -2483,15 +2431,15 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "rate(minio_node_process_cpu_total_seconds{job=\"$scrape_jobs\"}[$__rate_interval])",
           "interval": "",
           "legendFormat": "CPU Usage Rate [{{server}}]",
-          "refId": "A",
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "refId": "A"
         }
       ],
       "thresholds": [],
@@ -2533,7 +2481,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -2571,15 +2519,15 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "minio_node_process_resident_memory_bytes{job=\"$scrape_jobs\"}",
           "interval": "",
           "legendFormat": "Memory Used [{{server}}]",
-          "refId": "A",
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "refId": "A"
         }
       ],
       "thresholds": [],
@@ -2621,7 +2569,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -2659,17 +2607,17 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "minio_node_disk_used_bytes{job=\"$scrape_jobs\"}",
           "format": "time_series",
           "instant": false,
           "interval": "",
           "legendFormat": "Used Capacity [{{server}}:{{disk}}]",
-          "refId": "A",
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "refId": "A"
         }
       ],
       "thresholds": [],
@@ -2711,7 +2659,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -2749,17 +2697,17 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "minio_cluster_disk_free_inodes{job=\"$scrape_jobs\"}",
           "format": "time_series",
           "instant": false,
           "interval": "",
           "legendFormat": "Free Inodes [{{server}}:{{disk}}]",
-          "refId": "A",
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "refId": "A"
         }
       ],
       "thresholds": [],
@@ -2804,7 +2752,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "description": "Number of online disks per MinIO Server",
       "fieldConfig": {
@@ -2851,6 +2799,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "rate(minio_node_syscall_read_total{job=\"$scrape_jobs\"}[$__rate_interval])",
           "format": "time_series",
@@ -2859,22 +2811,18 @@
           "legendFormat": "Read Syscalls [{{server}}]",
           "metric": "process_start_time_seconds",
           "refId": "A",
-          "step": 60,
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "step": 60
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "rate(minio_node_syscall_write_total{job=\"$scrape_jobs\"}[$__rate_interval])",
           "interval": "",
           "legendFormat": "Write Syscalls [{{server}}]",
-          "refId": "B",
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "refId": "B"
         }
       ],
       "thresholds": [],
@@ -2921,7 +2869,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "description": "",
       "fieldConfig": {
@@ -2968,15 +2916,15 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "minio_node_file_descriptor_open_total{job=\"$scrape_jobs\"}",
           "interval": "",
           "legendFormat": "Open FDs [{{server}}]",
-          "refId": "B",
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "refId": "B"
         }
       ],
       "thresholds": [],
@@ -3020,7 +2968,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "0n1T8p24z"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -3058,28 +3006,28 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "rate(minio_node_io_rchar_bytes{job=\"$scrape_jobs\"}[$__rate_interval])",
           "format": "time_series",
           "instant": false,
           "interval": "",
           "legendFormat": "Node RChar [{{server}}]",
-          "refId": "A",
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "0n1T8p24z"
+          },
           "exemplar": true,
           "expr": "rate(minio_node_io_wchar_bytes{job=\"$scrape_jobs\"}[$__rate_interval])",
           "interval": "",
           "legendFormat": "Node WChar [{{server}}]",
-          "refId": "B",
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
-          }
+          "refId": "B"
         }
       ],
       "thresholds": [],
@@ -3116,7 +3064,7 @@
     }
   ],
   "refresh": false,
-  "schemaVersion": 36,
+  "schemaVersion": 37,
   "style": "dark",
   "tags": [
     "minio"
@@ -3124,10 +3072,14 @@
   "templating": {
     "list": [
       {
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
+          "uid": "0n1T8p24z"
         },
         "definition": "label_values(job)",
         "hide": 0,
@@ -3178,6 +3130,6 @@
   "timezone": "",
   "title": "MinIO Dashboard",
   "uid": "TgmJnqnnk",
-  "version": 5,
+  "version": 1,
   "weekStart": ""
 }
