@@ -54,3 +54,6 @@ configMapGenerator:
 
 - name: dashboards-keycloak-all
   files: [ dashboards/keycloak-full.json ]
+
+- name: dashboards-minio-all
+  files: [ dashboards/minio-full.json ]
