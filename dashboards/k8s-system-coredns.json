@@ -883,7 +883,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(coredns_forward_responses_total{rcode=\"SERVFAIL|REFUSED\"}[$__rate_interval])) by (rcode)",
+          "expr": "sum(rate(coredns_forward_responses_total{rcode=~\"SERVFAIL|REFUSED\"}[$__rate_interval])) by (rcode)",
           "interval": "$resolution",
           "legendFormat": "{{ rcode }}",
           "refId": "A"
