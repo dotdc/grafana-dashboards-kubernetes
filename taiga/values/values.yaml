@@ -1,0 +1,1005 @@
+## Global Docker image parameters
+## Please, note that this will override the image parameters, including dependencies, configured to use the global value
+## Current available global Docker image parameters: imageRegistry and imagePullSecrets
+##
+# global:
+#   imageRegistry: myRegistryName
+#   imagePullSecrets:
+#     - myRegistryKeySecretName
+#   storageClass: myStorageClass
+
+## Taiga secret key
+##
+secretKey: 9%pno@m688e76ytsihjdfks0f8duvudhsic6wluqk-g#j#d7$dsjtht)o30dn1
+
+## Email settings
+##
+email:
+  enabled: false
+  from: no-reply@example.com
+  useTls: false
+  useSsl: false
+  host: "smtp.host.example.com"
+  port: 587
+  user: "user"
+  password: "password"
+
+## Telemetry settings
+##
+enableTelemetry: false
+
+## Public registration
+##
+publicRegisterEnabled: false
+
+## Github settings
+## Get these in your profile https://github.com/settings/apps
+## or in your organization profile https://github.com/organizations/{ORGANIZATION-SLUG}/settings/applications
+##
+githubAuth:
+  enabled: false
+  apiClientId: "github-api-client-id"
+  apiClientSecret: "github-api-client-secret"
+
+## Gitlab settings
+## Get these in your profile https://{YOUR-GITLAB}/profile/applications
+## or in your organization profile https://{YOUR-GITLAB}/admin/applications
+##
+gitlabAuth:
+  enabled: false
+  apiClientId: "gitlab-api-client-id"
+  apiClientSecret: "gitlab-api-client-secret"
+  gitlabUrl: "gitlab-url"
+
+## Slack
+##
+enableSlack: false
+
+## Importers
+##
+# Github importer
+githubImporter:
+  enabled: false
+  clientId: "client-id-from-github"
+  clientSecret: "client-secret-from-github"
+
+# Jira importer
+jiraImporter:
+  enabled: false
+  consumerKey: "consumer-key-from-jira"
+  cert: "cert-from-jira"
+  pubCert: "pub-cert-from-jira"
+
+# Trello importer
+trelloImporter:
+  enabled: false
+  apiKey: "api-key-from-trello"
+  secretKey: "secret-key-from-trello"
+
+## Create initial user with credentials admin/123123
+## ref: https://taigaio.github.io/taiga-doc/dist/setup-production.html
+##
+createInitialUser: true
+
+## Create initial templates
+## ref: https://taigaio.github.io/taiga-doc/dist/setup-production.html
+##
+createInitialTemplates: false
+
+back:
+  ## Taiga image version
+  ## ref: https://hub.docker.com/r/taigaio/taiga5/tags
+  ##
+  image:
+    registry: docker.io
+    repository: taigaio/taiga-back
+    tag: "latest"
+    ## Specify a imagePullPolicy
+    ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+    ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+    ##
+    pullPolicy: IfNotPresent
+    ## Optionally specify an array of imagePullSecrets.
+    ## Secrets must be manually created in the namespace.
+    ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+    ##
+    # pullSecrets:
+    #   - myRegistryKeySecretName
+
+  ## Define the number of pods the deployment will create
+  ## Do not change unless your persistent volume allows more than one writer, ie NFS
+  ## ref: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+  ##
+  replicas: 1
+
+  ## Pod Security Context
+  ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+  ##
+  securityContext: {}
+
+  ## Pod annotations
+  ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+  ##
+  podAnnotations: {}
+
+  ## Affinity for pod assignment
+  ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
+  ##
+  affinity: {}
+
+  ## Node labels for pod assignment. Evaluated as a template.
+  ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
+  ##
+  nodeSelector: {}
+
+  ## Tolerations for pod assignment
+  ## Ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+  ##
+  tolerations: []
+
+  ## taiga containers' resource requests and limits
+  ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+  ##
+  resources:
+    # We usually recommend not to specify default resources and to leave this as a conscious
+    # choice for the user. This also increases chances charts run on environments with little
+    # resources, such as Minikube. If you do want to specify resources, uncomment the following
+    # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+    limits: 
+      cpu: 2
+      memory: 2Gi
+    requests: {}
+    #  cpu: 1
+    #  memory: 1Gi
+
+  ## Configure extra options for liveness and readiness probes
+  ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes)
+  ##
+  livenessProbe:
+    enabled: false
+    initialDelaySeconds: 20
+    periodSeconds: 10
+    timeoutSeconds: 5
+    successThreshold: 1
+    failureThreshold: 3
+  readinessProbe:
+    enabled: false
+    initialDelaySeconds: 5
+    periodSeconds: 10
+    timeoutSeconds: 1
+    successThreshold: 1
+    failureThreshold: 3
+
+
+  ## Environment variables, to pass to the entry point
+  ##
+  # extraVars:
+  #   - name: NAMI_DEBUG
+  #     value: --log-level trace
+
+  ## Kubernetes configuration
+  ##   minikube: NodePort
+  ##   ingress: ClusterIP
+  ##   elsewhere: LoadBalancer
+  ##
+  service:
+    type: ClusterIP
+    # HTTP Port
+    port: 8000
+    ## loadBalancerIP:
+    ## Control hosts connecting to "LoadBalancer" only
+    loadBalancerSourceRanges:
+      - 0.0.0.0/0
+    ##
+    ## nodePorts:
+    ##   http: <to set explicitly, choose port between 30000-32767>
+    nodePorts:
+      http: ""
+    ## Enable client source IP preservation
+    ## ref http://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip
+    ##
+    externalTrafficPolicy: Cluster
+
+async:
+  ## Taiga image version
+  ## ref: https://hub.docker.com/r/taigaio/taiga5/tags
+  ##
+  image:
+    registry: docker.io
+    repository: taigaio/taiga-back
+    tag: "latest"
+    ## Specify a imagePullPolicy
+    ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+    ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+    ##
+    pullPolicy: IfNotPresent
+    ## Optionally specify an array of imagePullSecrets.
+    ## Secrets must be manually created in the namespace.
+    ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+    ##
+    # pullSecrets:
+    #   - myRegistryKeySecretName
+
+  ## async-taiga rabbitmq credentials
+  ## Must match to async-rabbitmq.auth.username and async-rabbitmq.auth.password
+  ## I don't use async-rabbitmq values because this bug: https://github.com/helm/helm/issues/2192
+  rabbitmq:
+    auth:
+      username: taiga
+      password: 6hghh8HY56
+
+  ## Define the number of pods the deployment will create
+  ## Do not change unless your persistent volume allows more than one writer, ie NFS
+  ## ref: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+  ##
+  replicas: 1
+
+  ## Pod Security Context
+  ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+  ##
+  securityContext: {}
+
+  ## Pod annotations
+  ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+  ##
+  podAnnotations: {}
+
+  ## Affinity for pod assignment
+  ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
+  ##
+  affinity: {}
+
+  ## Node labels for pod assignment. Evaluated as a template.
+  ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
+  ##
+  nodeSelector: {}
+
+  ## Tolerations for pod assignment
+  ## Ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+  ##
+  tolerations: []
+
+  ## taiga containers' resource requests and limits
+  ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+  ##
+  resources:
+    # We usually recommend not to specify default resources and to leave this as a conscious
+    # choice for the user. This also increases chances charts run on environments with little
+    # resources, such as Minikube. If you do want to specify resources, uncomment the following
+    # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+    limits: 
+      cpu: 1
+      memory: 2Gi
+    requests: {}
+    #  cpu: 1
+    #  memory: 1Gi
+
+  ## Configure extra options for liveness and readiness probes
+  ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes)
+  ##
+  livenessProbe:
+    enabled: false
+    initialDelaySeconds: 20
+    periodSeconds: 10
+    timeoutSeconds: 5
+    successThreshold: 1
+    failureThreshold: 3
+  readinessProbe:
+    enabled: false
+    initialDelaySeconds: 5
+    periodSeconds: 10
+    timeoutSeconds: 1
+    successThreshold: 1
+    failureThreshold: 3
+
+
+  ## Environment variables, to pass to the entry point
+  ##
+  # extraVars:
+  #   - name: NAMI_DEBUG
+  #     value: --log-level trace
+
+  ## Kubernetes configuration
+  ##   minikube: NodePort
+  ##   ingress: ClusterIP
+  ##   elsewhere: LoadBalancer
+  ##
+  service:
+    type: ClusterIP
+    # HTTP Port
+    port: 8000
+    ## loadBalancerIP:
+    ## Control hosts connecting to "LoadBalancer" only
+    loadBalancerSourceRanges:
+      - 0.0.0.0/0
+    ##
+    ## nodePorts:
+    ##   http: <to set explicitly, choose port between 30000-32767>
+    nodePorts:
+      http: ""
+    ## Enable client source IP preservation
+    ## ref http://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip
+    ##
+    externalTrafficPolicy: Cluster
+
+events:
+  ## Taiga image version
+  ## ref: https://hub.docker.com/r/taigaio/taiga5/tags
+  ##
+  image:
+    registry: docker.io
+    repository: taigaio/taiga-events
+    tag: "latest"
+    ## Specify a imagePullPolicy
+    ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+    ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+    ##
+    pullPolicy: IfNotPresent
+    ## Optionally specify an array of imagePullSecrets.
+    ## Secrets must be manually created in the namespace.
+    ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+    ##
+    # pullSecrets:
+    #   - myRegistryKeySecretName
+
+  ## events-taiga rabbitmq credentials
+  ## Must match to events-rabbitmq.auth.username and events-rabbitmq.auth.password
+  ## I don't use events-rabbitmq values because this bug: https://github.com/helm/helm/issues/2192
+  rabbitmq:
+    auth:
+      username: taiga
+      password: 6hghh8HY56
+
+  ## Pod Security Context
+  ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+  ##
+  securityContext: {}
+
+  ## Define the number of pods the deployment will create
+  ## Do not change unless your persistent volume allows more than one writer, ie NFS
+  ## ref: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+  ##
+  replicas: 1
+
+  ## Pod annotations
+  ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+  ##
+  podAnnotations: {}
+
+  ## Affinity for pod assignment
+  ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
+  ##
+  affinity: {}
+
+  ## Node labels for pod assignment. Evaluated as a template.
+  ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
+  ##
+  nodeSelector: {}
+
+  ## Tolerations for pod assignment
+  ## Ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+  ##
+  tolerations: []
+
+
+  ## taiga containers' resource requests and limits
+  ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+  ##
+  resources:
+    # We usually recommend not to specify default resources and to leave this as a conscious
+    # choice for the user. This also increases chances charts run on environments with little
+    # resources, such as Minikube. If you do want to specify resources, uncomment the following
+    # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+    limits: 
+      cpu: 1
+      memory: 2Gi
+    requests: {}
+    #  cpu: 1
+    #  memory: 1Gi
+
+  ## Configure extra options for liveness and readiness probes
+  ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes)
+  ##
+  livenessProbe:
+    enabled: false
+    initialDelaySeconds: 20
+    periodSeconds: 10
+    timeoutSeconds: 5
+    successThreshold: 1
+    failureThreshold: 3
+  readinessProbe:
+    enabled: false
+    initialDelaySeconds: 5
+    periodSeconds: 10
+    timeoutSeconds: 1
+    successThreshold: 1
+    failureThreshold: 3
+
+  ## Environment variables, to pass to the entry point
+  ##
+  # extraVars:
+  #   - name: NAMI_DEBUG
+  #     value: --log-level trace
+
+  ## Kubernetes configuration
+  ##   minikube: NodePort
+  ##   ingress: ClusterIP
+  ##   elsewhere: LoadBalancer
+  ##
+  service:
+    type: ClusterIP
+    # HTTP Port
+    port: 8888
+    ## loadBalancerIP:
+    ## Control hosts connecting to "LoadBalancer" only
+    loadBalancerSourceRanges:
+      - 0.0.0.0/0
+    ##
+    ## nodePorts:
+    ##   http: <to set explicitly, choose port between 30000-32767>
+    nodePorts:
+      http: ""
+    ## Enable client source IP preservation
+    ## ref http://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip
+    ##
+    externalTrafficPolicy: Cluster
+
+protected:
+  ## Taiga image version
+  ## ref: https://hub.docker.com/r/taigaio/taiga5/tags
+  ##
+  image:
+    registry: docker.io
+    repository: taigaio/taiga-protected
+    tag: "latest"
+    ## Specify a imagePullPolicy
+    ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+    ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+    ##
+    pullPolicy: IfNotPresent
+    ## Optionally specify an array of imagePullSecrets.
+    ## Secrets must be manually created in the namespace.
+    ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+    ##
+    # pullSecrets:
+    #   - myRegistryKeySecretName
+
+  maxAge: 360
+
+  ## Pod Security Context
+  ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+  ##
+  securityContext: {}
+
+  ## Define the number of pods the deployment will create
+  ## Do not change unless your persistent volume allows more than one writer, ie NFS
+  ## ref: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+  ##
+  replicas: 1
+
+  ## Pod annotations
+  ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+  ##
+  podAnnotations: {}
+
+  ## Affinity for pod assignment
+  ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
+  ##
+  affinity: {}
+
+  ## Node labels for pod assignment. Evaluated as a template.
+  ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
+  ##
+  nodeSelector: {}
+
+  ## Tolerations for pod assignment
+  ## Ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+  ##
+  tolerations: []
+
+
+  ## taiga containers' resource requests and limits
+  ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+  ##
+  resources:
+    # We usually recommend not to specify default resources and to leave this as a conscious
+    # choice for the user. This also increases chances charts run on environments with little
+    # resources, such as Minikube. If you do want to specify resources, uncomment the following
+    # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+    limits: {}
+      cpu: 1
+      memory: 2Gi
+    requests: {}
+    #  cpu: 1
+    #  memory: 1Gi
+
+  ## Configure extra options for liveness and readiness probes
+  ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes)
+  ##
+  livenessProbe:
+    enabled: false
+    initialDelaySeconds: 20
+    periodSeconds: 10
+    timeoutSeconds: 5
+    successThreshold: 1
+    failureThreshold: 3
+  readinessProbe:
+    enabled: false
+    initialDelaySeconds: 5
+    periodSeconds: 10
+    timeoutSeconds: 1
+    successThreshold: 1
+    failureThreshold: 3
+
+  ## Environment variables, to pass to the entry point
+  ##
+  # extraVars:
+  #   - name: NAMI_DEBUG
+  #     value: --log-level trace
+
+  ## Kubernetes configuration
+  ##   minikube: NodePort
+  ##   ingress: ClusterIP
+  ##   elsewhere: LoadBalancer
+  ##
+  service:
+    type: ClusterIP
+    # HTTP Port
+    port: 8003
+    ## loadBalancerIP:
+    ## Control hosts connecting to "LoadBalancer" only
+    loadBalancerSourceRanges:
+      - 0.0.0.0/0
+    ##
+    ## nodePorts:
+    ##   http: <to set explicitly, choose port between 30000-32767>
+    nodePorts:
+      http: ""
+    ## Enable client source IP preservation
+    ## ref http://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip
+    ##
+    externalTrafficPolicy: Cluster
+
+front:
+  ## Taiga image version
+  ## ref: https://hub.docker.com/r/taigaio/taiga5/tags
+  ##
+  image:
+    registry: docker.io
+    repository: taigaio/taiga-front
+    tag: "latest"
+    ## Specify a imagePullPolicy
+    ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+    ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+    ##
+    pullPolicy: IfNotPresent
+    ## Optionally specify an array of imagePullSecrets.
+    ## Secrets must be manually created in the namespace.
+    ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+    ##
+    # pullSecrets:
+    #   - myRegistryKeySecretName
+
+  ## Define the number of pods the deployment will create
+  ## Do not change unless your persistent volume allows more than one writer, ie NFS
+  ## ref: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+  ##
+  replicas: 1
+
+  ## Pod Security Context
+  ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+  ##
+  securityContext: {}
+
+  ## Pod annotations
+  ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+  ##
+  podAnnotations: {}
+
+  ## Affinity for pod assignment
+  ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
+  ##
+  affinity: {}
+
+  ## Node labels for pod assignment. Evaluated as a template.
+  ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
+  ##
+  nodeSelector: {}
+
+  ## Tolerations for pod assignment
+  ## Ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+  ##
+  tolerations: []
+
+  ## taiga containers' resource requests and limits
+  ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+  ##
+  resources:
+    # We usually recommend not to specify default resources and to leave this as a conscious
+    # choice for the user. This also increases chances charts run on environments with little
+    # resources, such as Minikube. If you do want to specify resources, uncomment the following
+    # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+    limits: 
+      cpu: 1
+      memory: 2Gi
+    requests: {}
+    #  cpu: 1
+    #  memory: 1Gi
+
+  ## Configure extra options for liveness and readiness probes
+  ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes)
+  ##
+  livenessProbe:
+    enabled: false
+    initialDelaySeconds: 20
+    periodSeconds: 10
+    timeoutSeconds: 5
+    successThreshold: 1
+    failureThreshold: 3
+  readinessProbe:
+    enabled: false
+    initialDelaySeconds: 5
+    periodSeconds: 10
+    timeoutSeconds: 1
+    successThreshold: 1
+    failureThreshold: 3
+
+
+  ## Environment variables, to pass to the entry point
+  ##
+  # extraVars:
+  #   - name: NAMI_DEBUG
+  #     value: --log-level trace
+
+  ## Kubernetes configuration
+  ##   minikube: NodePort
+  ##   ingress: ClusterIP
+  ##   elsewhere: LoadBalancer
+  ##
+  service:
+    type: ClusterIP
+    # HTTP Port
+    port: 80
+    ## loadBalancerIP:
+    ## Control hosts connecting to "LoadBalancer" only
+    loadBalancerSourceRanges:
+      - 0.0.0.0/0
+    ##
+    ## nodePorts:
+    ##   http: <to set explicitly, choose port between 30000-32767>
+    nodePorts:
+      http: ""
+    ## Enable client source IP preservation
+    ## ref http://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip
+    ##
+    externalTrafficPolicy: Cluster
+
+gateway:
+  enabled: false
+  ## Taiga gateway image version
+  ## ref: https://hub.docker.com/_/nginx
+  ##
+  image:
+    registry: docker.io
+    repository: nginx
+    tag: "1.19-alpine"
+    ## Specify a imagePullPolicy
+    ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+    ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+    ##
+    pullPolicy: IfNotPresent
+    ## Optionally specify an array of imagePullSecrets.
+    ## Secrets must be manually created in the namespace.
+    ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+    ##
+    # pullSecrets:
+    #   - myRegistryKeySecretName
+
+  ## Define the number of pods the deployment will create
+  ## Do not change unless your persistent volume allows more than one writer, ie NFS
+  ## ref: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+  ##
+  replicas: 1
+
+  ## Pod Security Context
+  ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+  ##
+  securityContext: {}
+
+  ## Pod annotations
+  ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+  ##
+  podAnnotations: {}
+
+  ## Affinity for pod assignment
+  ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
+  ##
+  affinity: {}
+
+  ## Node labels for pod assignment. Evaluated as a template.
+  ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
+  ##
+  nodeSelector: {}
+
+  ## Tolerations for pod assignment
+  ## Ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+  ##
+  tolerations: []
+
+  ## taiga containers' resource requests and limits
+  ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
+  ##
+  resources:
+    # We usually recommend not to specify default resources and to leave this as a conscious
+    # choice for the user. This also increases chances charts run on environments with little
+    # resources, such as Minikube. If you do want to specify resources, uncomment the following
+    # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+    limits: {}
+    #  cpu: 2
+    #  memory: 1Gi
+    requests: {}
+    #  cpu: 1
+    #  memory: 1Gi
+
+  ## Configure extra options for liveness and readiness probes
+  ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes)
+  ##
+  livenessProbe:
+    enabled: false
+    initialDelaySeconds: 20
+    periodSeconds: 10
+    timeoutSeconds: 5
+    successThreshold: 1
+    failureThreshold: 10
+  readinessProbe:
+    enabled: false
+    initialDelaySeconds: 5
+    periodSeconds: 10
+    timeoutSeconds: 1
+    successThreshold: 1
+    failureThreshold: 10
+
+
+  ## Environment variables, to pass to the entry point
+  ##
+  # extraVars:
+  #   - name: NAMI_DEBUG
+  #     value: --log-level trace
+
+  ## Kubernetes configuration
+  ##   minikube: NodePort
+  ##   ingress: ClusterIP
+  ##   elsewhere: LoadBalancer
+  ##
+  service:
+    type: ClusterIP
+    # HTTP Port
+    port: 80
+    ## loadBalancerIP:
+    ## Control hosts connecting to "LoadBalancer" only
+    loadBalancerSourceRanges:
+      - 0.0.0.0/0
+    ##
+    ## nodePorts:
+    ##   http: <to set explicitly, choose port between 30000-32767>
+    nodePorts:
+      http: ""
+    ## Enable client source IP preservation
+    ## ref http://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/#preserving-the-client-source-ip
+    ##
+    externalTrafficPolicy: Cluster
+
+
+## Configure the ingress resource that allows you to access the
+## taiga installation. Set up the URL
+## ref: http://kubernetes.io/docs/user-guide/ingress/
+##
+ingress:
+  ## Set to true to enable ingress record generation
+  ##
+  enabled: true
+
+  ## Set the ingressClassName
+  ## default to 'nginx' but maybe is better to set to 'public'
+  ##
+  ingressClassName: traefik
+
+  ## Set this to true in order to add the corresponding annotations for cert-manager
+  ##
+  certManager: false
+
+  ## When the ingress is enabled, a host pointing to this will be created
+  ##
+  hostname: taiga.boote.it
+
+  ## Enable TLS configuration for the hostname defined at ingress.hostname parameter
+  ## TLS certificates will be retrieved from a TLS secret with name: {{- printf "%s-tls" .Values.ingress.hostname }}
+  ## You can use the ingress.secrets parameter to create this TLS secret or relay on cert-manager to create it
+  ##
+  tls: true
+
+  ## Ingress annotations done as key:value pairs
+  ## For a full list of possible ingress annotations,
+  ## please see https://github.com/kubernetes/ingress-nginx/blob/master/docs/user-guide/nginx-configuration/annotations.md
+  ##
+  ## If certManager is set to true, annotation kubernetes.io/tls-acme: "true" will automatically be set
+  ##
+  annotations: 
+    cert-manager.io/cluster-issuer: letsencrypt-boote-it
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    # kubernetes.io/ingress.class: nginx
+    # cert-manager.io/cluster-issuer: letsencrypt-prod
+
+  ## The list of additional hostnames to be covered with this ingress record.
+  ## Most likely the hostname above will be enough, but in the event more hosts are needed, this is an array
+  ## extraHosts:
+  ## - name: taiga.local
+  ##   path: /
+
+  ## The tls configuration for additional hostnames to be covered with this ingress record.
+  ## see: https://kubernetes.io/docs/concepts/services-networking/ingress/#tls
+  ## extraTls:
+  ## - hosts:
+  ##     - taiga.local
+  ##   secretName: taiga.local-tls
+
+  ## If you're providing your own certificates, please use this to add the certificates as secrets
+  ## key and certificate should start with -----BEGIN CERTIFICATE----- or
+  ## -----BEGIN RSA PRIVATE KEY-----
+  ##
+  ## name should line up with a tlsSecret set further up
+  ## If you're using cert-manager, this is unneeded, as it will create the secret for you if it is not set
+  ##
+  ## It is also possible to create and manage the certificates outside of this helm chart
+  ## Please see README.md for more information
+  ##
+  secrets:
+   - name: "taiga-boote-it"
+  ##   key:
+  ##   certificate:
+    
+
+## Pods Service Account
+## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
+##
+serviceAccount:
+  ## Specifies whether a ServiceAccount should be created
+  ##
+  create: false
+  ## The name of the ServiceAccount to use.
+  ## If not set and create is true, a name is generated using the taiga.fullname template
+  # name:
+
+## Enable persistence using Persistent Volume Claims
+## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
+##
+persistence:
+  enabled: true
+  ## A manually manage Persistent Volume Claim
+  ## Requires persistence.enable: true
+  ## If defined, PVC must be created manually before volume will be bound
+  # existingClaim:
+
+  ## taiga data Persistent Volume Storage Class
+  ## If defined, storageClassName: <storageClass>
+  ## If set to "-", storageClassName: "", which disables dynamic provisioning
+  ## If undefined (the default) or set to null, no storageClassName spec is
+  ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+  ##   GKE, AWS & OpenStack)
+  ##
+  storageClass: "openebs-hostpath"
+  accessMode: ReadWriteOnce
+  size: 5Gi
+
+## PostgreSQL chart configuration
+##
+## https://github.com/helm/charts/blob/master/stable/postgresql/values.yaml
+##
+postgresql:
+  image:
+    tag: 13.10.0-debian-11-r2
+
+  ## Whether to deploy a PostgreSQL server to satisfy the applications database requirements. To use an external database set this to false and configure the externalDatabase parameters
+  enabled: false
+
+  ## ref: https://github.com/bitnami/containers/tree/main/bitnami/postgresql#setting-the-root-password-on-first-run
+  ## ref: https://github.com/bitnami/containers/tree/main/bitnami/postgresql#creating-a-database-on-first-run
+  ## ref: https://github.com/bitnami/containers/tree/main/bitnami/postgresql#creating-a-database-user-on-first-run
+  ##
+  auth:
+    ## @param auth.enablePostgresUser Assign a password to the "postgres" admin user. Otherwise, remote access will be blocked for this user
+    ##
+    enablePostgresUser: true
+    ## @param auth.postgresPassword Password for the "postgres" admin user. Ignored if `auth.existingSecret` with key `postgres-password` is provided
+    ##
+    postgresPassword: "eqwopfNLF8"
+    ## @param auth.username Name for a custom user to create
+    ##
+    username: "taiga"
+    ## @param auth.password Password for the custom user to create. Ignored if `auth.existingSecret` with key `password` is provided
+    ##
+    password: "67YGYGyttyt66GYG"
+    ## @param auth.database Name for a custom database to create
+    ##
+    database: "taiga"
+
+  ## Enable persistence using Persistent Volume Claims
+  ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
+  ##
+  persistence:
+    enabled: true
+    ## A manually manage Persistent Volume Claim
+    ## Requires postgresql.persistence.enable: true
+    ## If defined, PVC must be created manually before volume will be bound
+    # existingClaim:
+
+    ## postgresql data Persistent Volume Storage Class
+    ## If defined, storageClassName: <storageClass>
+    ## If set to "-", storageClassName: "", which disables dynamic provisioning
+    ## If undefined (the default) or set to null, no storageClassName spec is
+    ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+    ##   GKE, AWS & OpenStack)
+    ##
+    # storageClass: "-"
+    accessMode: ReadWriteOnce
+    size: 1Gi
+
+## async Rabbitmq chart configuration
+##
+## https://artifacthub.io/packages/helm/bitnami/rabbitmq?modal=values-schema
+##
+async-rabbitmq:
+  # Whether to deploy a Rabbitmq server to satisfy the applications messaging services. To use an external rabbitmq set this to false and configure the externalRabbitmq parameters
+  enabled: true
+
+  ## Create a rabbitmq username
+  auth:
+    username: taiga
+    password: 6hghh8HY56
+    
+    erlangCookie: h2SNqvsJRJAeSRUlkubZTlkRB0OJgYSu
+
+  extraConfiguration: |-
+    default_vhost = taiga
+    default_permissions.configure = .*
+    default_permissions.read = .*
+    default_permissions.write = .*
+
+## events Rabbitmq chart configuration
+##
+## https://artifacthub.io/packages/helm/bitnami/rabbitmq?modal=values-schema
+##
+events-rabbitmq:
+  # Whether to deploy a Rabbitmq server to satisfy the applications messaging services. To use an external rabbitmq set this to false and configure the externalRabbitmq parameters
+  enabled: true
+
+  ## Create a rabbitmq username
+  auth:
+    username: taiga
+    password: 6hghh8HY56
+    
+    erlangCookie: h2SNqvsJRJAeSRUlkubZTlkRB0OJgYSu
+
+  extraConfiguration: |-
+    default_vhost = taiga
+    default_permissions.configure = .*
+    default_permissions.read = .*
+    default_permissions.write = .*
+
+
+## Enable debug
+## ref: https://taigaio.github.io/taiga-doc/dist/setup-production.html
+debug: false
+
+## SMTP mail delivery configuration
+## ref: https://taigaio.github.io/taiga-doc/dist/setup-production.html
+##
+smtp:
+  enabled: false
+  from: no-reply@example.com
+  host: localhost
+  port: 25
+  user:
+  password:
+  tls: false
+  ssl: false
