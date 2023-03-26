@@ -3754,14 +3754,14 @@
           "type": "prometheus",
           "uid": "${datasource}"
         },
-        "definition": "label_values(node_uname_info{nodename=~\"(?i:($node))\"}, instance)",
+        "definition": "label_values(node_uname_info{job=\"$job\"}, instance)",
         "hide": 2,
         "includeAll": false,
         "multi": false,
         "name": "instance",
         "options": [],
         "query": {
-          "query": "label_values(node_uname_info{nodename=~\"(?i:($node))\"}, instance)",
+          "query": "label_values(node_uname_info{job=\"$job\"}, instance)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 2,
