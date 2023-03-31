@@ -36,5 +36,5 @@ configMapGenerator:
 - name: dashboards-k8s-system-coredns
   files: [ dashboards/k8s-system-coredns.json ]
 
-- name: dashboards-k8s-addons-starboard-operator
-  files: [ dashboards/k8s-addons-starboard-operator.json ]
+- name: dashboards-k8s-addons-trivy-operator
+  files: [ dashboards/k8s-addons-trivy-operator.json ]
