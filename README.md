@@ -14,6 +14,7 @@
   - [Install with Helm values](#install-with-helm-values)
   - [Install as ConfigMaps](#install-as-configmaps)
   - [Install as ConfigMaps with Terraform](#install-as-configmaps-with-terraform)
+- [Known issue(s)](#known-issues)
 - [Contributing](#contributing)
 
 ## Description
@@ -167,6 +168,12 @@ kubectl kustomize . | tfk8s
 ```
 
 *Note: no namespace is set by default, you can change that in the `kustomization.yaml` file.*
+
+## Known issue(s)
+
+The `k8s-views-nodes` dashboard will have many broken panels if the `node` label from `kube_node_info` doesn't match the `nodename` label from `node_uname_info`.
+
+This issue being discussed in [#41](https://github.com/dotdc/grafana-dashboards-kubernetes/pull/41).
 
 ## Contributing
 
