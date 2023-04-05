@@ -254,7 +254,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -668,7 +668,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -762,7 +762,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -873,7 +873,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1007,7 +1007,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1305,7 +1305,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1400,7 +1400,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1582,6 +1582,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Namespaces",
   "uid": "k8s_views_ns",
-  "version": 15,
+  "version": 16,
   "weekStart": ""
 }

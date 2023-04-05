@@ -1147,7 +1147,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1241,7 +1241,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1828,7 +1828,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1937,7 +1937,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -2044,7 +2044,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -2153,7 +2153,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -2260,7 +2260,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -2356,7 +2356,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -2499,7 +2499,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -2754,7 +2754,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -2868,7 +2868,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -2966,7 +2966,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -3064,7 +3064,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -3161,7 +3161,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -3259,7 +3259,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -3356,7 +3356,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -3454,7 +3454,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -3551,7 +3551,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -3780,6 +3780,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Nodes",
   "uid": "k8s_views_nodes",
-  "version": 16,
+  "version": 17,
   "weekStart": ""
 }
