@@ -46,7 +46,7 @@ As an example, here's how the `Kubernetes / Views / Global` dashboard looks like
 
 | File name                  | Description | Screenshot |
 |:---------------------------|:------------|:----------:|
-| k8s-addons-trivy-operator.json | Dashboard for the Trivy Operator from Aqua Security. | [LINK](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-addons-starboard-operator.png) |
+| k8s-addons-trivy-operator.json | Dashboard for the Trivy Operator from Aqua Security. | [LINK](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-addons-trivy-operator.png) |
 | k8s-system-api-server.json | Dashboard for the API Server Kubernetes. | [LINK](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-system-api-server.png) |
 | k8s-system-coredns.json    | Show information on the CoreDNS Kubernetes component. | [LINK](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-system-coredns.png) |
 | k8s-views-global.json      | `Global` level view dashboard for Kubernetes. | [LINK](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-views-global.png) |
@@ -77,7 +77,7 @@ Grafana.com dashboard id list:
 
 | Dashboard                          | ID    |
 |:-----------------------------------|:------|
-| k8s-addons-starboard-operator.json | 16337 |
+| k8s-addons-trivy-operator.json     | 16337 |
 | k8s-system-api-server.json         | 15761 |
 | k8s-system-coredns.json            | 15762 |
 | k8s-views-global.json              | 15757 |
