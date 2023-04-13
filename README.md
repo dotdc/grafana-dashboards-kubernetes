@@ -63,6 +63,23 @@ git clone https://github.com/dotdc/grafana-dashboards-kubernetes.git
 cd grafana-dashboards-kubernetes
 ```
 
+If you plan to deploy these dashboards using [ArgoCD](#install-with-argocd), [ConfigMaps](#install-as-configmaps) or [Terraform](#install-as-configmaps-with-terraform), you will also need to enable and configure the `dashboards sidecar` on the Grafana Helm chart to get the dashboards loaded in your Grafana instance:
+
+```yaml
+# kube-prometheus-stack values
+grafana:
+  sidecar:
+    dashboards:
+      enabled: true
+      defaultFolderName: "General"
+      label: grafana_dashboard
+      labelValue: "true"
+      folderAnnotation: grafana_folder
+      searchNamespace: ALL
+      provider:
+        foldersFromFilesStructure: true
+```
+
 ### Install manually
 
 On the WebUI of your Grafana instance, put your mouse over the `+` sign on the left menu, then click on `Import`.\
@@ -92,6 +109,8 @@ If you have ArgoCD, this will deploy the dashboards in ArgoCD's default project:
 ```terminal
 kubectl apply -f argocd-app.yml
 ```
+
+You will also need to enable and configure the Grafana `dashboards sidecar` like described in [Installation](#installation).
 
 ### Install with Helm values
 
@@ -155,6 +174,8 @@ To build and deploy them directly on your kubernetes cluster :
 kubectl apply -k . -n monitoring
 ```
 
+You will also need to enable and configure the Grafana `dashboards sidecar` like described in [Installation](#installation).
+
 *Note: you can change the namespace if needed.*
 
 ### Install as ConfigMaps with Terraform
@@ -166,6 +187,8 @@ To build and convert ConfigMaps to Terraform code :
 ```terminal
 kubectl kustomize . | tfk8s
 ```
+
+You will also need to enable and configure the Grafana `dashboards sidecar` like described in [Installation](#installation).
 
 *Note: no namespace is set by default, you can change that in the `kustomization.yaml` file.*
 
