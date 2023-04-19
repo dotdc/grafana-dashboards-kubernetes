@@ -507,7 +507,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "avg(rate(coredns_dns_request_size_bytes_sum{instance=~\"$instance\",proto=\"$protocol\"}[$__rate_interval])) by (proto)",
+          "expr": "sum(rate(coredns_dns_request_size_bytes_sum{instance=~\"$instance\",proto=\"$protocol\"}[$__rate_interval])) by (proto) / sum(rate(coredns_dns_request_size_bytes_count{instance=~\"$instance\",proto=\"$protocol\"}[$__rate_interval])) by (proto)",
           "interval": "$resolution",
           "legendFormat": "average $protocol packet size",
           "refId": "A"
@@ -1553,6 +1553,6 @@
   "timezone": "",
   "title": "Kubernetes / System / CoreDNS",
   "uid": "k8s_system_coredns",
-  "version": 11,
+  "version": 12,
   "weekStart": ""
 }
