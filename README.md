@@ -73,7 +73,7 @@ grafana:
       enabled: true
       defaultFolderName: "General"
       label: grafana_dashboard
-      labelValue: "true"
+      labelValue: "1"
       folderAnnotation: grafana_folder
       searchNamespace: ALL
       provider:
