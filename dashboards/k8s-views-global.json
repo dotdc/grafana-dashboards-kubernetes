@@ -139,7 +139,7 @@
         },
         "showUnfilled": true
       },
-      "pluginVersion": "9.2.4",
+      "pluginVersion": "9.3.8",
       "targets": [
         {
           "datasource": {
@@ -235,7 +235,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "9.2.4",
+      "pluginVersion": "9.3.8",
       "targets": [
         {
           "datasource": {
@@ -321,7 +321,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "9.2.4",
+      "pluginVersion": "9.3.8",
       "targets": [
         {
           "datasource": {
@@ -621,7 +621,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "9.2.4",
+      "pluginVersion": "9.3.8",
       "targets": [
         {
           "datasource": {
@@ -681,7 +681,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.2.4",
+      "pluginVersion": "9.3.8",
       "targets": [
         {
           "datasource": {
@@ -780,7 +780,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.2.4",
+      "pluginVersion": "9.3.8",
       "targets": [
         {
           "datasource": {
@@ -878,7 +878,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "9.2.4",
+      "pluginVersion": "9.3.8",
       "targets": [
         {
           "datasource": {
@@ -1548,6 +1548,7 @@
         "type": "prometheus",
         "uid": "${datasource}"
       },
+      "description": "Dropped noisy virtual devices for readability.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1629,9 +1630,9 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(node_network_receive_bytes_total{job=\"node-exporter\"}[$__rate_interval]))",
+          "expr": "sum(rate(node_network_receive_bytes_total{job=\"node-exporter\", device!~\"lxc.*|veth.*\"}[$__rate_interval])) by (device)",
           "interval": "$resolution",
-          "legendFormat": "Total received bytes",
+          "legendFormat": "Received : {{ device }}",
           "range": true,
           "refId": "A"
         },
@@ -1642,14 +1643,14 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "- sum(rate(node_network_transmit_bytes_total{job=\"node-exporter\"}[$__rate_interval]))",
+          "expr": "- sum(rate(node_network_transmit_bytes_total{job=\"node-exporter\", device!~\"lxc.*|veth.*\"}[$__rate_interval]))  by (device)",
           "interval": "$resolution",
-          "legendFormat": "Total transmitted bytes",
+          "legendFormat": "Transmitted : {{ device }}",
           "range": true,
           "refId": "B"
         }
       ],
-      "title": "Global Network Utilization",
+      "title": "Global Network Utilization by device",
       "type": "timeseries"
     },
     {
@@ -1806,7 +1807,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1848,7 +1850,7 @@
           "exemplar": true,
           "expr": "sum(rate(container_network_receive_bytes_total[$__rate_interval])) by (namespace)",
           "interval": "$resolution",
-          "legendFormat": "Received bytes in {{ namespace }}",
+          "legendFormat": "Received : {{ namespace }}",
           "range": true,
           "refId": "A"
         },
@@ -1861,7 +1863,7 @@
           "expr": "- sum(rate(container_network_transmit_bytes_total[$__rate_interval])) by (namespace)",
           "hide": false,
           "interval": "$resolution",
-          "legendFormat": "Transmitted bytes in {{ namespace }}",
+          "legendFormat": "Transmitted : {{ namespace }}",
           "range": true,
           "refId": "B"
         }
@@ -1932,7 +1934,7 @@
         "x": 12,
         "y": 47
       },
-      "id": 56,
+      "id": 80,
       "options": {
         "legend": {
           "calcs": [],
@@ -1974,7 +1976,227 @@
           "refId": "B"
         }
       ],
-      "title": "Network Received by instance",
+      "title": "Total Network Received (with all virtual devices) by instance",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "description": "Dropped noisy virtual devices for readability.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "BANDWIDTH",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 25,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 55
+      },
+      "id": 56,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum(rate(node_network_receive_bytes_total{job=\"node-exporter\", device!~\"lxc.*|veth.*|lo\"}[$__rate_interval])) by (instance)",
+          "interval": "$resolution",
+          "legendFormat": "Received bytes in {{ instance }}",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "editorMode": "code",
+          "expr": "- sum(rate(node_network_transmit_bytes_total{job=\"node-exporter\", device!~\"lxc.*|veth.*|lo\"}[$__rate_interval])) by (instance)",
+          "hide": false,
+          "interval": "$resolution",
+          "legendFormat": "Transmitted bytes in {{ instance }}",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Network Received (without loopback)  by instance",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "description": "Dropped noisy virtual devices for readability.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "BANDWIDTH",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 25,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 55
+      },
+      "id": 81,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum(rate(node_network_receive_bytes_total{job=\"node-exporter\", device=\"lo\"}[$__rate_interval])) by (instance)",
+          "interval": "$resolution",
+          "legendFormat": "Received bytes in {{ instance }}",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "editorMode": "code",
+          "expr": "- sum(rate(node_network_transmit_bytes_total{job=\"node-exporter\", device=\"lo\"}[$__rate_interval])) by (instance)",
+          "hide": false,
+          "interval": "$resolution",
+          "legendFormat": "Transmitted bytes in {{ instance }}",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Network Received (loopback only) by instance",
       "type": "timeseries"
     }
   ],
@@ -2062,6 +2284,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Global",
   "uid": "k8s_views_global",
-  "version": 23,
+  "version": 24,
   "weekStart": ""
 }
