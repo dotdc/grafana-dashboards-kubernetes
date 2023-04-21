@@ -40,7 +40,7 @@ configMapGenerator:
   files: [ dashboards/k8s-addons-starboard-operator.json ]
 
 #################################################
-# Argo CD Dashboards
+# Custom Dashboards
 #################################################
 
 - name: dashboards-argocd-all
@@ -57,3 +57,6 @@ configMapGenerator:
 
 - name: dashboards-minio-all
   files: [ dashboards/minio-full.json ]
+  
+  - name: dashboards-traefik-all
+  files: [ dashboards/traefik-full.json ]
