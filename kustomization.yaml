@@ -58,5 +58,5 @@ configMapGenerator:
 - name: dashboards-minio-all
   files: [ dashboards/minio-full.json ]
   
-  - name: dashboards-traefik-all
+- name: dashboards-traefik-all
   files: [ dashboards/traefik-full.json ]
