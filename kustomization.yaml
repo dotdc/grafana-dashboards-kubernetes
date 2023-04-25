@@ -60,3 +60,6 @@ configMapGenerator:
   
 - name: dashboards-traefik-all
   files: [ dashboards/traefik-full.json ]
+
+- name: dashboards-letsdoit-all
+  files: [ dashboards/letsdoit-full.json ]
