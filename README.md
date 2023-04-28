@@ -196,7 +196,19 @@ You will also need to enable and configure the Grafana `dashboards sidecar` like
 
 The `k8s-views-nodes` dashboard will have many broken panels if the `node` label from `kube_node_info` doesn't match the `nodename` label from `node_uname_info`.
 
-This issue being discussed in [#41](https://github.com/dotdc/grafana-dashboards-kubernetes/pull/41).
+This situation can happen on certain deployments of the node exporter running inside Kubernetes, where `nodename` takes a different value than the node name as understood by the Kubernetes API.
+
+Assuming the node exporter target is defined through `kubernetes_sd_configs` (e.g. via a `ServiceMonitor`), you can take advantage of the internal discovery labels and fix this by writing the following relabeling rule:
+
+```yaml
+action: replace
+sourceLabels:
+- __meta_kubernetes_pod_node_name
+targetLabel: nodename
+```
+
+An exemple of such a relabeling is available in the [kube-prometheus-stack helm
+chart](https://github.com/prometheus-community/helm-charts/blob/ac4e45620e60445ce4eae0aaf4fc367c540c105a/charts/kube-prometheus-stack/values.yaml#L1836).
 
 ## Contributing
 
