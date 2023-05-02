@@ -196,7 +196,87 @@ You will also need to enable and configure the Grafana `dashboards sidecar` like
 
 The `k8s-views-nodes` dashboard will have many broken panels if the `node` label from `kube_node_info` doesn't match the `nodename` label from `node_uname_info`.
 
-This issue being discussed in [#41](https://github.com/dotdc/grafana-dashboards-kubernetes/pull/41).
+This situation can happen on certain deployments of the node exporter running inside Kubernetes(e.g. via a `DaemonSet`), where `nodename` takes a different value than the node name as understood by the Kubernetes API.
+
+Below are some ways to relabel the metric to force the `nodename` label to the appropriate value, depending on the way the collection agent is deployed:
+
+### Directly through the Prometheus configuration file.
+
+Assuming the node exporter job is defined through `kubernetes_sd_config`, you can take advantage of the internal discovery labels and fix this by adding the following relabeling rule to the job:
+
+```yaml
+# File: prometheus.yaml
+scrape_configs:
+- job_name: node-exporter
+  relabel_configs:
+  # Add this
+  - action: replace
+    source_labels: [ __meta_kubernetes_pod_node_name]
+    target_label: nodename
+```
+
+### Through a `ServiceMonitor`
+
+If using the Prometheus operator or the Grafana agent in operator mode, the scrape job should instead be configured via a `ServiceMonitor` that will dynamically edit the prometheus configuration file. In that case, the relabeling has a slightly different syntax:
+
+```yaml
+# File: service-monitor.yaml
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+  endpoints:
+  - port: http-metrics
+    relabelings:
+    # Add this
+    - action: replace
+      sourceLabels: [ __meta_kubernetes_node_name]
+      targetLabel: nodename
+```
+
+As a convenience, if using the [kube-prometheus-stack helm chart](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack), this added rule can be directly specified in your values.yaml:
+
+```yaml
+# File: kube-prometheus-stack-values.yaml
+prometheus-node-exporter:
+  prometheus:
+    monitor:
+      relabelings:
+      - action: replace
+        sourceLabels: [__meta_kubernetes_pod_node_name]
+        targetLabel: nodename
+```
+
+### With Grafana Agent Flow mode
+
+The Grafana Agent can [bundle its own node_exporter](https://grafana.com/docs/agent/v0.33/flow/reference/components/prometheus.exporter.unix/). In that case, relabeling can be done this way:
+
+```river
+prometheus.exporter.unix {
+}
+
+prometheus.scrape "node_exporter" {
+  targets = prometheus.exporter.unix.targets
+  forward_to = [prometheus.relabel.node_exporter.receiver]
+
+  job_name = "node-exporter"
+}
+
+prometheus.relabel "node_exporter" {
+  forward_to = [prometheus.remote_write.sink.receiver]
+
+  rule {
+    replacement = env("HOSTNAME")
+    target_label = "nodename"
+  }
+
+  rule {
+    # The default job name is "integrations/node_exporter" and needs to be replaced
+    replacement = "node-exporter"
+    target_label = "job"
+  }
+}
+```
+
+The `HOSTNAME` environment variable is injected by default by the [Grafana Agent helm chart](https://github.com/grafana/agent/blob/93cb1a2718f6fc90fd06ef33b6bcff519dbed662/operations/helm/charts/grafana-agent/templates/containers/_agent.yaml#L25)
 
 ## Contributing
 
