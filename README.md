@@ -15,6 +15,9 @@
   - [Install as ConfigMaps](#install-as-configmaps)
   - [Install as ConfigMaps with Terraform](#install-as-configmaps-with-terraform)
 - [Known issue(s)](#known-issues)
+  - [Directly through the Prometheus configuration file](#directly-through-the-prometheus-configuration-file)
+  - [Through a `ServiceMonitor`](#through-a-servicemonitor)
+  - [With Grafana Agent Flow mode](#with-grafana-agent-flow-mode)
 - [Contributing](#contributing)
 
 ## Description
@@ -200,7 +203,7 @@ This situation can happen on certain deployments of the node exporter running in
 
 Below are some ways to relabel the metric to force the `nodename` label to the appropriate value, depending on the way the collection agent is deployed:
 
-### Directly through the Prometheus configuration file.
+### Directly through the Prometheus configuration file
 
 Assuming the node exporter job is defined through `kubernetes_sd_config`, you can take advantage of the internal discovery labels and fix this by adding the following relabeling rule to the job:
 
