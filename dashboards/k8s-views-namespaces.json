@@ -633,6 +633,7 @@
           "custom": {
             "axisCenteredZero": false,
             "axisColorMode": "text",
+            "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
@@ -746,6 +747,7 @@
           "custom": {
             "axisCenteredZero": false,
             "axisColorMode": "text",
+            "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
@@ -826,7 +828,7 @@
           "exemplar": true,
           "expr": "sum(kube_pod_status_reason) by (reason)",
           "interval": "",
-          "legendFormat": "__auto",
+          "legendFormat": "{{ reason }}",
           "range": true,
           "refId": "A"
         }
@@ -1125,7 +1127,7 @@
           "sortDesc": true
         },
         "tooltip": {
-          "mode": "single",
+          "mode": "multi",
           "sort": "none"
         }
       },
@@ -1138,7 +1140,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(container_cpu_cfs_throttled_seconds_total{namespace=~\"$namespace\", image!=\"\"}[$__rate_interval])) by (pod)",
+          "expr": "sum(rate(container_cpu_cfs_throttled_seconds_total{namespace=~\"$namespace\", image!=\"\"}[$__rate_interval])) by (pod) > 0",
           "interval": "$resolution",
           "legendFormat": "{{ pod }}",
           "range": true,
@@ -1438,8 +1440,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1532,8 +1533,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1643,8 +1643,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1738,8 +1737,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1845,8 +1843,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1868,8 +1865,8 @@
       "options": {
         "legend": {
           "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
+          "displayMode": "table",
+          "placement": "right",
           "showLegend": false
         },
         "tooltip": {
@@ -2012,6 +2009,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Namespaces",
   "uid": "k8s_views_ns",
-  "version": 20,
+  "version": 21,
   "weekStart": ""
 }
