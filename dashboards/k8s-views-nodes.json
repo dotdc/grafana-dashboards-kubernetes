@@ -1403,7 +1403,7 @@
           "exemplar": true,
           "expr": "sum(rate(node_cpu_core_throttles_total{instance=\"$instance\"}[$__rate_interval]))",
           "interval": "$resolution",
-          "legendFormat": "__auto",
+          "legendFormat": "Nb of cpu core throttles",
           "range": true,
           "refId": "A"
         }
@@ -3887,6 +3887,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Nodes",
   "uid": "k8s_views_nodes",
-  "version": 18,
+  "version": 19,
   "weekStart": ""
 }
