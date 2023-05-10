@@ -351,7 +351,6 @@
           "custom": {
             "axisCenteredZero": false,
             "axisColorMode": "text",
-            "axisLabel": "NB",
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
@@ -412,7 +411,9 @@
           ],
           "displayMode": "table",
           "placement": "right",
-          "showLegend": true
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
         },
         "tooltip": {
           "mode": "multi",
@@ -895,6 +896,220 @@
       "type": "stat"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 25,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 13
+      },
+      "id": 84,
+      "options": {
+        "legend": {
+          "calcs": [
+            "min",
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum(kube_pod_status_qos_class) by (qos_class)",
+          "interval": "",
+          "legendFormat": "{{ qos_class }} pods",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "editorMode": "code",
+          "expr": "sum(kube_pod_info)",
+          "hide": false,
+          "legendFormat": "Total pods",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Kubernetes Pods QoS classes",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 25,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 13
+      },
+      "id": 85,
+      "options": {
+        "legend": {
+          "calcs": [
+            "min",
+            "max",
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "8.3.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum(kube_pod_status_reason) by (reason)",
+          "interval": "",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Kubernetes Pods Status Reason",
+      "type": "timeseries"
+    },
+    {
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
@@ -904,7 +1119,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 13
+        "y": 22
       },
       "id": 71,
       "panels": [],
@@ -982,7 +1197,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 14
+        "y": 23
       },
       "id": 72,
       "options": {
@@ -1080,7 +1295,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 14
+        "y": 23
       },
       "id": 55,
       "options": {
@@ -1185,7 +1400,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 22
+        "y": 31
       },
       "id": 46,
       "options": {
@@ -1236,7 +1451,6 @@
           "custom": {
             "axisCenteredZero": false,
             "axisColorMode": "text",
-            "axisLabel": "MEMORY",
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
@@ -1285,7 +1499,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 22
+        "y": 31
       },
       "id": 50,
       "options": {
@@ -1386,7 +1600,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 30
+        "y": 39
       },
       "id": 54,
       "options": {
@@ -1486,7 +1700,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 30
+        "y": 39
       },
       "id": 73,
       "options": {
@@ -1593,7 +1807,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 38
+        "y": 47
       },
       "id": 82,
       "options": {
@@ -1647,7 +1861,7 @@
           "custom": {
             "axisCenteredZero": false,
             "axisColorMode": "text",
-            "axisLabel": "CPU CORES",
+            "axisLabel": "NB",
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
@@ -1700,7 +1914,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 38
+        "y": 47
       },
       "id": 83,
       "options": {
@@ -1750,7 +1964,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 46
+        "y": 55
       },
       "id": 69,
       "panels": [],
@@ -1820,7 +2034,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 47
+        "y": 56
       },
       "id": 44,
       "options": {
@@ -1929,7 +2143,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 47
+        "y": 56
       },
       "id": 53,
       "options": {
@@ -2038,7 +2252,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 55
+        "y": 64
       },
       "id": 79,
       "options": {
@@ -2147,7 +2361,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 55
+        "y": 64
       },
       "id": 80,
       "options": {
@@ -2257,7 +2471,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 63
+        "y": 72
       },
       "id": 56,
       "options": {
@@ -2367,7 +2581,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 63
+        "y": 72
       },
       "id": 81,
       "options": {
@@ -2499,6 +2713,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Global",
   "uid": "k8s_views_global",
-  "version": 25,
+  "version": 26,
   "weekStart": ""
 }
