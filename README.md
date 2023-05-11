@@ -15,7 +15,7 @@
   - [Install as ConfigMaps](#install-as-configmaps)
   - [Install as ConfigMaps with Terraform](#install-as-configmaps-with-terraform)
 - [Known issue(s)](#known-issues)
-  - [Broken panels on k8s-views-nodes is some cases](#broken-panels-on-k8s-views-nodes-is-some-cases)
+  - [Broken panels on k8s-views-nodes in some cases](#broken-panels-on-k8s-views-nodes-in-some-cases)
 - [Contributing](#contributing)
 
 ## Description
@@ -195,7 +195,7 @@ You will also need to enable and configure the Grafana `dashboards sidecar` like
 
 ## Known issue(s)
 
-### Broken panels on k8s-views-nodes is some cases
+### Broken panels on k8s-views-nodes in some cases
 
 The `k8s-views-nodes` dashboard will have many broken panels if the `node` label from `kube_node_info` doesn't match the `nodename` label from `node_uname_info`.
 
