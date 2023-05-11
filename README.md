@@ -15,9 +15,7 @@
   - [Install as ConfigMaps](#install-as-configmaps)
   - [Install as ConfigMaps with Terraform](#install-as-configmaps-with-terraform)
 - [Known issue(s)](#known-issues)
-  - [Directly through the Prometheus configuration file](#directly-through-the-prometheus-configuration-file)
-  - [Through a `ServiceMonitor`](#through-a-servicemonitor)
-  - [With Grafana Agent Flow mode](#with-grafana-agent-flow-mode)
+  - [Broken panels on k8s-views-nodes is some cases](#broken-panels-on-k8s-views-nodes-is-some-cases)
 - [Contributing](#contributing)
 
 ## Description
@@ -197,13 +195,15 @@ You will also need to enable and configure the Grafana `dashboards sidecar` like
 
 ## Known issue(s)
 
+### Broken panels on k8s-views-nodes is some cases
+
 The `k8s-views-nodes` dashboard will have many broken panels if the `node` label from `kube_node_info` doesn't match the `nodename` label from `node_uname_info`.
 
 This situation can happen on certain deployments of the node exporter running inside Kubernetes(e.g. via a `DaemonSet`), where `nodename` takes a different value than the node name as understood by the Kubernetes API.
 
 Below are some ways to relabel the metric to force the `nodename` label to the appropriate value, depending on the way the collection agent is deployed:
 
-### Directly through the Prometheus configuration file
+#### Directly through the Prometheus configuration file <!-- omit in toc -->
 
 Assuming the node exporter job is defined through `kubernetes_sd_config`, you can take advantage of the internal discovery labels and fix this by adding the following relabeling rule to the job:
 
@@ -218,7 +218,7 @@ scrape_configs:
     target_label: nodename
 ```
 
-### Through a `ServiceMonitor`
+#### Through a `ServiceMonitor` <!-- omit in toc -->
 
 If using the Prometheus operator or the Grafana agent in operator mode, the scrape job should instead be configured via a `ServiceMonitor` that will dynamically edit the prometheus configuration file. In that case, the relabeling has a slightly different syntax:
 
@@ -248,7 +248,7 @@ prometheus-node-exporter:
         targetLabel: nodename
 ```
 
-### With Grafana Agent Flow mode
+#### With Grafana Agent Flow mode <!-- omit in toc -->
 
 The Grafana Agent can [bundle its own node_exporter](https://grafana.com/docs/agent/v0.33/flow/reference/components/prometheus.exporter.unix/). In that case, relabeling can be done this way:
 
