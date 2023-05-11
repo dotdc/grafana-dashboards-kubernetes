@@ -578,7 +578,7 @@
           "refId": "A"
         }
       ],
-      "title": "API Server - HTTP Requets Latency by instance",
+      "title": "API Server - HTTP Requests Latency by instance",
       "type": "timeseries"
     },
     {
@@ -672,7 +672,7 @@
           "refId": "A"
         }
       ],
-      "title": "API Server - HTTP Requets Latency by verb",
+      "title": "API Server - HTTP Requests Latency by verb",
       "type": "timeseries"
     },
     {
@@ -1326,6 +1326,6 @@
   "timezone": "",
   "title": "Kubernetes / System / API Server",
   "uid": "k8s_system_apisrv",
-  "version": 11,
+  "version": 12,
   "weekStart": ""
 }
