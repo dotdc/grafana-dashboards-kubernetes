@@ -1489,7 +1489,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(kube_deployment_status_replicas_available{namespace=~\"$namespace\", pod=~\"${created_by}.*\"}) by (deployment)",
+          "expr": "sum(kube_deployment_status_replicas_available{namespace=~\"$namespace\"}) by (deployment)",
           "interval": "",
           "legendFormat": "{{ deployment }}",
           "range": true,
@@ -2030,7 +2030,7 @@
         "description": "Can be used to filter on a specific deployment, statefulset or deamonset (only relevant panels).",
         "hide": 0,
         "includeAll": true,
-        "multi": false,
+        "multi": true,
         "name": "created_by",
         "options": [],
         "query": {
@@ -2053,6 +2053,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Namespaces",
   "uid": "k8s_views_ns",
-  "version": 22,
+  "version": 23,
   "weekStart": ""
 }
