@@ -145,7 +145,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -205,7 +205,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -265,7 +265,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -325,7 +325,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -420,7 +420,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -483,7 +483,7 @@
         },
         "textMode": "name"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -550,7 +550,7 @@
         },
         "textMode": "value"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -651,7 +651,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -720,7 +720,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -793,7 +793,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -862,7 +862,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -889,7 +889,9 @@
         "defaults": {
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "filterable": false,
             "inspect": false,
             "minWidth": 100
@@ -966,7 +968,9 @@
       },
       "id": 38,
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -976,7 +980,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -1185,7 +1189,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1311,7 +1315,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1433,7 +1437,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1557,7 +1561,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1791,7 +1795,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1896,7 +1900,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -2001,7 +2005,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -2106,7 +2110,7 @@
               "type": "linear"
             },
             "showPoints": "never",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -2182,7 +2186,7 @@
     }
   ],
   "refresh": "30s",
-  "schemaVersion": 37,
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [
     "Kubernetes",
@@ -2323,6 +2327,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Pods",
   "uid": "k8s_views_pods",
-  "version": 18,
+  "version": 19,
   "weekStart": ""
 }
