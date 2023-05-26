@@ -2663,8 +2663,8 @@
       {
         "current": {
           "selected": true,
-          "text": "30s",
-          "value": "30s"
+          "text": "1m",
+          "value": "1m"
         },
         "hide": 0,
         "includeAll": false,
@@ -2682,12 +2682,12 @@
             "value": "15s"
           },
           {
-            "selected": true,
+            "selected": false,
             "text": "30s",
             "value": "30s"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "1m",
             "value": "1m"
           },
