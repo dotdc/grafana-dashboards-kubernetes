@@ -329,7 +329,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "count(up{job=\"node-exporter\"})",
+          "expr": "count(count by (node) (kube_node_info))",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -570,7 +570,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "count(up{job=\"node-exporter\"})",
+          "expr": "count(count by (node) (kube_node_info))",
           "hide": false,
           "interval": "",
           "legendFormat": "Nodes",
