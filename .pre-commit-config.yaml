@@ -12,7 +12,7 @@ repos:
 
   ## Typos
   - repo: https://github.com/crate-ci/typos
-    rev: typos-dict-v0.9.26
+    rev: v1.14.11
     hooks:
       - id: typos
 
