@@ -15,7 +15,8 @@
   - [Install as ConfigMaps](#install-as-configmaps)
   - [Install as ConfigMaps with Terraform](#install-as-configmaps-with-terraform)
 - [Known issue(s)](#known-issues)
-  - [Broken panels on k8s-views-nodes in some cases](#broken-panels-on-k8s-views-nodes-in-some-cases)
+  - [Broken panels due to a too high resolution](#broken-panels-due-to-a-too-high-resolution)
+  - [Broken panels on k8s-views-nodes due to the nodename label](#broken-panels-on-k8s-views-nodes-due-to-the-nodename-label)
 - [Contributing](#contributing)
 
 ## Description
@@ -195,7 +196,12 @@ You will also need to enable and configure the Grafana `dashboards sidecar` like
 
 ## Known issue(s)
 
-### Broken panels on k8s-views-nodes in some cases
+### Broken panels due to a too high resolution
+
+A user reported in [#50](https://github.com/dotdc/grafana-dashboards-kubernetes/issues/50) that some panels where broken because the default value of the `$resolution` variable was to low. The root cause hasn't been identified precisely, but he was using Grafana Agent & Grafana Mimir. Changing the `$resolution` variable to a higher value (a lower resolution) will likely solve the issue.
+To make the fix permanent, you can configure the `Scrape interval` in your Grafana Datasource to a working value for your setup.
+
+### Broken panels on k8s-views-nodes due to the nodename label
 
 The `k8s-views-nodes` dashboard will have many broken panels if the `node` label from `kube_node_info` doesn't match the `nodename` label from `node_uname_info`.
 
