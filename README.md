@@ -198,7 +198,7 @@ You will also need to enable and configure the Grafana `dashboards sidecar` like
 
 ### Broken panels due to a too high resolution
 
-A user reported in [#50](https://github.com/dotdc/grafana-dashboards-kubernetes/issues/50) that some panels where broken because the default value of the `$resolution` variable was to low. The root cause hasn't been identified precisely, but he was using Grafana Agent & Grafana Mimir. Changing the `$resolution` variable to a higher value (a lower resolution) will likely solve the issue.
+A user reported in [#50](https://github.com/dotdc/grafana-dashboards-kubernetes/issues/50) that some panels were broken because the default value of the `$resolution` variable was too low. The root cause hasn't been identified precisely, but he was using Grafana Agent & Grafana Mimir. Changing the `$resolution` variable to a higher value (a lower resolution) will likely solve the issue.
 To make the fix permanent, you can configure the `Scrape interval` in your Grafana Datasource to a working value for your setup.
 
 ### Broken panels on k8s-views-nodes due to the nodename label
