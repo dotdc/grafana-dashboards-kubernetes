@@ -107,7 +107,7 @@
                 "value": null
               },
               {
-                "color": "blue",
+                "color": "red",
                 "value": 1
               }
             ]
@@ -122,7 +122,7 @@
         "x": 0,
         "y": 1
       },
-      "id": 60,
+      "id": 51,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -146,82 +146,14 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(trivy_image_vulnerabilities{severity=\"Low\", namespace=~\"$namespace\"})",
+          "expr": "sum(trivy_image_vulnerabilities{severity=\"Critical\", namespace=~\"$namespace\"})",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "__auto",
           "refId": "A"
         }
       ],
-      "title": "LOW",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${datasource}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "yellow",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 4,
-        "x": 4,
-        "y": 1
-      },
-      "id": 49,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.3.8",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${datasource}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "sum(trivy_image_vulnerabilities{severity=\"Medium\", namespace=~\"$namespace\"})",
-          "instant": true,
-          "interval": "$resolution",
-          "legendFormat": "__auto",
-          "refId": "A"
-        }
-      ],
-      "title": "MEDIUM",
+      "title": "CRITICAL",
       "type": "stat"
     },
     {
@@ -255,7 +187,7 @@
       "gridPos": {
         "h": 4,
         "w": 4,
-        "x": 8,
+        "x": 4,
         "y": 1
       },
       "id": 50,
@@ -311,7 +243,7 @@
                 "value": null
               },
               {
-                "color": "red",
+                "color": "yellow",
                 "value": 1
               }
             ]
@@ -323,10 +255,10 @@
       "gridPos": {
         "h": 4,
         "w": 4,
-        "x": 12,
+        "x": 8,
         "y": 1
       },
-      "id": 51,
+      "id": 49,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -350,14 +282,82 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(trivy_image_vulnerabilities{severity=\"Critical\", namespace=~\"$namespace\"})",
+          "expr": "sum(trivy_image_vulnerabilities{severity=\"Medium\", namespace=~\"$namespace\"})",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "__auto",
           "refId": "A"
         }
       ],
-      "title": "CRITICAL",
+      "title": "MEDIUM",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "blue",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 12,
+        "y": 1
+      },
+      "id": 60,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.3.8",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum(trivy_image_vulnerabilities{severity=\"Low\", namespace=~\"$namespace\"})",
+          "instant": true,
+          "interval": "$resolution",
+          "legendFormat": "__auto",
+          "refId": "A"
+        }
+      ],
+      "title": "LOW",
       "type": "stat"
     },
     {
@@ -649,7 +649,83 @@
           },
           "unit": "none"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Critical"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "High"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Medium"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Low"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Unknown"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 8,
@@ -726,7 +802,7 @@
                 "value": null
               },
               {
-                "color": "red",
+                "color": "orange",
                 "value": 80
               }
             ]
@@ -1175,7 +1251,7 @@
                 "value": null
               },
               {
-                "color": "blue",
+                "color": "red",
                 "value": 1
               }
             ]
@@ -1190,7 +1266,7 @@
         "x": 0,
         "y": 39
       },
-      "id": 53,
+      "id": 56,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -1214,82 +1290,14 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(trivy_resource_configaudits{severity=\"Low\", namespace=~\"$namespace\"})",
+          "expr": "sum(trivy_resource_configaudits{severity=\"Critical\", namespace=~\"$namespace\"})",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "__auto",
           "refId": "A"
         }
       ],
-      "title": "LOW",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${datasource}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "yellow",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 4,
-        "x": 4,
-        "y": 39
-      },
-      "id": 54,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.3.8",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${datasource}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "sum(trivy_resource_configaudits{severity=\"Medium\", namespace=~\"$namespace\"})",
-          "instant": true,
-          "interval": "$resolution",
-          "legendFormat": "__auto",
-          "refId": "A"
-        }
-      ],
-      "title": "MEDIUM",
+      "title": "CRITICAL",
       "type": "stat"
     },
     {
@@ -1323,7 +1331,7 @@
       "gridPos": {
         "h": 4,
         "w": 4,
-        "x": 8,
+        "x": 4,
         "y": 39
       },
       "id": 55,
@@ -1379,7 +1387,7 @@
                 "value": null
               },
               {
-                "color": "red",
+                "color": "yellow",
                 "value": 1
               }
             ]
@@ -1391,10 +1399,10 @@
       "gridPos": {
         "h": 4,
         "w": 4,
-        "x": 12,
+        "x": 8,
         "y": 39
       },
-      "id": 56,
+      "id": 54,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -1418,14 +1426,82 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(trivy_resource_configaudits{severity=\"Critical\", namespace=~\"$namespace\"})",
+          "expr": "sum(trivy_resource_configaudits{severity=\"Medium\", namespace=~\"$namespace\"})",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "__auto",
           "refId": "A"
         }
       ],
-      "title": "CRITICAL",
+      "title": "MEDIUM",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "blue",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 12,
+        "y": 39
+      },
+      "id": 53,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.3.8",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum(trivy_resource_configaudits{severity=\"Low\", namespace=~\"$namespace\"})",
+          "instant": true,
+          "interval": "$resolution",
+          "legendFormat": "__auto",
+          "refId": "A"
+        }
+      ],
+      "title": "LOW",
       "type": "stat"
     },
     {
@@ -1649,7 +1725,68 @@
           },
           "unit": "none"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Critical"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "High"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Medium"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Low"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 8,
@@ -1722,7 +1859,7 @@
                 "value": null
               },
               {
-                "color": "blue",
+                "color": "red",
                 "value": 1
               }
             ]
@@ -1737,7 +1874,7 @@
         "x": 0,
         "y": 52
       },
-      "id": 69,
+      "id": 72,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -1761,82 +1898,14 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(trivy_role_rbacassessments{severity=\"Low\", namespace=~\"$namespace\"})",
+          "expr": "sum(trivy_role_rbacassessments{severity=\"Critical\", namespace=~\"$namespace\"})",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "__auto",
           "refId": "A"
         }
       ],
-      "title": "LOW",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${datasource}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "yellow",
-                "value": 1
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 4,
-        "x": 4,
-        "y": 52
-      },
-      "id": 70,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.3.8",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${datasource}"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "sum(trivy_role_rbacassessments{severity=\"Medium\", namespace=~\"$namespace\"})",
-          "instant": true,
-          "interval": "$resolution",
-          "legendFormat": "__auto",
-          "refId": "A"
-        }
-      ],
-      "title": "MEDIUM",
+      "title": "CRITICAL",
       "type": "stat"
     },
     {
@@ -1870,7 +1939,7 @@
       "gridPos": {
         "h": 4,
         "w": 4,
-        "x": 8,
+        "x": 4,
         "y": 52
       },
       "id": 71,
@@ -1926,7 +1995,7 @@
                 "value": null
               },
               {
-                "color": "red",
+                "color": "yellow",
                 "value": 1
               }
             ]
@@ -1938,10 +2007,10 @@
       "gridPos": {
         "h": 4,
         "w": 4,
-        "x": 12,
+        "x": 8,
         "y": 52
       },
-      "id": 72,
+      "id": 70,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -1965,14 +2034,82 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(trivy_role_rbacassessments{severity=\"Critical\", namespace=~\"$namespace\"})",
+          "expr": "sum(trivy_role_rbacassessments{severity=\"Medium\", namespace=~\"$namespace\"})",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "__auto",
           "refId": "A"
         }
       ],
-      "title": "CRITICAL",
+      "title": "MEDIUM",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "blue",
+                "value": 1
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 12,
+        "y": 52
+      },
+      "id": 69,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.3.8",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum(trivy_role_rbacassessments{severity=\"Low\", namespace=~\"$namespace\"})",
+          "instant": true,
+          "interval": "$resolution",
+          "legendFormat": "__auto",
+          "refId": "A"
+        }
+      ],
+      "title": "LOW",
       "type": "stat"
     },
     {
@@ -2196,7 +2333,68 @@
           },
           "unit": "none"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Critical"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "red",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "High"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Medium"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "yellow",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Low"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 8,
@@ -2464,6 +2662,6 @@
   "timezone": "",
   "title": "Trivy Operator - Vulnerabilities",
   "uid": "security_trivy_operator",
-  "version": 7,
+  "version": 8,
   "weekStart": ""
 }
