@@ -36,5 +36,8 @@ configMapGenerator:
 - name: dashboards-k8s-system-coredns
   files: [ dashboards/k8s-system-coredns.json ]
 
+- name: dashboards-k8s-addons-prometheus
+  files: [ dashboards/k8s-addons-prometheus.json ]
+
 - name: dashboards-k8s-addons-trivy-operator
   files: [ dashboards/k8s-addons-trivy-operator.json ]
