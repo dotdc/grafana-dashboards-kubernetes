@@ -160,7 +160,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(kube_pod_container_resource_requests{unit=\"core\"}) / sum(machine_cpu_cores)",
+          "expr": "sum(kube_pod_container_resource_requests{resource=\"cpu\"}) / sum(machine_cpu_cores)",
           "hide": false,
           "legendFormat": "Requests",
           "range": true,
@@ -172,7 +172,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(kube_pod_container_resource_limits{unit=\"core\"}) / sum(machine_cpu_cores)",
+          "expr": "sum(kube_pod_container_resource_limits{resource=\"cpu\"}) / sum(machine_cpu_cores)",
           "hide": false,
           "legendFormat": "Limits",
           "range": true,
@@ -256,7 +256,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(kube_pod_container_resource_requests{unit=\"byte\"}) / sum(machine_memory_bytes)",
+          "expr": "sum(kube_pod_container_resource_requests{resource=\"memory\"}) / sum(machine_memory_bytes)",
           "hide": false,
           "legendFormat": "Requests",
           "range": true,
@@ -268,7 +268,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(kube_pod_container_resource_limits{unit=\"byte\"}) / sum(machine_memory_bytes)",
+          "expr": "sum(kube_pod_container_resource_limits{resource=\"memory\"}) / sum(machine_memory_bytes)",
           "hide": false,
           "legendFormat": "Limits",
           "range": true,
@@ -704,7 +704,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(kube_pod_container_resource_requests{unit=\"core\"})",
+          "expr": "sum(kube_pod_container_resource_requests{resource=\"cpu\"})",
           "hide": false,
           "legendFormat": "Requests",
           "range": true,
@@ -716,7 +716,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(kube_pod_container_resource_limits{unit=\"core\"})",
+          "expr": "sum(kube_pod_container_resource_limits{resource=\"cpu\"})",
           "hide": false,
           "legendFormat": "Limits",
           "range": true,
@@ -803,7 +803,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(kube_pod_container_resource_requests{unit=\"byte\"})",
+          "expr": "sum(kube_pod_container_resource_requests{resource=\"memory\"})",
           "hide": false,
           "legendFormat": "Requests",
           "range": true,
@@ -815,7 +815,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(kube_pod_container_resource_limits{unit=\"byte\"})",
+          "expr": "sum(kube_pod_container_resource_limits{resource=\"memory\"})",
           "hide": false,
           "legendFormat": "Limits",
           "range": true,
@@ -2717,6 +2717,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Global",
   "uid": "k8s_views_global",
-  "version": 29,
+  "version": 30,
   "weekStart": ""
 }

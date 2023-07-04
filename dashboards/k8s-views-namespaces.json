@@ -487,7 +487,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(kube_pod_container_resource_requests{namespace=~\"$namespace\", unit=\"core\"})",
+          "expr": "sum(kube_pod_container_resource_requests{namespace=~\"$namespace\", resource=\"cpu\"})",
           "hide": false,
           "legendFormat": "Requests",
           "range": true,
@@ -499,7 +499,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(kube_pod_container_resource_limits{namespace=~\"$namespace\", unit=\"core\"})",
+          "expr": "sum(kube_pod_container_resource_limits{namespace=~\"$namespace\", resource=\"cpu\"})",
           "hide": false,
           "legendFormat": "Limits",
           "range": true,
@@ -586,7 +586,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(kube_pod_container_resource_requests{namespace=~\"$namespace\", unit=\"byte\"})",
+          "expr": "sum(kube_pod_container_resource_requests{namespace=~\"$namespace\", resource=\"memory\"})",
           "hide": false,
           "legendFormat": "Requests",
           "range": true,
@@ -598,7 +598,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(kube_pod_container_resource_limits{namespace=~\"$namespace\", unit=\"byte\"})",
+          "expr": "sum(kube_pod_container_resource_limits{namespace=~\"$namespace\", resource=\"memory\"})",
           "hide": false,
           "legendFormat": "Limits",
           "range": true,
@@ -2053,6 +2053,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Namespaces",
   "uid": "k8s_views_ns",
-  "version": 23,
+  "version": 24,
   "weekStart": ""
 }

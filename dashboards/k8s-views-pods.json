@@ -658,8 +658,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}[$__rate_interval])) / sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=\"$pod\", unit=\"core\"})",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}[$__rate_interval])) / sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=\"$pod\", resource=\"cpu\"})",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "Requests",
@@ -727,8 +728,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}[$__rate_interval])) / sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=\"$pod\", unit=\"core\"})",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}[$__rate_interval])) / sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=\"$pod\", resource=\"cpu\"})",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "Limits",
@@ -801,7 +803,7 @@
             "uid": "${datasource}"
           },
           "exemplar": false,
-          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}) / sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=\"$pod\", unit=\"byte\"})",
+          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}) / sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=\"$pod\", resource=\"cpu\"})",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "Requests",
@@ -870,7 +872,7 @@
             "uid": "${datasource}"
           },
           "exemplar": false,
-          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}) / sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=\"$pod\", unit=\"byte\"}) ",
+          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}) / sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=\"$pod\", resource=\"cpu\"}) ",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "Limits",
@@ -987,8 +989,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=\"$pod\", unit=\"core\"}) by (container)",
+          "expr": "sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=\"$pod\", resource=\"cpu\"}) by (container)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1001,8 +1004,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=\"$pod\", unit=\"core\"}) by (container)",
+          "expr": "sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=\"$pod\", resource=\"cpu\"}) by (container)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1015,8 +1019,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=\"$pod\", unit=\"byte\"}) by (container)",
+          "expr": "sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=\"$pod\", resource=\"memory\"}) by (container)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1028,8 +1033,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=\"$pod\", unit=\"byte\"}) by (container)",
+          "expr": "sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=\"$pod\", resource=\"memory\"}) by (container)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1258,7 +1264,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}[$__rate_interval])) by (container) / sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=\"$pod\", unit=\"core\"}) by (container)",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}[$__rate_interval])) by (container) / sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=\"$pod\", resource=\"cpu\"}) by (container)",
           "interval": "$resolution",
           "legendFormat": "{{ container }}  REQUESTS",
           "range": true,
@@ -1270,7 +1276,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}[$__rate_interval])) by (container) / sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=\"$pod\", unit=\"core\"}) by (container)",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}[$__rate_interval])) by (container) / sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=\"$pod\", resource=\"cpu\"}) by (container)",
           "hide": false,
           "legendFormat": "{{ container }}  LIMITS",
           "range": true,
@@ -1384,7 +1390,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}) by (container) / sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=\"$pod\", unit=\"byte\"}) by (container)",
+          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}) by (container) / sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=\"$pod\", resource=\"memory\"}) by (container)",
           "interval": "",
           "legendFormat": "{{ container }} REQUESTS",
           "range": true,
@@ -1396,7 +1402,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}) by (container) / sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=\"$pod\", unit=\"byte\"}) by (container)",
+          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}) by (container) / sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=\"$pod\", resource=\"memory\"}) by (container)",
           "hide": false,
           "legendFormat": "{{ container }} LIMITS",
           "range": true,
@@ -2327,6 +2333,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Pods",
   "uid": "k8s_views_pods",
-  "version": 19,
+  "version": 20,
   "weekStart": ""
 }
