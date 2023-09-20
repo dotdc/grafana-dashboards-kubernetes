@@ -161,7 +161,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(kube_pod_container_resource_requests{resource=\"cpu\"}) / sum(machine_cpu_cores)",
+          "expr": "sum(kube_pod_container_resource_requests{resource=\"cpu\"} and on (pod) (kube_pod_status_phase{phase=~\"$phase\"} > 0)) / sum(machine_cpu_cores)",
           "hide": false,
           "legendFormat": "Requests",
           "range": true,
@@ -173,7 +173,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(kube_pod_container_resource_limits{resource=\"cpu\"}) / sum(machine_cpu_cores)",
+          "expr": "sum(kube_pod_container_resource_limits{resource=\"cpu\"} and on (pod) (kube_pod_status_phase{phase=~\"$phase\"} > 0)) / sum(machine_cpu_cores)",
           "hide": false,
           "legendFormat": "Limits",
           "range": true,
@@ -258,7 +258,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(kube_pod_container_resource_requests{resource=\"memory\"}) / sum(machine_memory_bytes)",
+          "expr": "sum(kube_pod_container_resource_requests{resource=\"memory\"} and on (pod) (kube_pod_status_phase{phase=~\"$phase\"} > 0)) / sum(machine_memory_bytes)",
           "hide": false,
           "legendFormat": "Requests",
           "range": true,
@@ -270,7 +270,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(kube_pod_container_resource_limits{resource=\"memory\"}) / sum(machine_memory_bytes)",
+          "expr": "sum(kube_pod_container_resource_limits{resource=\"memory\"} and on (pod) (kube_pod_status_phase{phase=~\"$phase\"} > 0)) / sum(machine_memory_bytes)",
           "hide": false,
           "legendFormat": "Limits",
           "range": true,
@@ -706,7 +706,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(kube_pod_container_resource_requests{resource=\"cpu\"})",
+          "expr": "sum(kube_pod_container_resource_requests{resource=\"cpu\"} and on (pod) (kube_pod_status_phase{phase=~\"$phase\"} > 0))",
           "hide": false,
           "legendFormat": "Requests",
           "range": true,
@@ -718,7 +718,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(kube_pod_container_resource_limits{resource=\"cpu\"})",
+          "expr": "sum(kube_pod_container_resource_limits{resource=\"cpu\"} and on (pod) (kube_pod_status_phase{phase=~\"$phase\"} > 0))",
           "hide": false,
           "legendFormat": "Limits",
           "range": true,
@@ -805,7 +805,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(kube_pod_container_resource_requests{resource=\"memory\"})",
+          "expr": "sum(kube_pod_container_resource_requests{resource=\"memory\"} and on (pod) (kube_pod_status_phase{phase=~\"$phase\"} > 0))",
           "hide": false,
           "legendFormat": "Requests",
           "range": true,
@@ -817,7 +817,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(kube_pod_container_resource_limits{resource=\"memory\"})",
+          "expr": "sum(kube_pod_container_resource_limits{resource=\"memory\"} and on (pod) (kube_pod_status_phase{phase=~\"$phase\"} > 0))",
           "hide": false,
           "legendFormat": "Limits",
           "range": true,
@@ -1849,7 +1849,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(kube_pod_status_qos_class) by (qos_class)",
+          "expr": "sum(kube_pod_status_qos_class and on (pod) (kube_pod_status_phase{phase=~\"$phase\"} > 0)) by (qos_class)",
           "interval": "",
           "legendFormat": "{{ qos_class }} pods",
           "range": true,
@@ -1861,7 +1861,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(kube_pod_info)",
+          "expr": "sum(kube_pod_info and on (pod) (kube_pod_status_phase{phase=~\"$phase\"} > 0))",
           "hide": false,
           "legendFormat": "Total pods",
           "range": true,
@@ -1963,7 +1963,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(kube_pod_status_reason) by (reason)",
+          "expr": "sum(kube_pod_status_reason and on (pod) (kube_pod_status_phase{phase=~\"$phase\"} > 0)) by (reason)",
           "interval": "",
           "legendFormat": "{{ reason }}",
           "range": true,
@@ -2169,7 +2169,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(increase(kube_pod_container_status_restarts_total[$__rate_interval])) by (namespace) > 0",
+          "expr": "sum(increase(kube_pod_container_status_restarts_total[$__rate_interval] and on (pod) (kube_pod_status_phase{phase=~\"$phase\"} > 0))) by (namespace) > 0",
           "interval": "",
           "legendFormat": "{{ namespace }}",
           "range": true,
@@ -2927,6 +2927,39 @@
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "Pending",
+            "Running"
+          ],
+          "value": [
+            "Pending",
+            "Running"
+          ]
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "definition": "label_values(kube_pod_status_phase, phase)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Pod Phase",
+        "multi": true,
+        "name": "phase",
+        "options": [],
+        "query": {
+          "query": "label_values(kube_pod_status_phase, phase)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
       }
     ]
   },
