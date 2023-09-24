@@ -782,7 +782,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "${datasource}"
       },
       "description": "",
       "fieldConfig": {
@@ -879,7 +879,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -2662,6 +2662,6 @@
   "timezone": "",
   "title": "Trivy Operator - Vulnerabilities",
   "uid": "security_trivy_operator",
-  "version": 8,
+  "version": 9,
   "weekStart": ""
 }
