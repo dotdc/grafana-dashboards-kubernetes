@@ -3714,7 +3714,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(node_filesystem_device_error) by (mountpoint)",
+          "expr": "sum(node_filesystem_device_error{instance=\"$instance\"}) by (mountpoint)",
           "interval": "$resolution",
           "legendFormat": "{{ mountpoint }}",
           "range": true,
@@ -3887,6 +3887,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Nodes",
   "uid": "k8s_views_nodes",
-  "version": 19,
+  "version": 20,
   "weekStart": ""
 }
