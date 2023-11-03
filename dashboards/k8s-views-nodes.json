@@ -146,7 +146,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -216,7 +216,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -277,7 +277,7 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -306,7 +306,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "inspect": false
           },
           "links": [
@@ -402,7 +404,9 @@
       },
       "id": 5,
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -412,7 +416,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -558,7 +562,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -620,7 +624,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -681,7 +685,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -743,7 +747,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -813,7 +817,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -872,6 +876,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
@@ -971,6 +976,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
@@ -1140,6 +1146,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 2,
             "pointSize": 5,
@@ -1234,6 +1241,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 2,
             "pointSize": 5,
@@ -1329,6 +1337,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
@@ -1452,6 +1461,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
@@ -1577,6 +1587,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 2,
             "pointSize": 5,
@@ -1686,6 +1697,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
@@ -1797,6 +1809,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineStyle": {
               "fill": "solid"
@@ -1928,6 +1941,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 2,
             "pointSize": 5,
@@ -2037,6 +2051,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 2,
             "pointSize": 5,
@@ -2144,6 +2159,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 2,
             "pointSize": 5,
@@ -2253,6 +2269,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 2,
             "pointSize": 5,
@@ -2360,6 +2377,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 2,
             "pointSize": 5,
@@ -2456,6 +2474,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 2,
             "pointSize": 5,
@@ -2599,6 +2618,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 2,
             "pointSize": 5,
@@ -2684,7 +2704,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "filterable": false,
             "inspect": false
           },
@@ -2739,7 +2761,9 @@
       },
       "id": 34,
       "options": {
+        "cellHeight": "sm",
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -2749,7 +2773,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "9.3.8",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
           "datasource": {
@@ -2854,6 +2878,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 2,
             "pointSize": 5,
@@ -2968,6 +2993,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 2,
             "pointSize": 5,
@@ -3066,6 +3092,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 2,
             "pointSize": 5,
@@ -3164,6 +3191,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 2,
             "pointSize": 5,
@@ -3261,6 +3289,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 2,
             "pointSize": 5,
@@ -3359,6 +3388,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 2,
             "pointSize": 5,
@@ -3456,6 +3486,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 2,
             "pointSize": 5,
@@ -3554,6 +3585,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 2,
             "pointSize": 5,
@@ -3651,6 +3683,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 2,
             "pointSize": 5,
@@ -3726,7 +3759,7 @@
     }
   ],
   "refresh": "30s",
-  "schemaVersion": 37,
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [
     "Kubernetes",
@@ -3734,32 +3767,6 @@
   ],
   "templating": {
     "list": [
-      {
-        "current": {
-          "selected": false,
-          "text": "",
-          "value": ""
-        },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${datasource}"
-        },
-        "definition": "label_values(node_uname_info, job)",
-        "hide": 2,
-        "includeAll": false,
-        "multi": false,
-        "name": "job",
-        "options": [],
-        "query": {
-          "query": "label_values(node_uname_info, job)",
-          "refId": "StandardVariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 1,
-        "type": "query"
-      },
       {
         "current": {
           "selected": false,
@@ -3887,6 +3894,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Nodes",
   "uid": "k8s_views_nodes",
-  "version": 20,
+  "version": 21,
   "weekStart": ""
 }
