@@ -999,6 +999,7 @@
           "custom": {
             "align": "auto",
             "displayMode": "auto",
+            "filterable": true,
             "inspect": false
           },
           "links": [],
@@ -2662,6 +2663,6 @@
   "timezone": "",
   "title": "Trivy Operator - Vulnerabilities",
   "uid": "security_trivy_operator",
-  "version": 9,
+  "version": 10,
   "weekStart": ""
 }
