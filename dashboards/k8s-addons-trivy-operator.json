@@ -999,6 +999,7 @@
           "custom": {
             "align": "auto",
             "displayMode": "auto",
+            "filterable": true,
             "inspect": false
           },
           "links": [],
