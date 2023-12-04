@@ -1,5 +1,7 @@
 name: pre-commit-checks
 
+# Doc: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
+
 on:
   push:
     branches: [ master ]
@@ -10,14 +12,18 @@ jobs:
   pre-commit-checks:
     runs-on: ubuntu-latest
     steps:
-    # Dependencies
-    - uses: actions/checkout@v2
-    - uses: actions/setup-python@v2
+      # Doc: https://github.com/marketplace/actions/checkout
+      - name: Checkout ${{ github.repository }}
+        uses: actions/checkout@v4
 
-    # Install pre-commit
-    - name: Install pre-commit
-      run: pip install pre-commit
+      # Doc: https://github.com/marketplace/actions/setup-python
+      - name: Setup Python
+        uses: actions/setup-python@v4
 
-    # Run pre-commit checks
-    - name: Run pre-commit checks
-      run: pre-commit run --all-files
+      # Install pre-commit
+      - name: Install pre-commit
+        run: pip install pre-commit
+
+      # Run pre-commit checks
+      - name: Run pre-commit checks
+        run: pre-commit run --all-files
