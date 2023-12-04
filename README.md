@@ -15,7 +15,7 @@
   - [Install as ConfigMaps](#install-as-configmaps)
   - [Install as ConfigMaps with Terraform](#install-as-configmaps-with-terraform)
 - [Known issue(s)](#known-issues)
-  - [Broken panels due to a too high resolution](#broken-panels-due-to-a-too-high-resolution)
+  - [Broken panels due to a too-high resolution](#broken-panels-due-to-a-too-high-resolution)
   - [Broken panels on k8s-views-nodes due to the nodename label](#broken-panels-on-k8s-views-nodes-due-to-the-nodename-label)
 - [Contributing](#contributing)
 
@@ -30,7 +30,7 @@ You can also download them on [Grafana.com](https://grafana.com/grafana/dashboar
 
 ## Features
 
-Theses dashboards are made and tested for the [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack) chart, but they should work well with others as soon as you have [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics) and [prometheus-node-exporter](https://github.com/prometheus/node_exporter) installed on your Kubernetes cluster.
+These dashboards are made and tested for the [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack) chart, but they should work well with others as soon as you have [kube-state-metrics](https://github.com/kubernetes/kube-state-metrics) and [prometheus-node-exporter](https://github.com/prometheus/node_exporter) installed on your Kubernetes cluster.
 
 They are not backward compatible with older Grafana versions because they try to take advantage of Grafana's newest features like:
 
@@ -91,7 +91,7 @@ Once you are on the Import page, you can upload the JSON files one by one from y
 ### Install via grafana.com
 
 On the WebUI of your Grafana instance, put your mouse over the `+` sign on the left menu, then click on `Import`.\
-Once you are on the Import page, you can put the grafana.com dashboard id (see table bellow) under `Import via grafana.com` then click on the `Load` button. Repeat for each dashboard.
+Once you are on the Import page, you can put the grafana.com dashboard ID (see table below) under `Import via grafana.com` then click on the `Load` button. Repeat for each dashboard.
 
 Grafana.com dashboard id list:
 
@@ -114,7 +114,7 @@ If you have ArgoCD, this will deploy the dashboards in ArgoCD's default project:
 kubectl apply -f argocd-app.yml
 ```
 
-You will also need to enable and configure the Grafana `dashboards sidecar` like described in [Installation](#installation).
+You will also need to enable and configure the Grafana `dashboards sidecar` as described in [Installation](#installation).
 
 ### Install with Helm values
 
@@ -162,7 +162,7 @@ grafana:
 
 ### Install as ConfigMaps
 
-Grafana dashboards can be provisionned as Kubernetes ConfigMaps if you configure the [dashboard sidecar](https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml#L667) available on the official [Grafana Helm Chart](https://github.com/grafana/helm-charts/tree/main/charts/grafana).
+Grafana dashboards can be provisioned as Kubernetes ConfigMaps if you configure the [dashboard sidecar](https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml#L667) available on the official [Grafana Helm Chart](https://github.com/grafana/helm-charts/tree/main/charts/grafana).
 
 To build the ConfigMaps and output them on STDOUT :
 
@@ -172,19 +172,19 @@ kubectl kustomize .
 
 *Note: no namespace is set by default, you can change that in the `kustomization.yaml` file.*
 
-To build and deploy them directly on your kubernetes cluster :
+To build and deploy them directly on your Kubernetes cluster :
 
 ```terminal
 kubectl apply -k . -n monitoring
 ```
 
-You will also need to enable and configure the Grafana `dashboards sidecar` like described in [Installation](#installation).
+You will also need to enable and configure the Grafana `dashboards sidecar` as described in [Installation](#installation).
 
 *Note: you can change the namespace if needed.*
 
 ### Install as ConfigMaps with Terraform
 
-If you use terraform to provision your Kubernetes resources, you can convert the generated ConfigMaps to Terraform code using [tfk8s](https://github.com/jrhouston/tfk8s).
+If you use Terraform to provision your Kubernetes resources, you can convert the generated ConfigMaps to Terraform code using [tfk8s](https://github.com/jrhouston/tfk8s).
 
 To build and convert ConfigMaps to Terraform code :
 
@@ -192,13 +192,13 @@ To build and convert ConfigMaps to Terraform code :
 kubectl kustomize . | tfk8s
 ```
 
-You will also need to enable and configure the Grafana `dashboards sidecar` like described in [Installation](#installation).
+You will also need to enable and configure the Grafana `dashboards sidecar` as described in [Installation](#installation).
 
 *Note: no namespace is set by default, you can change that in the `kustomization.yaml` file.*
 
 ## Known issue(s)
 
-### Broken panels due to a too high resolution
+### Broken panels due to a too-high resolution
 
 A user reported in [#50](https://github.com/dotdc/grafana-dashboards-kubernetes/issues/50) that some panels were broken because the default value of the `$resolution` variable was too low. The root cause hasn't been identified precisely, but he was using Grafana Agent & Grafana Mimir. Changing the `$resolution` variable to a higher value (a lower resolution) will likely solve the issue.
 To make the fix permanent, you can configure the `Scrape interval` in your Grafana Datasource to a working value for your setup.
@@ -228,7 +228,7 @@ scrape_configs:
 
 #### Through a `ServiceMonitor` <!-- omit in toc -->
 
-If using the Prometheus operator or the Grafana agent in operator mode, the scrape job should instead be configured via a `ServiceMonitor` that will dynamically edit the prometheus configuration file. In that case, the relabeling has a slightly different syntax:
+If using the Prometheus operator or the Grafana agent in operator mode, the scrape job should instead be configured via a `ServiceMonitor` that will dynamically edit the Prometheus configuration file. In that case, the relabeling has a slightly different syntax:
 
 ```yaml
 # File: service-monitor.yaml
