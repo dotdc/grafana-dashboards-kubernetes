@@ -2613,13 +2613,13 @@
       },
       {
         "current": {
-          "selected": true,
-          "text": [
-            "kube-state-metrics"
-          ],
-          "value": [
-            "kube-state-metrics"
-          ]
+          "selected": false,
+          "text": "kube-state-metrics",
+          "value": "kube-state-metrics"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
         },
         "definition": "label_values(kube_pod_info,job)",
         "hide": 0,
