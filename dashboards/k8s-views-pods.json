@@ -143,15 +143,17 @@
           "fields": "",
           "values": false
         },
-        "textMode": "name"
+        "textMode": "name",
+        "wideLayout": true
       },
-      "pluginVersion": "10.1.0",
+      "pluginVersion": "10.2.2",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": false,
           "expr": "kube_pod_info{namespace=\"$namespace\", pod=\"$pod\"}",
           "instant": true,
@@ -209,15 +211,17 @@
           "fields": "",
           "values": false
         },
-        "textMode": "name"
+        "textMode": "name",
+        "wideLayout": true
       },
-      "pluginVersion": "10.1.0",
+      "pluginVersion": "10.2.2",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": false,
           "expr": "kube_pod_info{namespace=\"$namespace\", pod=\"$pod\"}",
           "instant": true,
@@ -269,15 +273,17 @@
           "fields": "",
           "values": false
         },
-        "textMode": "name"
+        "textMode": "name",
+        "wideLayout": true
       },
-      "pluginVersion": "10.1.0",
+      "pluginVersion": "10.2.2",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": false,
           "expr": "kube_pod_info{namespace=\"$namespace\", pod=\"$pod\"}",
           "instant": true,
@@ -329,9 +335,10 @@
           "fields": "",
           "values": false
         },
-        "textMode": "name"
+        "textMode": "name",
+        "wideLayout": true
       },
-      "pluginVersion": "10.1.0",
+      "pluginVersion": "10.2.2",
       "targets": [
         {
           "datasource": {
@@ -424,9 +431,10 @@
           "fields": "",
           "values": false
         },
-        "textMode": "name"
+        "textMode": "name",
+        "wideLayout": true
       },
-      "pluginVersion": "10.1.0",
+      "pluginVersion": "10.2.2",
       "targets": [
         {
           "datasource": {
@@ -487,9 +495,10 @@
           "fields": "",
           "values": false
         },
-        "textMode": "name"
+        "textMode": "name",
+        "wideLayout": true
       },
-      "pluginVersion": "10.1.0",
+      "pluginVersion": "10.2.2",
       "targets": [
         {
           "datasource": {
@@ -554,9 +563,10 @@
           "fields": "",
           "values": true
         },
-        "textMode": "value"
+        "textMode": "value",
+        "wideLayout": true
       },
-      "pluginVersion": "10.1.0",
+      "pluginVersion": "10.2.2",
       "targets": [
         {
           "datasource": {
@@ -646,6 +656,8 @@
       },
       "id": 39,
       "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -657,7 +669,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.1.0",
+      "pluginVersion": "10.2.2",
       "targets": [
         {
           "datasource": {
@@ -666,7 +678,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}[$__rate_interval])) / sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=\"$pod\", resource=\"cpu\"})",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}[$__rate_interval])) / sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=\"$pod\", resource=\"cpu\", job=~\"$job\"})",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "Requests",
@@ -716,6 +728,8 @@
       },
       "id": 48,
       "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -727,7 +741,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.1.0",
+      "pluginVersion": "10.2.2",
       "targets": [
         {
           "datasource": {
@@ -736,7 +750,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}[$__rate_interval])) / sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=\"$pod\", resource=\"cpu\"})",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}[$__rate_interval])) / sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=\"$pod\", resource=\"cpu\", job=~\"$job\"})",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "Limits",
@@ -790,6 +804,8 @@
       },
       "id": 40,
       "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -801,15 +817,16 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.1.0",
+      "pluginVersion": "10.2.2",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}) / sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=\"$pod\", resource=\"memory\"})",
+          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}) / sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=\"$pod\", resource=\"memory\", job=~\"$job\"})",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "Requests",
@@ -859,6 +876,8 @@
       },
       "id": 49,
       "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -870,15 +889,16 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "10.1.0",
+      "pluginVersion": "10.2.2",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}) / sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=\"$pod\", resource=\"memory\"}) ",
+          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}) / sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=\"$pod\", resource=\"memory\", job=~\"$job\"}) ",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "Limits",
@@ -988,7 +1008,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "10.1.0",
+      "pluginVersion": "10.2.2",
       "targets": [
         {
           "datasource": {
@@ -997,7 +1017,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=\"$pod\", resource=\"cpu\"}) by (container)",
+          "expr": "sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=\"$pod\", resource=\"cpu\", job=~\"$job\"}) by (container)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1012,7 +1032,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=\"$pod\", resource=\"cpu\"}) by (container)",
+          "expr": "sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=\"$pod\", resource=\"cpu\", job=~\"$job\"}) by (container)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1027,7 +1047,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=\"$pod\", resource=\"memory\"}) by (container)",
+          "expr": "sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=\"$pod\", resource=\"memory\", job=~\"$job\"}) by (container)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1041,7 +1061,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=\"$pod\", resource=\"memory\"}) by (container)",
+          "expr": "sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=\"$pod\", resource=\"memory\", job=~\"$job\"}) by (container)",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -1181,6 +1201,7 @@
             "mode": "thresholds"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "Percent",
@@ -1271,7 +1292,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}[$__rate_interval])) by (container) / sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=\"$pod\", resource=\"cpu\"}) by (container)",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}[$__rate_interval])) by (container) / sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=\"$pod\", resource=\"cpu\", job=~\"$job\"}) by (container)",
           "interval": "$resolution",
           "legendFormat": "{{ container }}  REQUESTS",
           "range": true,
@@ -1283,7 +1304,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}[$__rate_interval])) by (container) / sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=\"$pod\", resource=\"cpu\"}) by (container)",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}[$__rate_interval])) by (container) / sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=\"$pod\", resource=\"cpu\", job=~\"$job\"}) by (container)",
           "hide": false,
           "legendFormat": "{{ container }}  LIMITS",
           "range": true,
@@ -1305,6 +1326,7 @@
             "mode": "thresholds"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "Percent",
@@ -1398,7 +1420,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}) by (container) / sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=\"$pod\", resource=\"memory\"}) by (container)",
+          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}) by (container) / sum(kube_pod_container_resource_requests{namespace=\"$namespace\", pod=\"$pod\", resource=\"memory\", job=~\"$job\"}) by (container)",
           "interval": "",
           "legendFormat": "{{ container }} REQUESTS",
           "range": true,
@@ -1410,7 +1432,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}) by (container) / sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=\"$pod\", resource=\"memory\"}) by (container)",
+          "expr": "sum(container_memory_working_set_bytes{namespace=\"$namespace\", pod=\"$pod\", image!=\"\"}) by (container) / sum(kube_pod_container_resource_limits{namespace=\"$namespace\", pod=\"$pod\", resource=\"memory\", job=~\"$job\"}) by (container)",
           "hide": false,
           "legendFormat": "{{ container }} LIMITS",
           "range": true,
@@ -1431,6 +1453,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "CPU Cores",
@@ -1553,6 +1576,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "Bytes",
@@ -1659,6 +1683,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "SECONDS",
@@ -1780,6 +1805,7 @@
             "mode": "thresholds"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "Percent",
@@ -1895,6 +1921,7 @@
             "mode": "thresholds"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "Percent",
@@ -1988,7 +2015,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(increase(kube_pod_container_status_restarts_total{namespace=~\"${namespace}\", pod=\"${pod}\", container!=\"\"}[$__rate_interval])) by (container)",
+          "expr": "sum(increase(kube_pod_container_status_restarts_total{namespace=~\"${namespace}\", pod=\"${pod}\", container!=\"\", job=~\"$job\"}[$__rate_interval])) by (container)",
           "interval": "",
           "legendFormat": "{{ container }}",
           "range": true,
@@ -2035,6 +2062,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -2141,6 +2169,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -2247,6 +2276,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -2282,7 +2312,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2352,6 +2383,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -2387,7 +2419,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2449,7 +2482,6 @@
   ],
   "refresh": "30s",
   "schemaVersion": 38,
-  "style": "dark",
   "tags": [
     "Kubernetes",
     "Prometheus"
@@ -2578,6 +2610,33 @@
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "kube-state-metrics"
+          ],
+          "value": [
+            "kube-state-metrics"
+          ]
+        },
+        "definition": "label_values(kube_pod_info,job)",
+        "hide": 0,
+        "includeAll": false,
+        "multi": true,
+        "name": "job",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(kube_pod_info,job)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
       }
     ]
   },
@@ -2589,6 +2648,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Pods",
   "uid": "k8s_views_pods",
-  "version": 22,
+  "version": 23,
   "weekStart": ""
 }
