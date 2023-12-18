@@ -4,9 +4,13 @@ name: pre-commit-checks
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
   pull_request:
-    branches: [ master ]
+    branches:
+      - master
+  # Allow this workflow to be manually triggered
+  workflow_dispatch:
 
 jobs:
   pre-commit-checks:
