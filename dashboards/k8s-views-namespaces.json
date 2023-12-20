@@ -319,7 +319,7 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "sum(kube_pod_container_status_running{namespace=~\"$namespace\", cluster=\"$cluster\"})",
+          "expr": "sum(kube_pod_info{namespace=~\"$namespace\", cluster=\"$cluster\"})",
           "interval": "",
           "legendFormat": "Running Pods",
           "refId": "A"
