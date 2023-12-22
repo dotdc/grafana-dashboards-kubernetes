@@ -3904,14 +3904,14 @@
           "type": "prometheus",
           "uid": "${datasource}"
         },
-        "definition": "label_values(kube_node_info, node)",
+        "definition": "label_values(kube_node_info{cluster=\"$cluster\"}, node)",
         "hide": 0,
         "includeAll": false,
         "multi": false,
         "name": "node",
         "options": [],
         "query": {
-          "query": "label_values(kube_node_info, node)",
+          "query": "label_values(kube_node_info{cluster=\"$cluster\"}, node)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 2,
