@@ -2215,14 +2215,14 @@
           "type": "prometheus",
           "uid": "${datasource}"
         },
-        "definition": "label_values(kube_pod_info, namespace)",
+        "definition": "label_values(kube_pod_info{cluster=\"$cluster\"}, namespace)",
         "hide": 0,
         "includeAll": true,
         "multi": true,
         "name": "namespace",
         "options": [],
         "query": {
-          "query": "label_values(kube_pod_info, namespace)",
+          "query": "label_values(kube_pod_info{cluster=\"$cluster\"}, namespace)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -2291,7 +2291,7 @@
           "type": "prometheus",
           "uid": "${datasource}"
         },
-        "definition": "label_values(kube_pod_info{namespace=~\"$namespace\", container!=\"\"},created_by_name)",
+        "definition": "label_values(kube_pod_info{namespace=~\"$namespace\", container!=\"\", cluster=\"$cluster\"},created_by_name)",
         "description": "Can be used to filter on a specific deployment, statefulset or deamonset (only relevant panels).",
         "hide": 0,
         "includeAll": true,
@@ -2299,7 +2299,7 @@
         "name": "created_by",
         "options": [],
         "query": {
-          "query": "label_values(kube_pod_info{namespace=~\"$namespace\", container!=\"\"},created_by_name)",
+          "query": "label_values(kube_pod_info{namespace=~\"$namespace\", container!=\"\", cluster=\"$cluster\"},created_by_name)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
