@@ -131,7 +131,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "up{job=\"coredns\", instance=~\"$instance\"}",
+          "expr": "up{job=~\"$job\", instance=~\"$instance\"}",
           "interval": "",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -228,7 +228,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "rate(process_cpu_seconds_total{job=\"coredns\", instance=~\"$instance\"}[$__rate_interval])",
+          "expr": "rate(process_cpu_seconds_total{job=~\"$job\", instance=~\"$instance\"}[$__rate_interval])",
           "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -324,7 +324,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "process_resident_memory_bytes{job=\"coredns\", instance=~\"$instance\"}",
+          "expr": "process_resident_memory_bytes{job=~\"$job\", instance=~\"$instance\"}",
           "interval": "",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -1601,6 +1601,6 @@
   "timezone": "",
   "title": "Kubernetes / System / CoreDNS",
   "uid": "k8s_system_coredns",
-  "version": 14,
+  "version": 15,
   "weekStart": ""
 }
