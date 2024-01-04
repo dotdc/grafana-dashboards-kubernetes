@@ -131,7 +131,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "up{job=~\"$job\", instance=~\"$instance\"}",
+          "expr": "up{job=~\"$job\", instance=~\"$instance\", cluster=~\"$cluster\"}",
           "interval": "",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -228,7 +228,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "rate(process_cpu_seconds_total{job=~\"$job\", instance=~\"$instance\"}[$__rate_interval])",
+          "expr": "rate(process_cpu_seconds_total{job=~\"$job\", instance=~\"$instance\", cluster=~\"$cluster\"}[$__rate_interval])",
           "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -324,7 +324,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "process_resident_memory_bytes{job=~\"$job\", instance=~\"$instance\"}",
+          "expr": "process_resident_memory_bytes{job=~\"$job\", instance=~\"$instance\", cluster=~\"$cluster\"}",
           "interval": "",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -420,7 +420,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(coredns_dns_requests_total{instance=~\"$instance\",proto=\"$protocol\"}[$__rate_interval]))",
+          "expr": "sum(rate(coredns_dns_requests_total{instance=~\"$instance\",proto=\"$protocol\", cluster=~\"$cluster\"}[$__rate_interval]))",
           "interval": "$resolution",
           "legendFormat": "total $protocol requests",
           "refId": "A"
@@ -516,7 +516,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(coredns_dns_request_size_bytes_sum{instance=~\"$instance\",proto=\"$protocol\"}[$__rate_interval])) by (proto) / sum(rate(coredns_dns_request_size_bytes_count{instance=~\"$instance\",proto=\"$protocol\"}[$__rate_interval])) by (proto)",
+          "expr": "sum(rate(coredns_dns_request_size_bytes_sum{instance=~\"$instance\",proto=\"$protocol\", cluster=~\"$cluster\"}[$__rate_interval])) by (proto) / sum(rate(coredns_dns_request_size_bytes_count{instance=~\"$instance\",proto=\"$protocol\", cluster=~\"$cluster\"}[$__rate_interval])) by (proto)",
           "interval": "$resolution",
           "legendFormat": "average $protocol packet size",
           "refId": "A"
@@ -612,7 +612,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(coredns_dns_requests_total{instance=~\"$instance\"}[$__rate_interval])) by (type)",
+          "expr": "sum(rate(coredns_dns_requests_total{instance=~\"$instance\", cluster=~\"$cluster\"}[$__rate_interval])) by (type)",
           "interval": "$resolution",
           "legendFormat": "{{ type }}",
           "refId": "A"
@@ -708,7 +708,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(coredns_dns_responses_total{instance=~\"$instance\"}[$__rate_interval])) by (rcode)",
+          "expr": "sum(rate(coredns_dns_responses_total{instance=~\"$instance\", cluster=~\"$cluster\"}[$__rate_interval])) by (rcode)",
           "interval": "$resolution",
           "legendFormat": "{{ rcode }}",
           "refId": "A"
@@ -804,7 +804,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(coredns_forward_requests_total[$__rate_interval]))",
+          "expr": "sum(rate(coredns_forward_requests_total{cluster=~\"$cluster\"}[$__rate_interval]))",
           "interval": "$resolution",
           "legendFormat": "total forward requests",
           "refId": "A"
@@ -900,7 +900,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(coredns_forward_responses_total{rcode=~\"SERVFAIL|REFUSED\"}[$__rate_interval])) by (rcode)",
+          "expr": "sum(rate(coredns_forward_responses_total{rcode=~\"SERVFAIL|REFUSED\", cluster=~\"$cluster\"}[$__rate_interval])) by (rcode)",
           "interval": "$resolution",
           "legendFormat": "{{ rcode }}",
           "refId": "A"
@@ -996,7 +996,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(coredns_cache_hits_total{instance=~\"$instance\"}[$__rate_interval])) by (type)",
+          "expr": "sum(rate(coredns_cache_hits_total{instance=~\"$instance\", cluster=~\"$cluster\"}[$__rate_interval])) by (type)",
           "interval": "$resolution",
           "legendFormat": "{{ type }}",
           "refId": "A"
@@ -1007,7 +1007,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(coredns_cache_misses_total{instance=~\"$instance\"}[$__rate_interval])) by (type)",
+          "expr": "sum(rate(coredns_cache_misses_total{instance=~\"$instance\", cluster=~\"$cluster\"}[$__rate_interval])) by (type)",
           "interval": "$resolution",
           "legendFormat": "misses",
           "refId": "B"
@@ -1103,7 +1103,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(coredns_cache_entries) by (type)",
+          "expr": "sum(coredns_cache_entries{cluster=~\"$cluster\"}) by (type)",
           "interval": "",
           "legendFormat": "{{ type }}",
           "refId": "A"
@@ -1181,7 +1181,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(coredns_dns_request_duration_seconds_bucket{instance=~\"$instance\"}[$__rate_interval])) by (le)",
+          "expr": "sum(increase(coredns_dns_request_duration_seconds_bucket{instance=~\"$instance\", cluster=~\"$cluster\"}[$__rate_interval])) by (le)",
           "format": "heatmap",
           "legendFormat": "{{le}}",
           "range": true,
@@ -1260,7 +1260,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(coredns_forward_request_duration_seconds_bucket{instance=~\"$instance\"}[$__rate_interval])) by (le)",
+          "expr": "sum(increase(coredns_forward_request_duration_seconds_bucket{instance=~\"$instance\", cluster=~\"$cluster\"}[$__rate_interval])) by (le)",
           "format": "heatmap",
           "legendFormat": "{{le}}",
           "range": true,
@@ -1339,7 +1339,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(coredns_dns_request_size_bytes_bucket{instance=~\"$instance\", le!=\"0\"}[$__rate_interval])) by (le)",
+          "expr": "sum(increase(coredns_dns_request_size_bytes_bucket{instance=~\"$instance\", le!=\"0\", cluster=~\"$cluster\"}[$__rate_interval])) by (le)",
           "format": "heatmap",
           "legendFormat": "{{le}}",
           "range": true,
@@ -1418,7 +1418,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(increase(coredns_dns_response_size_bytes_bucket{instance=~\"$instance\", le!=\"0\"}[$__rate_interval])) by (le)",
+          "expr": "sum(increase(coredns_dns_response_size_bytes_bucket{instance=~\"$instance\", le!=\"0\", cluster=~\"$cluster\"}[$__rate_interval])) by (le)",
           "format": "heatmap",
           "legendFormat": "{{le}}",
           "range": true,
@@ -1457,6 +1457,34 @@
       },
       {
         "current": {
+          "isNone": true,
+          "selected": false,
+          "text": "None",
+          "value": ""
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus"
+        },
+        "definition": "label_values(kube_node_info,cluster)",
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "cluster",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(kube_node_info,cluster)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "current": {
           "selected": false,
           "text": "All",
           "value": "$__all"
@@ -1465,7 +1493,7 @@
           "type": "prometheus",
           "uid": "${datasource}"
         },
-        "definition": "label_values(up{job=\"$job\"},instance)",
+        "definition": "label_values(up{job=\"$job\", cluster=\"$cluster\"},instance)",
         "hide": 0,
         "includeAll": true,
         "label": "",
@@ -1474,7 +1502,7 @@
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(up{job=\"$job\"},instance)",
+          "query": "label_values(up{job=\"$job\", cluster=\"$cluster\"},instance)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
@@ -1497,7 +1525,7 @@
           "type": "prometheus",
           "uid": "${datasource}"
         },
-        "definition": "label_values(coredns_dns_requests_total, proto)",
+        "definition": "label_values(coredns_dns_requests_total{cluster=\"$cluster\"}, proto)",
         "hide": 0,
         "includeAll": false,
         "label": "",
@@ -1505,7 +1533,7 @@
         "name": "protocol",
         "options": [],
         "query": {
-          "query": "label_values(coredns_dns_requests_total, proto)",
+          "query": "label_values(coredns_dns_requests_total{cluster=\"$cluster\"}, proto)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -1574,7 +1602,7 @@
             "coredns"
           ]
         },
-        "definition": "label_values(coredns_build_info,job)",
+        "definition": "label_values(coredns_build_info{cluster=\"$cluster\"},job)",
         "hide": 0,
         "includeAll": false,
         "multi": true,
@@ -1582,7 +1610,7 @@
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(coredns_build_info,job)",
+          "query": "label_values(coredns_build_info{cluster=\"$cluster\"},job)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
@@ -1601,6 +1629,6 @@
   "timezone": "",
   "title": "Kubernetes / System / CoreDNS",
   "uid": "k8s_system_coredns",
-  "version": 15,
+  "version": 16,
   "weekStart": ""
 }
