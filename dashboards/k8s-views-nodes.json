@@ -156,7 +156,7 @@
             "uid": "${datasource}"
           },
           "exemplar": false,
-          "expr": "avg(1-rate(node_cpu_seconds_total{mode=\"idle\", instance=\"$instance\", cluster=\"$cluster\"}[$__rate_interval]))",
+          "expr": "avg(sum by (cpu) (rate(node_cpu_seconds_total{mode!~\"idle|iowait|steal\", instance=\"$instance\", cluster=\"$cluster\"}[$__rate_interval])))",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "",
@@ -576,7 +576,7 @@
             "uid": "${datasource}"
           },
           "exemplar": false,
-          "expr": "sum(1-rate(node_cpu_seconds_total{mode=\"idle\", instance=\"$instance\", cluster=\"$cluster\"}[$__rate_interval]))",
+          "expr": "sum(rate(node_cpu_seconds_total{mode!~\"idle|iowait|steal\", instance=\"$instance\", cluster=\"$cluster\"}[$__rate_interval]))",
           "instant": true,
           "interval": "$resolution",
           "legendFormat": "",
@@ -3933,6 +3933,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Nodes",
   "uid": "k8s_views_nodes",
-  "version": 25,
+  "version": 26,
   "weekStart": ""
 }
