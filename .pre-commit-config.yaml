@@ -12,13 +12,13 @@ repos:
 
   # Typos
   - repo: https://github.com/crate-ci/typos
-    rev: v1.16.23
+    rev: v1.17.2
     hooks:
       - id: typos
 
   # Markdown linter
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.37.0
+    rev: v0.38.0
     hooks:
     - id: markdownlint
       args:
