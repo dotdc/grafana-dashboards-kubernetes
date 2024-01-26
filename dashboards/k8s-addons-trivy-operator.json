@@ -2691,6 +2691,6 @@
   "timezone": "",
   "title": "Trivy Operator - Vulnerabilities",
   "uid": "security_trivy_operator",
-  "version": 11,
+  "version": 12,
   "weekStart": ""
 }
