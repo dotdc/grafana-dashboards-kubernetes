@@ -1464,7 +1464,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "prometheus"
+          "uid": "${datasource}"
         },
         "definition": "label_values(kube_node_info,cluster)",
         "hide": 0,
