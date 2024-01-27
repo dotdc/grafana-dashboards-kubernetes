@@ -3145,6 +3145,6 @@
   "timezone": "",
   "title": "Prometheus",
   "uid": "k8s_addons_prometheus",
-  "version": 2,
+  "version": 3,
   "weekStart": ""
 }

@@ -1358,6 +1358,6 @@
   "timezone": "",
   "title": "Kubernetes / System / API Server",
   "uid": "k8s_system_apisrv",
-  "version": 15,
+  "version": 16,
   "weekStart": ""
 }
