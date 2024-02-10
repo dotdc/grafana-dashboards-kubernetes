@@ -2890,8 +2890,8 @@
       {
         "current": {
           "selected": false,
-          "text": "Prometheus",
-          "value": "d9803217-435f-4ee4-8d45-0e2f08370325"
+          "text": "",
+          "value": ""
         },
         "hide": 0,
         "includeAll": false,
