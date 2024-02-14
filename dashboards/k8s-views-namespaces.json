@@ -2287,7 +2287,7 @@
           "query": "label_values(kube_pod_info{namespace=~\"$namespace\", container!=\"\", cluster=\"$cluster\"},created_by_name)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
-        "refresh": 1,
+        "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
         "sort": 1,
