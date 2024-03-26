@@ -1515,31 +1515,6 @@
         }
       ],
       "title": "CPU Utilization by namespace",
-      "transformations": [
-        {
-          "disabled": true,
-          "id": "joinByField",
-          "options": {
-            "byField": "Time",
-            "mode": "outer"
-          }
-        },
-        {
-          "disabled": true,
-          "id": "calculateField",
-          "options": {
-            "alias": "Total",
-            "mode": "reduceRow",
-            "reduce": {
-              "include": [
-                "Value #Linux",
-                "Value #Windows"
-              ],
-              "reducer": "mean"
-            }
-          }
-        }
-      ],
       "type": "timeseries"
     },
     {
@@ -2933,7 +2908,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -3043,7 +3019,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -3181,7 +3158,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -3320,7 +3298,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
