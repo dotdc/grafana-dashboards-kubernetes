@@ -1,7 +1,9 @@
+# Doc: https://pre-commit.com
+
 repos:
   # Default pre-commit hooks
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v4.6.0
     hooks:
     - id: check-json
     - id: check-yaml
@@ -12,7 +14,7 @@ repos:
 
   # Typos
   - repo: https://github.com/crate-ci/typos
-    rev: v1.18.2
+    rev: v1.20.8
     hooks:
       - id: typos
 
