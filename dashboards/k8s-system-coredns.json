@@ -1602,6 +1602,10 @@
             "coredns"
           ]
         },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
         "definition": "label_values(coredns_build_info{cluster=\"$cluster\"},job)",
         "hide": 0,
         "includeAll": false,
