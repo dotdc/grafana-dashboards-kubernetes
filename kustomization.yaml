@@ -2,7 +2,7 @@
 generatorOptions:
   disableNameSuffixHash: true
   labels:
-    grafana_dashboard: "true"
+    grafana_dashboard: "1"
 commonAnnotations:
   grafana_folder: "Kubernetes"
 #namespace: monitoring
@@ -35,31 +35,3 @@ configMapGenerator:
 
 - name: dashboards-k8s-system-coredns
   files: [ dashboards/k8s-system-coredns.json ]
-
-- name: dashboards-k8s-addons-starboard-operator
-  files: [ dashboards/k8s-addons-starboard-operator.json ]
-
-#################################################
-# Custom Dashboards
-#################################################
-
-- name: dashboards-argocd-all
-  files: [ dashboards/argocd-full.json ]
-
-- name: dashboards-argo-workflow-all
-  files: [ dashboards/argoworkflow-full.json ]
-
-- name: dashboards-ambassador-all
-  files: [ dashboards/ambassador-full.json ]
-
-- name: dashboards-keycloak-all
-  files: [ dashboards/keycloak-full.json ]
-
-- name: dashboards-minio-all
-  files: [ dashboards/minio-full.json ]
-  
-- name: dashboards-traefik-all
-  files: [ dashboards/traefik-full.json ]
-
-- name: dashboards-letsdoit-all
-  files: [ dashboards/letsdoit-full.json ]

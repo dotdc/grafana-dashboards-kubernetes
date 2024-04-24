@@ -1,7 +1,9 @@
+# Doc: https://pre-commit.com
+
 repos:
-  ## Default pre-commit hooks
+  # Default pre-commit hooks
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.1.0
+    rev: v4.6.0
     hooks:
     - id: check-json
     - id: check-yaml
@@ -10,15 +12,15 @@ repos:
     - id: mixed-line-ending
     - id: trailing-whitespace
 
-  ## Typos
+  # Typos
   - repo: https://github.com/crate-ci/typos
-    rev: typos-v0.8.6
+    rev: v1.20.8
     hooks:
       - id: typos
 
   # Markdown linter
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.31.1
+    rev: v0.39.0
     hooks:
     - id: markdownlint
       args:

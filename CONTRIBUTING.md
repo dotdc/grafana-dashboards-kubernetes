@@ -15,6 +15,6 @@ Changes are welcome as soon as they work with [kube-prometheus-stack](https://gi
 
 ## Best practices
 
+- Bump dashboard(s) version(s)
 - [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) is preferred
 - [Signed commits](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt---signoff) is preferred
-- Bump dashboard(s) version(s)
