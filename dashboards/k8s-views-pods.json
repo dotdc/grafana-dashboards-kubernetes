@@ -2642,7 +2642,7 @@
           "type": "prometheus",
           "uid": "${datasource}"
         },
-        "definition": "label_values(kube_pod_info,job)",
+        "definition": "label_values(kube_pod_info{namespace=\"$namespace\", cluster=\"$cluster\"},job)",
         "hide": 0,
         "includeAll": false,
         "multi": true,
@@ -2650,7 +2650,7 @@
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(kube_pod_info,job)",
+          "query": "label_values(kube_pod_info{namespace=\"$namespace\", cluster=\"$cluster\"},job)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
@@ -2669,6 +2669,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Pods",
   "uid": "k8s_views_pods",
-  "version": 26,
+  "version": 27,
   "weekStart": ""
 }
