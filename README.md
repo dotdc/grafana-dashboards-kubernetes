@@ -5,6 +5,7 @@
 ## Table of contents <!-- omit in toc -->
 
 - [Description](#description)
+- [Releases](#releases)
 - [Features](#features)
 - [Dashboards](#dashboards)
 - [Installation](#installation)
@@ -16,6 +17,7 @@
   - [Install as ConfigMaps with Terraform](#install-as-configmaps-with-terraform)
 - [Known issue(s)](#known-issues)
   - [Broken panels due to a too-high resolution](#broken-panels-due-to-a-too-high-resolution)
+  - [Broken panels on k8s-views-nodes when a node changes its IP address](#broken-panels-on-k8s-views-nodes-when-a-node-changes-its-ip-address)
   - [Broken panels on k8s-views-nodes due to the nodename label](#broken-panels-on-k8s-views-nodes-due-to-the-nodename-label)
 - [Contributing](#contributing)
 
@@ -27,6 +29,11 @@ They are inspired by many other dashboards from `kubernetes-mixin` and `grafana.
 More information about them in my article: [A set of modern Grafana dashboards for Kubernetes](https://0xdc.me/blog/a-set-of-modern-grafana-dashboards-for-kubernetes/)
 
 You can also download them on [Grafana.com](https://grafana.com/grafana/dashboards/?plcmt=top-nav&cta=downloads&search=dotdc).
+
+## Releases
+
+This repository follows [semantic versioning](https://semver.org) for releases.\
+It relies on [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) to automate releases using [semantic-release](https://github.com/semantic-release/semantic-release).
 
 ## Features
 
@@ -202,6 +209,14 @@ You will also need to enable and configure the Grafana `dashboards sidecar` as d
 
 A user reported in [#50](https://github.com/dotdc/grafana-dashboards-kubernetes/issues/50) that some panels were broken because the default value of the `$resolution` variable was too low. The root cause hasn't been identified precisely, but he was using Grafana Agent & Grafana Mimir. Changing the `$resolution` variable to a higher value (a lower resolution) will likely solve the issue.
 To make the fix permanent, you can configure the `Scrape interval` in your Grafana Datasource to a working value for your setup.
+
+### Broken panels on k8s-views-nodes when a node changes its IP address
+
+To make this dashboard more convenient, there's a small variable hack to display `node` instead of `instance`.
+Because of that, some panels could lack data when a node changes its IP address as reported in [#102](https://github.com/dotdc/grafana-dashboards-kubernetes/issues/102).
+
+No easy fix for this scenario yet, but it should be a corner case for most people.
+Feel free to reopen the issue if you have ideas to fix this.
 
 ### Broken panels on k8s-views-nodes due to the nodename label
 
