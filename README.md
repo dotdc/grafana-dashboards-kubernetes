@@ -66,7 +66,7 @@ As an example, here's how the `Kubernetes / Views / Global` dashboard looks like
 
 ## Installation
 
-In most installation cases, you will need to clone this repository (or your fork):
+In most cases, you will need to clone this repository (or your fork):
 
 ```terminal
 git clone https://github.com/dotdc/grafana-dashboards-kubernetes.git
@@ -115,7 +115,7 @@ Grafana.com dashboard id list:
 
 ### Install with ArgoCD
 
-If you have ArgoCD, this will deploy the dashboards in ArgoCD's default project:
+If you are using ArgoCD, this will deploy the dashboards in the default project of ArgoCD:
 
 ```terminal
 kubectl apply -f argocd-app.yml
