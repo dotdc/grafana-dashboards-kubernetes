@@ -1,41 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_PROMETHEUS",
-      "label": "Prometheus",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__elements": [],
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "8.4.4"
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "5.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "timeseries",
-      "name": "Time series",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "stat",
-      "name": "Stat",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -113,6 +76,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "vertical",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -124,7 +88,7 @@
         "textMode": "value_and_name",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.1",
+      "pluginVersion": "11.1.0",
       "targets": [
         {
           "datasource": {
@@ -804,10 +768,12 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(coredns_forward_requests_total{cluster=~\"$cluster\"}[$__rate_interval]))",
+          "expr": "sum(rate(coredns_proxy_request_duration_seconds_count{proxy_name=\"forward\",cluster=~\"$cluster\"}[$__rate_interval]))",
           "interval": "$resolution",
-          "legendFormat": "total forward requests",
+          "legendFormat": "__auto",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -900,10 +866,12 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(coredns_forward_responses_total{rcode=~\"SERVFAIL|REFUSED\", cluster=~\"$cluster\"}[$__rate_interval])) by (rcode)",
+          "expr": "sum(rate(coredns_proxy_request_duration_seconds_count{proxy_name=\"forward\", rcode=~\"SERVFAIL|REFUSED\", cluster=~\"$cluster\"}[$__rate_interval])) by (rcode)",
           "interval": "$resolution",
-          "legendFormat": "{{ rcode }}",
+          "legendFormat": "__auto",
+          "range": true,
           "refId": "A"
         }
       ],
@@ -1175,7 +1143,7 @@
           "unit": "s"
         }
       },
-      "pluginVersion": "10.4.1",
+      "pluginVersion": "11.1.0",
       "targets": [
         {
           "datasource": {
@@ -1255,7 +1223,7 @@
           "unit": "decbytes"
         }
       },
-      "pluginVersion": "10.4.1",
+      "pluginVersion": "11.1.0",
       "targets": [
         {
           "datasource": {
@@ -1335,7 +1303,7 @@
           "unit": "decbytes"
         }
       },
-      "pluginVersion": "10.4.1",
+      "pluginVersion": "11.1.0",
       "targets": [
         {
           "datasource": {
@@ -1366,7 +1334,7 @@
         "current": {
           "selected": false,
           "text": "Prometheus",
-          "value": "Prometheus"
+          "value": "PBFA97CFB590B2093"
         },
         "hide": 0,
         "includeAll": false,
@@ -1382,10 +1350,9 @@
       },
       {
         "current": {
-          "isNone": true,
           "selected": false,
-          "text": "None",
-          "value": ""
+          "text": "zeb-etlx-zebit-dev-sg1",
+          "value": "zeb-etlx-zebit-dev-sg1"
         },
         "datasource": {
           "type": "prometheus",
@@ -1558,6 +1525,6 @@
   "timezone": "",
   "title": "Kubernetes / System / CoreDNS",
   "uid": "k8s_system_coredns",
-  "version": 18,
+  "version": 1,
   "weekStart": ""
 }
