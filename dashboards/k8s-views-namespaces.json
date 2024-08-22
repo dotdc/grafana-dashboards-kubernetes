@@ -1,47 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_PROMETHEUS",
-      "label": "Prometheus",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__elements": {},
-  "__requires": [
-    {
-      "type": "panel",
-      "id": "gauge",
-      "name": "Gauge",
-      "version": ""
-    },
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "10.3.1"
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "1.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "stat",
-      "name": "Stat",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "timeseries",
-      "name": "Time series",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -116,8 +73,7 @@
               }
             ]
           },
-          "unit": "percentunit",
-          "unitScale": true
+          "unit": "percentunit"
         },
         "overrides": []
       },
@@ -144,7 +100,7 @@
         "sizing": "auto",
         "text": {}
       },
-      "pluginVersion": "10.3.1",
+      "pluginVersion": "11.1.0",
       "targets": [
         {
           "datasource": {
@@ -192,8 +148,7 @@
               }
             ]
           },
-          "unit": "percentunit",
-          "unitScale": true
+          "unit": "percentunit"
         },
         "overrides": []
       },
@@ -220,7 +175,7 @@
         "sizing": "auto",
         "text": {}
       },
-      "pluginVersion": "10.3.1",
+      "pluginVersion": "11.1.0",
       "targets": [
         {
           "datasource": {
@@ -293,8 +248,7 @@
               }
             ]
           },
-          "unit": "short",
-          "unitScale": true
+          "unit": "short"
         },
         "overrides": []
       },
@@ -457,8 +411,7 @@
               }
             ]
           },
-          "unit": "none",
-          "unitScale": true
+          "unit": "none"
         },
         "overrides": []
       },
@@ -474,6 +427,7 @@
         "graphMode": "none",
         "justifyMode": "center",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -486,7 +440,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.3.1",
+      "pluginVersion": "11.1.0",
       "targets": [
         {
           "datasource": {
@@ -559,8 +513,7 @@
               }
             ]
           },
-          "unit": "bytes",
-          "unitScale": true
+          "unit": "bytes"
         },
         "overrides": []
       },
@@ -576,6 +529,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -588,7 +542,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.3.1",
+      "pluginVersion": "11.1.0",
       "targets": [
         {
           "datasource": {
@@ -716,8 +670,7 @@
               }
             ]
           },
-          "unit": "none",
-          "unitScale": true
+          "unit": "none"
         },
         "overrides": []
       },
@@ -815,8 +768,7 @@
               }
             ]
           },
-          "unit": "bytes",
-          "unitScale": true
+          "unit": "bytes"
         },
         "overrides": []
       },
@@ -910,7 +862,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1026,7 +979,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1141,7 +1095,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1245,7 +1200,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1291,7 +1247,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(increase(container_oom_events_total{namespace=~\"${namespace}\", cluster=\"$cluster\"}[$__rate_interval])) by (namespace, pod) > 0",
+          "expr": "sum(increase(container_oom_events_total{namespace=~\"${namespace}\", cluster=\"$cluster\"}[$__rate_interval])) by (namespace, pod)",
           "interval": "",
           "legendFormat": "namespace: {{ namespace }} - pod: {{ pod }}",
           "range": true,
@@ -1349,7 +1305,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1395,7 +1352,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(increase(kube_pod_container_status_restarts_total{namespace=~\"${namespace}\", cluster=\"$cluster\"}[$__rate_interval])) by (namespace, pod) > 0",
+          "expr": "sum(increase(kube_pod_container_status_restarts_total{namespace=~\"${namespace}\", cluster=\"$cluster\"}[$__rate_interval])) by (namespace, pod)",
           "interval": "",
           "legendFormat": "namespace: {{ namespace }} - pod: {{ pod }}",
           "range": true,
@@ -1453,7 +1410,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1592,7 +1550,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1688,7 +1647,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1785,7 +1745,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1899,7 +1860,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -1995,7 +1957,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2103,7 +2066,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "red",
@@ -2161,7 +2125,11 @@
   "templating": {
     "list": [
       {
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "Prometheus",
+          "value": "PBFA97CFB590B2093"
+        },
         "hide": 0,
         "includeAll": false,
         "multi": false,
@@ -2175,7 +2143,11 @@
         "type": "datasource"
       },
       {
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "zeb-etlx-zebit-dev-sg1",
+          "value": "zeb-etlx-zebit-dev-sg1"
+        },
         "datasource": {
           "type": "prometheus",
           "uid": "${datasource}"
@@ -2198,7 +2170,21 @@
         "type": "query"
       },
       {
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": [
+            "clcu-533-new-infra",
+            "clcu-533-new-infra-test",
+            "kube-system",
+            "lgtm"
+          ],
+          "value": [
+            "clcu-533-new-infra",
+            "clcu-533-new-infra-test",
+            "kube-system",
+            "lgtm"
+          ]
+        },
         "datasource": {
           "type": "prometheus",
           "uid": "${datasource}"
@@ -2270,12 +2256,20 @@
         "type": "custom"
       },
       {
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
         "datasource": {
           "type": "prometheus",
           "uid": "${datasource}"
         },
-        "definition": "label_values(kube_pod_info{namespace=~\"$namespace\", cluster=\"$cluster\"},created_by_name)",
+        "definition": "label_values(kube_pod_info{namespace=~\"$namespace\", container!=\"\", cluster=\"$cluster\"},created_by_name)",
         "description": "Can be used to filter on a specific deployment, statefulset or deamonset (only relevant panels).",
         "hide": 0,
         "includeAll": true,
@@ -2283,7 +2277,7 @@
         "name": "created_by",
         "options": [],
         "query": {
-          "query": "label_values(kube_pod_info{namespace=~\"$namespace\", cluster=\"$cluster\"},created_by_name)",
+          "query": "label_values(kube_pod_info{namespace=~\"$namespace\", container!=\"\", cluster=\"$cluster\"},created_by_name)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 2,
@@ -2302,6 +2296,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Namespaces",
   "uid": "k8s_views_ns",
-  "version": 35,
+  "version": 1,
   "weekStart": ""
 }
