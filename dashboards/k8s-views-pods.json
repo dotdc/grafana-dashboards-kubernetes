@@ -1,53 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_PROMETHEUS",
-      "label": "Prometheus",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__elements": [],
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "8.3.4"
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "5.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "timeseries",
-      "name": "Time series",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "stat",
-      "name": "Stat",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "gauge",
-      "name": "Gauge",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "table",
-      "name": "Table",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -137,6 +88,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "mean"
@@ -148,7 +100,7 @@
         "textMode": "name",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.1",
+      "pluginVersion": "11.1.0",
       "targets": [
         {
           "datasource": {
@@ -207,6 +159,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "mean"
@@ -218,7 +171,7 @@
         "textMode": "name",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.1",
+      "pluginVersion": "11.1.0",
       "targets": [
         {
           "datasource": {
@@ -271,6 +224,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "mean"
@@ -282,7 +236,7 @@
         "textMode": "name",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.1",
+      "pluginVersion": "11.1.0",
       "targets": [
         {
           "datasource": {
@@ -335,6 +289,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "mean"
@@ -346,7 +301,7 @@
         "textMode": "name",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.1",
+      "pluginVersion": "11.1.0",
       "targets": [
         {
           "datasource": {
@@ -435,6 +390,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [],
           "fields": "",
@@ -444,7 +400,7 @@
         "textMode": "name",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.1",
+      "pluginVersion": "11.1.0",
       "targets": [
         {
           "datasource": {
@@ -501,6 +457,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [],
           "fields": "",
@@ -510,7 +467,7 @@
         "textMode": "name",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.1",
+      "pluginVersion": "11.1.0",
       "targets": [
         {
           "datasource": {
@@ -571,6 +528,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [],
           "fields": "",
@@ -580,7 +538,7 @@
         "textMode": "value",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.1",
+      "pluginVersion": "11.1.0",
       "targets": [
         {
           "datasource": {
@@ -684,7 +642,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "10.4.1",
+      "pluginVersion": "11.1.0",
       "targets": [
         {
           "datasource": {
@@ -757,7 +715,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "10.4.1",
+      "pluginVersion": "11.1.0",
       "targets": [
         {
           "datasource": {
@@ -834,7 +792,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "10.4.1",
+      "pluginVersion": "11.1.0",
       "targets": [
         {
           "datasource": {
@@ -907,7 +865,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "10.4.1",
+      "pluginVersion": "11.1.0",
       "targets": [
         {
           "datasource": {
@@ -1026,7 +984,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "10.4.1",
+      "pluginVersion": "11.1.0",
       "targets": [
         {
           "datasource": {
@@ -1737,6 +1695,7 @@
           },
           "decimals": 2,
           "mappings": [],
+          "noValue": "0",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -2509,8 +2468,8 @@
       {
         "current": {
           "selected": false,
-          "text": "",
-          "value": ""
+          "text": "Prometheus",
+          "value": "PBFA97CFB590B2093"
         },
         "hide": 0,
         "includeAll": false,
@@ -2526,10 +2485,9 @@
       },
       {
         "current": {
-          "isNone": true,
           "selected": false,
-          "text": "None",
-          "value": ""
+          "text": "zeb-etlx-zebit-dev-sg1",
+          "value": "zeb-etlx-zebit-dev-sg1"
         },
         "datasource": {
           "type": "prometheus",
@@ -2555,8 +2513,8 @@
       {
         "current": {
           "selected": false,
-          "text": "monitoring",
-          "value": "monitoring"
+          "text": "clcu-533-new-infra",
+          "value": "clcu-533-new-infra"
         },
         "datasource": {
           "type": "prometheus",
@@ -2583,9 +2541,9 @@
       },
       {
         "current": {
-          "selected": false,
-          "text": "",
-          "value": ""
+          "selected": true,
+          "text": "airflow-postgresql-0",
+          "value": "airflow-postgresql-0"
         },
         "datasource": {
           "type": "prometheus",
@@ -2594,7 +2552,7 @@
         "definition": "label_values(kube_pod_info{namespace=\"$namespace\", cluster=\"$cluster\"}, pod)",
         "hide": 0,
         "includeAll": true,
-        "multi": true,
+        "multi": false,
         "name": "pod",
         "options": [],
         "query": {
@@ -2659,9 +2617,13 @@
       },
       {
         "current": {
-          "selected": false,
-          "text": "kube-state-metrics",
-          "value": "kube-state-metrics"
+          "selected": true,
+          "text": [
+            "kube-state-metrics"
+          ],
+          "value": [
+            "kube-state-metrics"
+          ]
         },
         "datasource": {
           "type": "prometheus",
@@ -2694,6 +2656,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Pods",
   "uid": "k8s_views_pods",
-  "version": 28,
+  "version": 1,
   "weekStart": ""
 }
