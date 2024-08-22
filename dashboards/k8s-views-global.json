@@ -1,47 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_PROMETHEUS",
-      "label": "Prometheus",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__elements": {},
-  "__requires": [
-    {
-      "type": "panel",
-      "id": "bargauge",
-      "name": "Bar gauge",
-      "version": ""
-    },
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "10.3.1"
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "1.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "stat",
-      "name": "Stat",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "timeseries",
-      "name": "Time series",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -143,7 +100,7 @@
         "sizing": "auto",
         "valueMode": "color"
       },
-      "pluginVersion": "10.4.0",
+      "pluginVersion": "11.1.0",
       "targets": [
         {
           "datasource": {
@@ -292,7 +249,7 @@
         "text": {},
         "valueMode": "color"
       },
-      "pluginVersion": "10.4.0",
+      "pluginVersion": "11.1.0",
       "targets": [
         {
           "datasource": {
@@ -418,6 +375,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "last"
@@ -430,7 +388,7 @@
         "textMode": "value",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.0",
+      "pluginVersion": "11.1.0",
       "targets": [
         {
           "datasource": {
@@ -726,6 +684,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "last"
@@ -738,7 +697,7 @@
         "textMode": "value",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.0",
+      "pluginVersion": "11.1.0",
       "targets": [
         {
           "datasource": {
@@ -788,6 +747,7 @@
         "graphMode": "none",
         "justifyMode": "center",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -800,7 +760,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.0",
+      "pluginVersion": "11.1.0",
       "targets": [
         {
           "datasource": {
@@ -943,6 +903,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -955,7 +916,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.0",
+      "pluginVersion": "11.1.0",
       "targets": [
         {
           "datasource": {
@@ -1094,6 +1055,7 @@
         "graphMode": "none",
         "justifyMode": "auto",
         "orientation": "auto",
+        "percentChangeColorMode": "standard",
         "reduceOptions": {
           "calcs": [
             "last"
@@ -1106,7 +1068,7 @@
         "textMode": "value",
         "wideLayout": true
       },
-      "pluginVersion": "10.4.0",
+      "pluginVersion": "11.1.0",
       "targets": [
         {
           "datasource": {
@@ -2016,6 +1978,7 @@
           },
           "decimals": 2,
           "mappings": [],
+          "noValue": "None",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -2067,7 +2030,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(node_cpu_core_throttles_total{cluster=\"$cluster\", job=\"$job\"}[$__rate_interval])) by (instance)",
+          "expr": "sum(rate(container_cpu_cfs_throttled_periods_total{cluster=\"$cluster\", job=\"$job\"}[$__rate_interval])) by (instance)",
           "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "range": true,
@@ -2405,7 +2368,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(increase(container_oom_events_total{cluster=\"$cluster\"}[$__rate_interval])) by (namespace) > 0",
+          "expr": "sum(increase(container_oom_events_total{cluster=\"$cluster\"}[$__rate_interval])) by (namespace)",
           "interval": "",
           "legendFormat": "{{ namespace }}",
           "range": true,
@@ -2510,7 +2473,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(increase(kube_pod_container_status_restarts_total{cluster=\"$cluster\"}[$__rate_interval])) by (namespace) > 0",
+          "expr": "sum(increase(kube_pod_container_status_restarts_total{cluster=\"$cluster\"}[$__rate_interval])) by (namespace)",
           "interval": "",
           "legendFormat": "{{ namespace }}",
           "range": true,
@@ -3374,8 +3337,8 @@
       {
         "current": {
           "selected": false,
-          "text": "",
-          "value": ""
+          "text": "Prometheus",
+          "value": "PBFA97CFB590B2093"
         },
         "hide": 0,
         "includeAll": false,
@@ -3390,7 +3353,11 @@
         "type": "datasource"
       },
       {
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "zeb-etlx-zebit-dev-sg1",
+          "value": "zeb-etlx-zebit-dev-sg1"
+        },
         "datasource": {
           "type": "prometheus",
           "uid": "${datasource}"
@@ -3461,9 +3428,13 @@
       },
       {
         "current": {
-          "selected": false,
-          "text": "",
-          "value": ""
+          "selected": true,
+          "text": [
+            "node-exporter"
+          ],
+          "value": [
+            "node-exporter"
+          ]
         },
         "datasource": {
           "type": "prometheus",
@@ -3496,6 +3467,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Global",
   "uid": "k8s_views_global",
-  "version": 39,
+  "version": 1,
   "weekStart": ""
 }
