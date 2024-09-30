@@ -2080,7 +2080,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(rate(container_cpu_usage_seconds_total{pod=~\"$pod\", image!=\"\", container!=\"\", cluster=~\"$cluster\"}[$__rate_interval])) by (pod, container)",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{pod=~\"$pod\", image=\"\", container!=\"\", cluster=~\"$cluster\"}[$__rate_interval])) by (pod, container)",
           "interval": "$resolution",
           "legendFormat": "{{ pod }} - {{ container }}",
           "range": true,
@@ -2184,7 +2184,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(container_memory_working_set_bytes{pod=~\"$pod\", image!=\"\", container!=\"\", cluster=~\"$cluster\"}) by (pod, container)",
+          "expr": "sum(container_memory_working_set_bytes{pod=~\"$pod\", image=\"\", container!=\"\", cluster=~\"$cluster\"}) by (pod, container)",
           "interval": "",
           "legendFormat": "{{ pod }} - {{ container }}",
           "range": true,
@@ -3145,6 +3145,6 @@
   "timezone": "",
   "title": "Prometheus",
   "uid": "k8s_addons_prometheus",
-  "version": 3,
+  "version": 4,
   "weekStart": ""
 }
