@@ -2789,6 +2789,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Namespaces",
   "uid": "k8s_views_ns",
-  "version": 36,
+  "version": 38,
   "weekStart": ""
 }
