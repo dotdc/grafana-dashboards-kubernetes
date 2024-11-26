@@ -3060,6 +3060,7 @@
         "type": "query"
       },
       {
+        "allValue": ".*",
         "current": {
           "selected": false,
           "text": "All",
@@ -3145,6 +3146,6 @@
   "timezone": "",
   "title": "Prometheus",
   "uid": "k8s_addons_prometheus",
-  "version": 5,
+  "version": 6,
   "weekStart": ""
 }
