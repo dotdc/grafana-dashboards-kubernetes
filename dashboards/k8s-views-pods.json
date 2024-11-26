@@ -2600,6 +2600,7 @@
         "useTags": false
       },
       {
+        "allValue": ".*",
         "current": {
           "selected": false,
           "text": "",
