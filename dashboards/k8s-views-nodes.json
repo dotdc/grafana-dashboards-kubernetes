@@ -67,6 +67,42 @@
           "type": "dashboard"
         },
         "type": "dashboard"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": false,
+        "iconColor": "#5c4ee5",
+        "name": "terraform",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [
+            "terraform"
+          ],
+          "type": "tags"
+        }
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": false,
+        "iconColor": "red",
+        "name": "oncall",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [
+            "oncall"
+          ],
+          "type": "tags"
+        }
       }
     ]
   },
@@ -3978,6 +4014,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Nodes",
   "uid": "k8s_views_nodes",
-  "version": 32,
+  "version": 33,
   "weekStart": ""
 }

@@ -61,6 +61,42 @@
           "type": "dashboard"
         },
         "type": "dashboard"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": false,
+        "iconColor": "#5c4ee5",
+        "name": "terraform",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [
+            "terraform"
+          ],
+          "type": "tags"
+        }
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": false,
+        "iconColor": "red",
+        "name": "oncall",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [
+            "oncall"
+          ],
+          "type": "tags"
+        }
       }
     ]
   },
@@ -2692,6 +2728,6 @@
   "timezone": "",
   "title": "Trivy Operator - Vulnerabilities",
   "uid": "security_trivy_operator",
-  "version": 13,
+  "version": 14,
   "weekStart": ""
 }

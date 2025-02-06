@@ -61,6 +61,42 @@
           "type": "dashboard"
         },
         "type": "dashboard"
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": false,
+        "iconColor": "#5c4ee5",
+        "name": "terraform",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [
+            "terraform"
+          ],
+          "type": "tags"
+        }
+      },
+      {
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": false,
+        "iconColor": "red",
+        "name": "oncall",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [
+            "oncall"
+          ],
+          "type": "tags"
+        }
       }
     ]
   },
@@ -3146,6 +3182,6 @@
   "timezone": "",
   "title": "Prometheus",
   "uid": "k8s_addons_prometheus",
-  "version": 6,
+  "version": 7,
   "weekStart": ""
 }
