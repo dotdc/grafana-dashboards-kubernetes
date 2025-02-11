@@ -360,7 +360,7 @@
             {
               "targetBlank": true,
               "title": "Pod details",
-              "url": "/d/k8s_views_pods/kubernetes-views-pods?${datasource:queryparam}&var-namespace=${__data.fields.namespace}&var-pod=${__data.fields.pod}&${resolution:queryparam}&${__url_time_range}"
+              "url": "/d/k8s_views_pods/kubernetes-views-pods?${datasource:queryparam}&var-namespace=${__data.fields.namespace}&${cluster:queryparam}&var-pod=${__data.fields.pod}&${resolution:queryparam}&${__url_time_range}"
             }
           ],
           "mappings": [],
@@ -4014,6 +4014,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Nodes",
   "uid": "k8s_views_nodes",
-  "version": 33,
+  "version": 34,
   "weekStart": ""
 }

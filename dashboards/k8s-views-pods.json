@@ -215,7 +215,7 @@
           "links": [
             {
               "title": "",
-              "url": "/d/k8s_views_nodes/kubernetes-views-nodes?var-datasource=${datasource}&var-node=${__field.labels.node}"
+              "url": "/d/k8s_views_nodes/kubernetes-views-nodes?var-datasource=${datasource}&var-node=${__field.labels.node}&${cluster:queryparam}"
             }
           ],
           "mappings": [],
@@ -2749,6 +2749,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Pods",
   "uid": "k8s_views_pods",
-  "version": 35,
+  "version": 36,
   "weekStart": ""
 }
