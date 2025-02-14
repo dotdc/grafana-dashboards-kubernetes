@@ -3988,14 +3988,14 @@
           "type": "prometheus",
           "uid": "${datasource}"
         },
-        "definition": "label_values(node_uname_info{nodename=~\"(?i:($node))\"}, instance)",
+        "definition": "label_values(node_uname_info{nodename=~\"(?i:($node)(\\.[a-z0-9.]+)?)\"}, instance)",
         "hide": 2,
         "includeAll": false,
         "multi": false,
         "name": "instance",
         "options": [],
         "query": {
-          "query": "label_values(node_uname_info{nodename=~\"(?i:($node))\"}, instance)",
+          "query": "label_values(node_uname_info{nodename=~\"(?i:($node)(\\.[a-z0-9.]+)?)\"}, instance)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 2,
