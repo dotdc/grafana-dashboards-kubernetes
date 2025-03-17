@@ -4014,6 +4014,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Nodes",
   "uid": "k8s_views_nodes",
-  "version": 35,
+  "version": 36,
   "weekStart": ""
 }
