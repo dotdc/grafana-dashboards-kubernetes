@@ -2997,6 +2997,7 @@
         "type": "custom"
       },
       {
+        "allValue": ".*",
         "current": {},
         "datasource": {
           "type": "prometheus",
@@ -3029,6 +3030,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Namespaces",
   "uid": "k8s_views_ns",
-  "version": 42,
+  "version": 43,
   "weekStart": ""
 }
