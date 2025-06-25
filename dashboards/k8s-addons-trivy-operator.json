@@ -1155,7 +1155,7 @@
           "refId": "A"
         }
       ],
-      "title": "Detaillled CVE vulnerabilities in $namespace namespace(s)",
+      "title": "Detailed CVE vulnerabilities in $namespace namespace(s)",
       "transformations": [
         {
           "id": "organize",
