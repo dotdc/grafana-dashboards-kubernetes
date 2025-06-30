@@ -799,7 +799,7 @@
           "refId": "A"
         }
       ],
-      "title": "Total vulnerabilities by severity",
+      "title": "Total vulnerabilities by severity in selected namespace(s)",
       "type": "timeseries"
     },
     {
@@ -2728,6 +2728,6 @@
   "timezone": "",
   "title": "Trivy Operator - Vulnerabilities",
   "uid": "security_trivy_operator",
-  "version": 14,
+  "version": 15,
   "weekStart": ""
 }
