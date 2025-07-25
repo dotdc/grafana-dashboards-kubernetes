@@ -841,7 +841,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(coredns_forward_requests_total{cluster=~\"$cluster\"}[$__rate_interval]))",
+          "expr": "sum(rate(coredns_proxy_request_duration_seconds_count{proxy_name=\"forward\", cluster=~\"$cluster\"}[$__rate_interval]))",
           "interval": "$resolution",
           "legendFormat": "total forward requests",
           "refId": "A"
@@ -937,7 +937,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(coredns_forward_responses_total{rcode=~\"SERVFAIL|REFUSED\", cluster=~\"$cluster\"}[$__rate_interval])) by (rcode)",
+          "expr": "sum(rate(coredns_proxy_request_duration_seconds_count{proxy_name=\"forward\", rcode=~\"SERVFAIL|REFUSED\", cluster=~\"$cluster\"}[$__rate_interval])) by (rcode)",
           "interval": "$resolution",
           "legendFormat": "{{ rcode }}",
           "refId": "A"
