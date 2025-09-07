@@ -18,11 +18,11 @@ jobs:
     steps:
       # Doc: https://github.com/marketplace/actions/checkout
       - name: Checkout ${{ github.repository }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       # Doc: https://github.com/marketplace/actions/setup-python
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
 
       # Install pre-commit
       - name: Install pre-commit
