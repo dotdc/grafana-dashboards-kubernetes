@@ -812,7 +812,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "machine_memory_bytes{node=\"$node\", cluster=\"$cluster\"}",
+          "expr": "sum(machine_memory_bytes{node=\"$node\", cluster=\"$cluster\"})",
           "instant": false,
           "interval": "",
           "legendFormat": "",
@@ -885,7 +885,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "node_time_seconds{instance=\"$instance\", cluster=\"$cluster\"} - node_boot_time_seconds{instance=\"$instance\", cluster=\"$cluster\"}",
+          "expr": "sum(node_time_seconds{instance=\"$instance\", cluster=\"$cluster\"} - node_boot_time_seconds{instance=\"$instance\", cluster=\"$cluster\"})",
           "instant": false,
           "interval": "",
           "legendFormat": "",
