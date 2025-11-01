@@ -2349,9 +2349,9 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(kubelet_volume_stats_used_bytes{persistentvolumeclaim=~\".*prom.*\", cluster=~\"$cluster\"}) by (persistentvolumeclaim) / sum(kubelet_volume_stats_capacity_bytes{persistentvolumeclaim=~\".*prom.*\", cluster=~\"$cluster\"}) by (persistentvolumeclaim)",
+          "expr": "max(kubelet_volume_stats_used_bytes{persistentvolumeclaim=~\".*prom.*\", cluster=~\"$cluster\"}) by (persistentvolumeclaim, namespace) / max(kubelet_volume_stats_capacity_bytes{persistentvolumeclaim=~\".*prom.*\", cluster=~\"$cluster\"}) by (persistentvolumeclaim, namespace)",
           "interval": "",
-          "legendFormat": "{{ persistentvolumeclaim }}",
+          "legendFormat": "{{ namespace }} - {{ persistentvolumeclaim }}",
           "range": true,
           "refId": "A"
         }
@@ -2452,9 +2452,9 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(kubelet_volume_stats_used_bytes{persistentvolumeclaim=~\".*prom.*\", cluster=~\"$cluster\"}) by (persistentvolumeclaim)",
+          "expr": "max(kubelet_volume_stats_used_bytes{persistentvolumeclaim=~\".*prom.*\", cluster=~\"$cluster\"}) by (persistentvolumeclaim, namespace)",
           "interval": "",
-          "legendFormat": "{{ persistentvolumeclaim }} - Used",
+          "legendFormat": "{{ namespace }} - {{ persistentvolumeclaim }} - Used",
           "range": true,
           "refId": "A"
         },
@@ -2465,9 +2465,9 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(kubelet_volume_stats_capacity_bytes{persistentvolumeclaim=~\".*prom.*\", cluster=~\"$cluster\"}) by (persistentvolumeclaim)",
+          "expr": "max(kubelet_volume_stats_capacity_bytes{persistentvolumeclaim=~\".*prom.*\", cluster=~\"$cluster\"}) by (persistentvolumeclaim, namespace)",
           "hide": false,
-          "legendFormat": "{{ persistentvolumeclaim }} - Capacity",
+          "legendFormat": "{{ namespace }} - {{ persistentvolumeclaim }} - Capacity",
           "range": true,
           "refId": "B"
         }
@@ -3182,6 +3182,6 @@
   "timezone": "",
   "title": "Prometheus",
   "uid": "k8s_addons_prometheus",
-  "version": 7,
+  "version": 8,
   "weekStart": ""
 }
