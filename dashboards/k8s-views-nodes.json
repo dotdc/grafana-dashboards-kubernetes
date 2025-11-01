@@ -2774,9 +2774,9 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum(kubelet_volume_stats_used_bytes{node=\"$node\", cluster=\"$cluster\"}) by (persistentvolumeclaim) / sum(kubelet_volume_stats_capacity_bytes{node=\"$node\", cluster=\"$cluster\"}) by (persistentvolumeclaim)",
+          "expr": "max(kubelet_volume_stats_used_bytes{node=\"$node\", cluster=\"$cluster\"}) by (persistentvolumeclaim, namespace) / max(kubelet_volume_stats_capacity_bytes{node=\"$node\", cluster=\"$cluster\"}) by (persistentvolumeclaim, namespace)",
           "interval": "$resolution",
-          "legendFormat": "{{ persistentvolumeclaim }}",
+          "legendFormat": "{{ namespace }} - {{ persistentvolumeclaim }}",
           "range": true,
           "refId": "A"
         }
@@ -2873,7 +2873,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(kubelet_volume_stats_used_bytes{node=\"$node\", cluster=\"$cluster\"}) by (persistentvolumeclaim)",
+          "expr": "max(kubelet_volume_stats_used_bytes{node=\"$node\", cluster=\"$cluster\"}) by (persistentvolumeclaim, namespace)",
           "format": "table",
           "hide": false,
           "interval": "",
@@ -2886,7 +2886,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(kubelet_volume_stats_capacity_bytes{node=\"$node\", cluster=\"$cluster\"}) by (persistentvolumeclaim)",
+          "expr": "max(kubelet_volume_stats_capacity_bytes{node=\"$node\", cluster=\"$cluster\"}) by (persistentvolumeclaim, namespace)",
           "format": "table",
           "hide": false,
           "interval": "",
@@ -4014,6 +4014,6 @@
   "timezone": "",
   "title": "Kubernetes / Views / Nodes",
   "uid": "k8s_views_nodes",
-  "version": 39,
+  "version": 40,
   "weekStart": ""
 }
