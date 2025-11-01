@@ -166,7 +166,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "up{job=~\"kubernetes-apiservers|apiserver\", cluster=~\"$cluster\"}",
+          "expr": "up{cluster=~\"$cluster\", job=~\"$job\"}",
           "interval": "",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -612,7 +612,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(apiserver_request_duration_seconds_sum{job=~\"kubernetes-apiservers|apiserver\", cluster=~\"$cluster\"}[$__rate_interval])) by (instance)\n/\nsum(rate(apiserver_request_duration_seconds_count{job=~\"kubernetes-apiservers|apiserver\", cluster=~\"$cluster\"}[$__rate_interval])) by (instance)",
+          "expr": "sum(rate(apiserver_request_duration_seconds_sum{cluster=~\"$cluster\", job=~\"$job\"}[$__rate_interval])) by (instance)\n/\nsum(rate(apiserver_request_duration_seconds_count{cluster=~\"$cluster\", job=~\"$job\"}[$__rate_interval])) by (instance)",
           "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -706,7 +706,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(apiserver_request_duration_seconds_sum{job=~\"kubernetes-apiservers|apiserver\", cluster=~\"$cluster\"}[$__rate_interval])) by (verb)\n/\nsum(rate(apiserver_request_duration_seconds_count{job=~\"kubernetes-apiservers|apiserver\", cluster=~\"$cluster\"}[$__rate_interval])) by (verb)",
+          "expr": "sum(rate(apiserver_request_duration_seconds_sum{cluster=~\"$cluster\", job=~\"$job\"}[$__rate_interval])) by (verb)\n/\nsum(rate(apiserver_request_duration_seconds_count{cluster=~\"$cluster\", job=~\"$job\"}[$__rate_interval])) by (verb)",
           "interval": "$resolution",
           "legendFormat": "{{ verb }}",
           "refId": "A"
@@ -800,7 +800,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by(instance) (rate(apiserver_request_total{code=~\"5..\", job=~\"kubernetes-apiservers|apiserver\", cluster=~\"$cluster\"}[$__rate_interval]))\n / sum by(instance) (rate(apiserver_request_total{job=~\"kubernetes-apiservers|apiserver\", cluster=~\"$cluster\"}[$__rate_interval]))",
+          "expr": "sum by(instance) (rate(apiserver_request_total{code=~\"5..\", cluster=~\"$cluster\", job=~\"$job\"}[$__rate_interval]))\n / sum by(instance) (rate(apiserver_request_total{cluster=~\"$cluster\", job=~\"$job\"}[$__rate_interval]))",
           "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -894,7 +894,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by(verb) (rate(apiserver_request_total{code=~\"5..\",job=~\"kubernetes-apiservers|apiserver\", cluster=~\"$cluster\"}[$__rate_interval]))\n / sum by(verb) (rate(apiserver_request_total{job=~\"kubernetes-apiservers|apiserver\", cluster=~\"$cluster\"}[$__rate_interval]))",
+          "expr": "sum by(verb) (rate(apiserver_request_total{code=~\"5..\", cluster=~\"$cluster\", job=~\"$job\"}[$__rate_interval]))\n / sum by(verb) (rate(apiserver_request_total{cluster=~\"$cluster\", job=~\"$job\"}[$__rate_interval]))",
           "interval": "$resolution",
           "legendFormat": "{{ verb }}",
           "refId": "A"
@@ -1082,7 +1082,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(workqueue_depth{job=~\"kubernetes-apiservers|apiserver\", cluster=~\"$cluster\"}[$__rate_interval])) by (instance)",
+          "expr": "sum(rate(workqueue_depth{cluster=~\"$cluster\", job=~\"$job\"}[$__rate_interval])) by (instance)",
           "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -1177,7 +1177,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "rate(process_cpu_seconds_total{job=~\"kubernetes-apiservers|apiserver\", cluster=~\"$cluster\"}[$__rate_interval])",
+          "expr": "rate(process_cpu_seconds_total{cluster=~\"$cluster\", job=~\"$job\"}[$__rate_interval])",
           "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -1271,7 +1271,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "process_resident_memory_bytes{job=~\"kubernetes-apiservers|apiserver\", cluster=~\"$cluster\"}",
+          "expr": "process_resident_memory_bytes{cluster=~\"$cluster\", job=~\"$job\"}",
           "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -1383,6 +1383,29 @@
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
+      },
+      {
+        "current": {},
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "definition": "label_values(apiserver_request_total{cluster=\"$cluster\"}, job)",
+        "hide": 0,
+        "includeAll": false,
+        "multi": true,
+        "name": "job",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(apiserver_request_total{cluster=\"$cluster\"}, job)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "type": "query"
       }
     ]
   },
@@ -1394,6 +1417,6 @@
   "timezone": "",
   "title": "Kubernetes / System / API Server",
   "uid": "k8s_system_apisrv",
-  "version": 19,
+  "version": 20,
   "weekStart": ""
 }
