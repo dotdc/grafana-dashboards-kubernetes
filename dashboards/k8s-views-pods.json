@@ -2191,12 +2191,6 @@
           "show": false
         },
         "showHeader": true,
-        "sortBy": [
-          {
-            "desc": false,
-            "displayName": "{__name__=\"kube_pod_container_status_waiting_reason\", container=\"search-analytics\", endpoint=\"http\", instance=\"192.168.1.1:8080\", job=\"kube-state-metrics\", namespace=\"apps\", pod=\"search-analytics-6bf74bdb49-qtcrj\", reason=\"CrashLoopBackOff\", service=\"kube-state-metrics\", uid=\"f1499e03-761a-45c9-b1e5-43bce2bdb761\"}"
-          }
-        ]
       },
       "pluginVersion": "11.3.1",
       "targets": [
