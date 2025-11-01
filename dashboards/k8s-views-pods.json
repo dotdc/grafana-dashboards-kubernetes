@@ -2201,7 +2201,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "\n    kube_pod_container_status_waiting_reason{\n      reason=~\"ErrImagePull|ImagePullBackOff|CrashLoopBackOff\"\n    } == 1",
+          "expr": "kube_pod_container_status_waiting_reason{reason=~\"ErrImagePull|ImagePullBackOff|CrashLoopBackOff\"} == 1",
           "format": "table",
           "instant": true,
           "legendFormat": "__auto",
