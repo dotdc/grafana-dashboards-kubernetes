@@ -20,6 +20,7 @@
   - [Broken panels due to a too-high resolution](#broken-panels-due-to-a-too-high-resolution)
   - [Broken panels on k8s-views-nodes when a node changes its IP address](#broken-panels-on-k8s-views-nodes-when-a-node-changes-its-ip-address)
   - [Broken panels on k8s-views-nodes due to the nodename label](#broken-panels-on-k8s-views-nodes-due-to-the-nodename-label)
+  - [Windows support](#windows-support)
 - [Contributing](#contributing)
 
 ## Description
@@ -378,6 +379,12 @@ prometheus.relabel "node_exporter" {
 ```
 
 The `HOSTNAME` environment variable is injected by default by the [Grafana Agent helm chart](https://github.com/grafana/agent/blob/93cb1a2718f6fc90fd06ef33b6bcff519dbed662/operations/helm/charts/grafana-agent/templates/containers/_agent.yaml#L25)
+
+### Windows support
+
+The dashboards currently don't support Windows. We experimented with Windows support in the `k8s-views-global` dashboard, but it ended up breaking some panels, so it has been removed for now. You can download the [last Windows-compatible version](https://raw.githubusercontent.com/dotdc/grafana-dashboards-kubernetes/refs/tags/v2.10.1/dashboards/k8s-views-global.json) of the dashboard or download [revision 43 on Grafana.com](https://grafana.com/api/dashboards/15757/revisions/43/download).
+
+See [#79](https://github.com/dotdc/grafana-dashboards-kubernetes/issues/79)
 
 ## Contributing
 
