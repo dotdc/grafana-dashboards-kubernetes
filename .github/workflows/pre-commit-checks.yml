@@ -18,7 +18,7 @@ jobs:
     steps:
       # Doc: https://github.com/marketplace/actions/checkout
       - name: Checkout ${{ github.repository }}
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       # Doc: https://github.com/marketplace/actions/setup-python
       - name: Setup Python
