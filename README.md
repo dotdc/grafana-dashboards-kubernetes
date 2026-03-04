@@ -1,3 +1,4 @@
+<!-- markdownlint-configure-file { "MD060": { "style": "consistent" } } -->
 # grafana-dashboards-kubernetes <!-- omit in toc -->
 
 ![logo](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/kubernetes-grafana-dashboards-logo.png)
