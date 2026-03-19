@@ -348,38 +348,32 @@ prometheus-node-exporter:
         targetLabel: nodename
 ```
 
-#### With Grafana Agent Flow mode <!-- omit in toc -->
+#### With Grafana Alloy <!-- omit in toc -->
 
-The Grafana Agent can [bundle its own node_exporter](https://grafana.com/docs/agent/v0.33/flow/reference/components/prometheus.exporter.unix/). In that case, relabeling can be done this way:
+Grafana Alloy can [bundle its own `node_exporter`](https://grafana.com/docs/alloy/latest/reference/components/prometheus/prometheus.exporter.unix/). In that case, relabeling can be done this way:
 
 ```river
-prometheus.exporter.unix {
+prometheus.exporter.unix "node_exporter" {
 }
 
 prometheus.scrape "node_exporter" {
-  targets = prometheus.exporter.unix.targets
+  targets    = prometheus.exporter.unix.node_exporter.targets
   forward_to = [prometheus.relabel.node_exporter.receiver]
-
-  job_name = "node-exporter"
+  job_name   = "node-exporter"
 }
 
 prometheus.relabel "node_exporter" {
-  forward_to = [prometheus.remote_write.sink.receiver]
+  forward_to = [prometheus.remote_write.<your_component>.receiver]
 
   rule {
-    replacement = env("HOSTNAME")
+    action       = "replace"
+    replacement  = sys.env("HOSTNAME")
     target_label = "nodename"
-  }
-
-  rule {
-    # The default job name is "integrations/node_exporter" and needs to be replaced
-    replacement = "node-exporter"
-    target_label = "job"
   }
 }
 ```
 
-The `HOSTNAME` environment variable is injected by default by the [Grafana Agent helm chart](https://github.com/grafana/agent/blob/93cb1a2718f6fc90fd06ef33b6bcff519dbed662/operations/helm/charts/grafana-agent/templates/containers/_agent.yaml#L25)
+If you deploy Alloy with the Helm chart, the `HOSTNAME` environment variable is set to the Kubernetes node name by default. If you use a custom deployment, adjust the value used for `nodename` to match your node naming scheme.
 
 ### Windows support
 
