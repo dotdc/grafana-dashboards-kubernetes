@@ -800,7 +800,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by(instance) (rate(apiserver_request_total{code=~\"5..\", cluster=~\"$cluster\", job=~\"$job\"}[$__rate_interval]))\n / sum by(instance) (rate(apiserver_request_total{cluster=~\"$cluster\", job=~\"$job\"}[$__rate_interval]))",
+          "expr": "sum by(instance) (rate(apiserver_request_total{code=~\"5..\", cluster=~\"$cluster\", job=~\"$job\"}[$__rate_interval]))\n / (sum by(instance) (rate(apiserver_request_total{cluster=~\"$cluster\", job=~\"$job\"}[$__rate_interval])) > 0)",
           "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -894,7 +894,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by(verb) (rate(apiserver_request_total{code=~\"5..\", cluster=~\"$cluster\", job=~\"$job\"}[$__rate_interval]))\n / sum by(verb) (rate(apiserver_request_total{cluster=~\"$cluster\", job=~\"$job\"}[$__rate_interval]))",
+          "expr": "sum by(verb) (rate(apiserver_request_total{code=~\"5..\", cluster=~\"$cluster\", job=~\"$job\"}[$__rate_interval]))\n / (sum by(verb) (rate(apiserver_request_total{cluster=~\"$cluster\", job=~\"$job\"}[$__rate_interval])) > 0)",
           "interval": "$resolution",
           "legendFormat": "{{ verb }}",
           "refId": "A"
@@ -1082,7 +1082,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum(rate(workqueue_depth{cluster=~\"$cluster\", job=~\"$job\"}[$__rate_interval])) by (instance)",
+          "expr": "sum(workqueue_depth{cluster=~\"$cluster\", job=~\"$job\"}) by (instance)",
           "interval": "$resolution",
           "legendFormat": "{{ instance }}",
           "refId": "A"
@@ -1417,6 +1417,6 @@
   "timezone": "",
   "title": "Kubernetes / System / API Server",
   "uid": "k8s_system_apisrv",
-  "version": 20,
+  "version": 21,
   "weekStart": ""
 }
