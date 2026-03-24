@@ -2563,7 +2563,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "1 - sum(kubelet_volume_stats_inodes_used{persistentvolumeclaim=~\".*prom.*\", cluster=~\"$cluster\"}) by (persistentvolumeclaim) / sum(kubelet_volume_stats_inodes{persistentvolumeclaim=~\".*prom.*\", cluster=~\"$cluster\"}) by (persistentvolumeclaim)",
+          "expr": "1 - (sum(kubelet_volume_stats_inodes_used{persistentvolumeclaim=~\".*prom.*\", cluster=~\"$cluster\"}) by (persistentvolumeclaim) / sum(kubelet_volume_stats_inodes{persistentvolumeclaim=~\".*prom.*\", cluster=~\"$cluster\"}) by (persistentvolumeclaim))",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
@@ -3182,6 +3182,6 @@
   "timezone": "",
   "title": "Prometheus",
   "uid": "k8s_addons_prometheus",
-  "version": 8,
+  "version": 9,
   "weekStart": ""
 }
