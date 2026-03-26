@@ -61,7 +61,7 @@ As an example, here's how the `Kubernetes / Views / Global` dashboard looks like
 | k8s-addons-prometheus.json | Dashboard for Prometheus. | [Screenshot](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-addons-prometheus.png) |
 | k8s-addons-trivy-operator.json | Dashboard for the Trivy Operator from Aqua Security. | [Screenshot](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-addons-trivy-operator.png) |
 | k8s-system-api-server.json | Dashboard for the API Server Kubernetes component. | [Screenshot](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-system-api-server.png) |
-| k8s-system-coredns.json    | Show information on the CoreDNS Kubernetes component. | [Screenshot](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-system-coredns.png) |
+| k8s-system-coredns.json    | Dashboard for the CoreDNS Kubernetes component. | [Screenshot](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-system-coredns.png) |
 | k8s-views-global.json      | `Global` level view dashboard for Kubernetes. | [Screenshot](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-views-global.png) |
 | k8s-views-namespaces.json  | `Namespaces` level view dashboard for Kubernetes. | [Screenshot](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-views-namespaces.png) |
 | k8s-views-nodes.json       | `Nodes` level view dashboard for Kubernetes. | [Screenshot](https://raw.githubusercontent.com/dotdc/media/main/grafana-dashboards-kubernetes/k8s-views-nodes.png) |
@@ -95,12 +95,12 @@ grafana:
 
 ### Install manually
 
-On the WebUI of your Grafana instance, put your mouse over the `+` sign on the left menu, then click on `Import`.\
+In your Grafana instance, put your mouse over the `+` sign on the left menu, then click on `Import`.\
 Once you are on the Import page, you can upload the JSON files one by one from your local copy using the `Upload JSON file` button.
 
 ### Install via grafana.com
 
-On the WebUI of your Grafana instance, put your mouse over the `+` sign on the left menu, then click on `Import`.\
+In your Grafana instance, put your mouse over the `+` sign on the left menu, then click on `Import`.\
 Once you are on the Import page, you can put the grafana.com dashboard ID (see table below) under `Import via grafana.com` then click on the `Load` button. Repeat for each dashboard.
 
 Grafana.com dashboard id list:
@@ -292,8 +292,7 @@ To make the fix permanent, you can configure the `Scrape interval` in your Grafa
 To make this dashboard more convenient, there's a small variable hack to display `node` instead of `instance`.
 Because of that, some panels could lack data when a node changes its IP address as reported in [#102](https://github.com/dotdc/grafana-dashboards-kubernetes/issues/102).
 
-No easy fix for this scenario yet, but it should be a corner case for most people.
-Feel free to reopen the issue if you have ideas to fix this.
+There is currently no known fix for this scenario, though it should be a corner case for most deployments. Contributions with ideas or solutions are welcome.
 
 ### Broken panels on k8s-views-nodes due to the nodename label
 
@@ -326,12 +325,15 @@ If using the Prometheus operator or the Grafana agent in operator mode, the scra
 # File: service-monitor.yaml
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
+metadata:
+  name: node-exporter
+spec:
   endpoints:
   - port: http-metrics
     relabelings:
     # Add this
     - action: replace
-      sourceLabels: [ __meta_kubernetes_node_name]
+      sourceLabels: [__meta_kubernetes_node_name]
       targetLabel: nodename
 ```
 
