@@ -131,7 +131,7 @@ You will also need to enable and configure the Grafana `dashboards sidecar` as d
 If you use the official Grafana helm chart or kube-prometheus-stack, you can install the dashboards directly using the `dashboardProviders` & `dashboards` helm chart values.
 
 Depending on your setup, add or merge the following block example to your helm chart values.\
-The example is for [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack), for the official [Grafana helm chart](https://github.com/grafana/helm-charts/tree/main/charts/grafana), remove the first line (`grafana:`), and reduce the indentation level of the entire block.
+The example is for [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack), for the official [Grafana helm chart](https://github.com/grafana-community/helm-charts/tree/main/charts/grafana), remove the first line (`grafana:`), and reduce the indentation level of the entire block.
 
 ```yaml
 grafana:
@@ -172,7 +172,7 @@ grafana:
 
 ### Install as ConfigMaps
 
-Grafana dashboards can be provisioned as Kubernetes ConfigMaps if you configure the [dashboard sidecar](https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml#L667) available on the official [Grafana Helm Chart](https://github.com/grafana/helm-charts/tree/main/charts/grafana).
+Grafana dashboards can be provisioned as Kubernetes ConfigMaps if you configure the [dashboard sidecar](https://github.com/grafana-community/helm-charts/tree/main/charts/grafana#sidecar-for-dashboards) available on the official [Grafana Helm Chart](https://github.com/grafana-community/helm-charts/tree/main/charts/grafana).
 
 To build the ConfigMaps and output them on STDOUT :
 
