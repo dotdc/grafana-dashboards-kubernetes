@@ -1,0 +1,30 @@
+name: prek-checks
+
+# Doc: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  # Allow this workflow to be manually triggered
+  workflow_dispatch:
+
+# No permissions by default
+permissions: {}
+
+jobs:
+  prek-checks:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout ${{ github.repository }}
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Run prek checks
+        uses: j178/prek-action@44924fe9ef4a6f88253c4b6b1bf11c689d3ce53d # v3.1.0
