@@ -21,6 +21,7 @@
   - [Broken panels due to a too-high resolution](#broken-panels-due-to-a-too-high-resolution)
   - [Broken panels on k8s-views-nodes when a node changes its IP address](#broken-panels-on-k8s-views-nodes-when-a-node-changes-its-ip-address)
   - [Broken panels on k8s-views-nodes due to the nodename label](#broken-panels-on-k8s-views-nodes-due-to-the-nodename-label)
+  - [Missing requests and limits for pods using pod-level resources](#missing-requests-and-limits-for-pods-using-pod-level-resources)
   - [Windows support](#windows-support)
 - [Contributing](#contributing)
 
@@ -376,6 +377,45 @@ prometheus.relabel "node_exporter" {
 ```
 
 If you deploy Alloy with the Helm chart, the `HOSTNAME` environment variable is set to the Kubernetes node name by default. If you use a custom deployment, adjust the value used for `nodename` to match your node naming scheme.
+
+### Missing requests and limits for pods using pod-level resources
+
+kube-state-metrics only exposes container-level requests and limits, so pods using [pod-level resources](https://kubernetes.io/docs/tasks/configure-pod-container/assign-pod-level-resources/) (`pod.spec.resources`) have no requests and limits there ([kube-state-metrics#3107](https://github.com/kubernetes/kube-state-metrics/issues/3107)).
+
+To support them, the `k8s-views-global`, `k8s-views-namespaces` and `k8s-views-pods` dashboards use the `kube_pod_resource_request` and `kube_pod_resource_limit` metrics from the kube-scheduler `/metrics/resources` endpoint when they are available, and fall back to the kube-state-metrics container metrics when they are not. These metrics give the effective requests and limits of a pod, whether they are set on the containers, on the pod, or both. They also include init containers and pod overhead, so some pods can show higher values than with kube-state-metrics.
+
+This endpoint is not scraped by default, and the `namespace` and `pod` labels of these metrics must be the ones of the workload, not the ones of the kube-scheduler pod. If using the [kube-prometheus-stack helm chart](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack), this can be specified in your values.yaml:
+
+```yaml
+# File: kube-prometheus-stack-values.yaml
+kubeScheduler:
+  serviceMonitor:
+    resource:
+      enabled: true
+      metricRelabelings:
+      - sourceLabels: [exported_namespace]
+        regex: (.+)
+        targetLabel: namespace
+      - sourceLabels: [exported_pod]
+        regex: (.+)
+        targetLabel: pod
+      - regex: exported_(namespace|pod)
+        action: labeldrop
+```
+
+With another setup, scraping `/metrics/resources` with `honor_labels: true` gives the same result.
+
+If you already scrape this endpoint without this relabeling, these metrics are ignored and the dashboards keep using kube-state-metrics.
+
+On managed control planes:
+
+- **EKS**: the metrics are available through the API server at `/apis/metrics.eks.amazonaws.com/v1/ksh/container/resourcemetrics` ([AWS documentation](https://docs.aws.amazon.com/eks/latest/userguide/view-raw-metrics.html)).
+- **GKE**: the metrics are only exported to Google Cloud Managed Service for Prometheus ([GKE documentation](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/control-plane-metrics)).
+- **Azure Kubernetes Service**: the kube-scheduler can't be scraped.
+
+If the kube-scheduler can't be scraped, pods using pod-level resources will still have no requests and limits.
+
+See [#164](https://github.com/dotdc/grafana-dashboards-kubernetes/issues/164)
 
 ### Windows support
 
